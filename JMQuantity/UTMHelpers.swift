@@ -59,11 +59,13 @@ struct UTMCoordinates {
         let zoneNum = f.numberFromString(zone)?.unsignedIntegerValue
         
         // strip the zone from the locator
-        _locator.removeRange(_locator.rangeOfString(zone)!)
+        if let rng = _locator.rangeOfString(zone) {
+            _locator.removeRange(rng)
+        } else { return nil }
         
         // there should only be a single char left in _locator so check it for memberhsip in UTMBands
         var band: Character? = nil
-        for c in _locator.characters {
+        for c in _locator.uppercaseString.characters {
             if UTMBands.contains(c) {
                 band = c
                 break
