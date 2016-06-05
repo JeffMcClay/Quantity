@@ -97,14 +97,13 @@ extension GeodeticUTMConverter {
         return degreesToRadians(-183.0 + (Double(zone) * 6.0))
     }
     
-    private func latitudeBand(latitude: UTMDouble) -> String {
+    private func latitudeBand(latitude: UTMDouble) -> UTMBand {
         var latz = 0.0;
         if (latitude > -80 && latitude < 72) { latz = floor((latitude + 80)/8)+2 }
         if (latitude > 72 && latitude < 84){latz = 21;}
         if (latitude > 84){latz = 23;}
         
-        let diagraphs = ["A","B","C","D","E","F","G","H","J","K","L","M","N","P","Q","R","S","T","U","V","W","X","Y","Z"]
-        let band = diagraphs[Int(latz)]
+        let band = UTMBands[Int(latz)]
         return band
     }
     

@@ -200,7 +200,13 @@ print(utm.formattedString())
 let utm2 = GeodeticUTMConverter.convertUTMToLatLon(utm)
 print(utm2)
 
+let utm3 = UTMCoordinates(easting: 12345, northing: 67890, locator: "12S")
+print(utm3!)
 
+let kihei = CLLocationCoordinate2D(latitude: 20.759122, longitude: -156.457228)
+print(GeodeticUTMConverter.convertLocationToUTMCoordinates(kihei))
+let utm4 = UTMCoordinates(easting: 764754, northing: 2297572, locator: "04Q")
+print(utm4!.latitudeAndLongitude())
 
 // All the ways to make a PrefixedUnit
 let pu1 = PrefixedUnit(prefix: .Kilo, baseUnit: DistanceUnit.Meter)

@@ -88,8 +88,8 @@
 		1F68E0CD1CC4AFAD005F51C6 = {
 			isa = PBXGroup;
 			children = (
-				1F68E0D91CC4AFAD005F51C6 /* main.swift */,
 				1F68E0D81CC4AFAD005F51C6 /* JMQuantity */,
+				1F68E0D91CC4AFAD005F51C6 /* main.swift */,
 				1F68E0D71CC4AFAD005F51C6 /* Products */,
 			);
 			sourceTree = "<group>";
