@@ -6,26 +6,14 @@
 //  Copyright © 2016 Jeff McClay. All rights reserved.
 //
 
+//  Some of this code was ported from GeodeticUTMConverter by Created by Cameron Lowell Palmer & Mariia Ruchko.
+//  https://github.com/palmerc/GeodeticUTMConverter
+//  It was originally an Objective-C port of Chuck Taylor's javascript
+
 import Foundation
 import CoreLocation
 
-typealias UTMDouble = Double
-typealias UTMGridZone = UInt
-typealias UTMBand = Character
-
-let UTMBands: [Character] = ["A","B","C","D","E","F","G","H","J","K","L","M","N","P","Q","R","S","T","U","V","W","X","Y","Z"]
-
-enum UTMHemisphere {
-    case Northern
-    case Southern
-}
-
-struct UTMCoordinates {
-    let easting: UTMDouble
-    let northing: UTMDouble
-    let gridZone: UTMGridZone
-    let band: UTMBand
-    let hemisphere: UTMHemisphere
+extension UTMCoordinates {
     
     init(easting: UTMDouble, northing: UTMDouble, gridZone: UTMGridZone, band: UTMBand, hemisphere: UTMHemisphere) {
         self.easting = easting
@@ -34,34 +22,28 @@ struct UTMCoordinates {
         self.band = band
         self.hemisphere = hemisphere
     }
-        
+    
+    /// Creates a new UTMCoordinate given a locator string
+    ///  - parameter locator: A string containing the grid zone and utm band for the coordinate
     init?(easting: UTMDouble, northing: UTMDouble, locator: String) {
-        
-        
         let f = NSNumberFormatter()
         f.maximumFractionDigits = 0
-        
-//        let bandsSet = NSCharacterSet(charactersInString: "ABCDEFGHJKLMNPQRSTUVWXYZ")
-        
         var _locator = locator
         
         // Find the 1 or 2 digit zone number
         var zone = ""
         for c in locator.characters {
             let tmp = zone + String(c)
-            if let _ = f.numberFromString(tmp) {
-                zone = tmp
-            } else {
-                break
-            }
+            if let _ = f.numberFromString(tmp) { zone = tmp }
+            else { break }
         }
         
+        // convert the zone string into a double
         let zoneNum = f.numberFromString(zone)?.unsignedIntegerValue
         
         // strip the zone from the locator
-        if let rng = _locator.rangeOfString(zone) {
-            _locator.removeRange(rng)
-        } else { return nil }
+        if let rng = _locator.rangeOfString(zone) { _locator.removeRange(rng) }
+        else { return nil }
         
         // there should only be a single char left in _locator so check it for memberhsip in UTMBands
         var band: Character? = nil
@@ -93,12 +75,12 @@ struct UTMCoordinates {
     }
     
     func latitudeBand(latitude: UTMDouble) -> UTMBand {
-        var latz = 0.0;
-        if (latitude > -80 && latitude < 72) { latz = floor((latitude + 80)/8)+2 }
-        if (latitude > 72 && latitude < 84){latz = 21;}
-        if (latitude > 84){latz = 23;}
+        var latzone = 0.0;
+        if (latitude > -80 && latitude < 72) { latzone = floor((latitude + 80)/8)+2 }
+        if (latitude > 72 && latitude < 84) { latzone = 21 }
+        if (latitude > 84) { latzone = 23 }
         
-        let band = UTMBands[Int(latz)]
+        let band = UTMBands[Int(latzone)]
         return band
     }
     
@@ -123,8 +105,6 @@ struct TransverseMercatorCoordinates {
     let northing: UTMDouble
 }
 
-struct UTMDatum {
-    let equitorialRadius: UTMDouble
-    let polarRadius: UTMDouble
-}
+typealias UTMBand = Character
+let UTMBands: [Character] = ["A","B","C","D","E","F","G","H","J","K","L","M","N","P","Q","R","S","T","U","V","W","X","Y","Z"]
 
