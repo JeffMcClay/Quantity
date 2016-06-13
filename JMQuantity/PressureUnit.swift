@@ -10,12 +10,6 @@ import Foundation
 
 public enum PressureUnit: Double, LinearUnit {
     
-//    case Pascal = 1.0
-//    case Bar = 1E-5
-//    case InchesOfHg = 0.000295287441401431038736738218603503577596841845546508758
-//    case PSI =        0.000145077720207253886010362694300518134715025906735751295
-//    case Atmosphere = 9.8692326671601283000246730816679003207500616827041697E-6
-    
     case Atmosphere = 1.0
     case Torr = 760
     case Pascal = 101325

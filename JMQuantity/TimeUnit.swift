@@ -9,13 +9,6 @@
 import Foundation
 
 enum TimeUnit: Double, LinearUnit {
-//    case Second =       1.0
-//    case Minute =       1.666666666666666666666E-2
-//    case Hour =         2.777777777777777777777E-4
-//    case Day =          1.157407407407407407407E-5
-//    case Week =         1.6534391534391534391534391534391534391534391534391534E-6
-//    case JulianYear =   3.1688087814028950237026896848936547772961188430045377E-9
-//    case SiderealYear = 3.1687535786877787892025204561613546088525280228232390E-9
 
     case Second =       604800.0
     case Minute =       10080.0
