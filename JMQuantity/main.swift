@@ -117,33 +117,13 @@ print("  (\(ambp_c --> .InchesOfHg))")
 print("-----")
 
 
-//let ft2 = AreaUnit(unit: DistanceUnit.Foot)
-//let squareFeet = Quantity(8.0, AreaUnit(unit: DistanceUnit.Yard))
-//print(squareFeet)
-//
-//let squareYards = squareFeet --> AreaUnit(unit: DistanceUnit.Foot)
-//print(squareYards)
-//
-//
-//let ftmin = Quantity(10560, VelocityUnit(.Foot, per: .Minute))
-//print(ftmin)
-//
-//let mph = ftmin --> VelocityUnit(.Mile, per:.Hour)
-//print(mph)
-//
-//func showSpeed(speed: Quantity<VelocityUnit>) {
-//    print(speed)
-//}
-//
-//let rate1 = Quantity(123, RateUnit.Rate(DistanceUnit.Mile, TimeUnit.Hour))
-//
-//let rate2 = Quantity(45, RateUnit.Rate(PressureUnit.InchesOfHg, DistanceUnit.Mile))
-//
-//showSpeed(rate1)
-//showSpeed(mph)
-//
-//print(rate2)
+print("")
+let squareFeet = Quantity(8.0, AreaUnit(unit: DistanceUnit.Yard))
+let squareYards = squareFeet --> AreaUnit(unit: DistanceUnit.Foot)
+print("\(squareFeet) = \(squareYards)")
 
+let ftmin = Quantity(10560, VelocityUnit(.Foot, per: .Minute))
+print("\(ftmin) = \(ftmin --> VelocityUnit(.Mile, per: .Hour))")
 
 
 let km = PrefixedUnit(prefix: .Kilo, baseUnit: DistanceUnit.Meter)
@@ -154,8 +134,8 @@ let hr = PrefixedUnit(baseUnit: TimeUnit.Hour)
 let kph = Quantity(60, VelocityUnit(km, per: hr))
 print(kph)
 
-let mph =  kph --> RateUnit.Rate(ft, PrefixedUnit(baseUnit: TimeUnit.Minute))
-print(mph)
+let mph1 =  kph --> RateUnit.Rate(ft, PrefixedUnit(baseUnit: TimeUnit.Minute))
+print(mph1)
 
 let kph2 = Quantity(60, VelocityUnit(.Meter, per: .Second))
 let mph2 = kph2 --> VelocityUnit(.Foot, per: .Minute)
@@ -165,48 +145,7 @@ print(mph2)
 print(kmph)
 
 
-//let rate1 = Quantity(10.0, RateUnit(TemperatureUnit.Fahrenheit, per: TimeUnit.Hour))
-//let rate2 = rate1 --> RateUnit(TemperatureUnit.Celcius, per: TimeUnit.Second)
-//print(rate2)
 
-
-let degs = Quantity(270, AngleUnit.Degree)
-print(degs --> .Turn)
-
-let mil = Quantity(1.0, AngleUnit.MilNATO)
-print(mil --> .MinuteOfAngle)
-let mrad = Quantity(value:1.0, unit:PrefixedUnit(prefix: .Milli, baseUnit: AngleUnit.Radian))
-print(mrad --> .MinuteOfAngle)
-
-
-let pound = Quantity(2000, MassUnit.Pound)
-print("gram:        \(pound --> .Gram)")
-print("tonne:       \(pound --> .MetricTon)")
-print("Long Ton:    \(pound --> .ImperialLongTon)")
-print("Short Ton:   \(pound --> .ImperialShortTon)")
-print("Slug:        \(pound --> .Slug)")
-print("Pound:       \(pound --> .Pound)")
-print("Stone:       \(pound --> .Stone)")
-print("Ounce:       \(pound --> .Ounce)")
-print("Troy Ounce:  \(pound --> .TroyOunce)")
-
-
-import CoreLocation
-let loc2 = CLLocationCoordinate2D(latitude: 34.75681003, longitude: -112.4233185)
-let loc1 = CLLocationCoordinate2D(latitude: 59.912814611065265, longitude: 10.760192985178369)
-let utm = GeodeticUTMConverter.convertLocationToUTMCoordinates(loc1)
-print(utm.formattedString())
-
-let utm2 = GeodeticUTMConverter.convertUTMToLatLon(utm)
-print(utm2)
-
-let utm3 = UTMCoordinates(easting: 12345, northing: 67890, locator: "12S")
-print(utm3!)
-
-let kihei = CLLocationCoordinate2D(latitude: 20.759122, longitude: -156.457228)
-print(GeodeticUTMConverter.convertLocationToUTMCoordinates(kihei))
-let utm4 = UTMCoordinates(easting: 764754, northing: 2297572, locator: "04Q")
-print(utm4!.latitudeAndLongitude())
 
 // All the ways to make a PrefixedUnit
 let pu1 = PrefixedUnit(prefix: .Kilo, baseUnit: DistanceUnit.Meter)
