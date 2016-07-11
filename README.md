@@ -106,3 +106,43 @@ Ok, how much longer is a marathon? 105446.601049869 ft
 How far will I go the other direction? -10.0 km
 How much is my picture worth? 1.0 pics = 1000.0 wrds
 ```
+
+## Atmospheric Calculations
+Quantity also has basic support for some atmospheric calculations, like Pressure and Density Altitudes.
+
+```
+let ambientTemperature = Quantity(75.2, TemperatureUnit.Fahrenheit)
+let ambientPressure = Quantity(24.92, PressureUnit.InchesOfHg)
+let humidity = 62.0
+print("For an ambient temperature of \(ambientTemperature), a humidity of \(humidity)%, and station pressure of \(ambientPressure):")
+
+// Dewpoint
+let dewpoint_c = dewpoint(temperature: ambientTemperature, humidity: humidity)
+print("  Dewpoint:          \(dewpoint_c --> .Fahrenheit)")
+
+// Pressure Altitude
+let pressureAlt = pressureAltitude(ambientPressure)
+print("  Pressure Altitude: \(pressureAlt)")
+
+// Density Altitude
+let densityAlt = densityAltitude(ambientPressure: ambientPressure, temperature: ambientTemperature, dewpoint: dewpoint_c)
+print("  Density Altitude:  \(densityAlt)")
+
+let baro = Quantity(30.12, PressureUnit.InchesOfHg)
+let elev = fieldElevation(ambientPressure: ambientPressure, barometricPressure: baro)
+print("Field Elevation for barometric pressure of \(baro): \(elev --> .Foot)")
+
+let baro_c = barometricPressure(ambientPressure: ambientPressure, fieldElevation: elev)
+let ambp_c = ambientPressure(barometricPressure: baro, fieldElevation: elev)
+print("  (\(baro_c --> .InchesOfHg))")
+print("  (\(ambp_c --> .InchesOfHg))")
+```
+```
+For an ambient temperature of 75.2 F, a humidity of 62.0%, and station pressure of 24.92 inHg:
+  Dewpoint:          61.2900552954857 F
+  Pressure Altitude: 4972.11734257331 ft
+  Density Altitude:  7406.61952829162 ft
+Field Elevation for barometric pressure of 30.12 inHg: 5148.09445387503 ft
+  (30.1017821422665 inHg)
+  (24.92 inHg)
+```
