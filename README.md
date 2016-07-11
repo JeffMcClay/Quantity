@@ -107,6 +107,32 @@ How far will I go the other direction? -10.0 km
 How much is my picture worth? 1.0 pics = 1000.0 wrds
 ```
 
+#### More examples:
+```
+// All the ways to make a PrefixedUnit
+let pu1 = PrefixedUnit(prefix: .Kilo, baseUnit: DistanceUnit.Meter)
+let pu2 = PrefixedUnit(baseUnit: DistanceUnit.Foot)
+let pu3 = PrefixedUnit(.Kilo, DistanceUnit.Meter)
+let pu4 = PrefixedUnit(DistanceUnit.Foot)
+
+// All the ways to make a Quantity
+let q1 = Quantity(value: 6.3, unit:pu1)
+let q2 = Quantity(6.3, prefix: .Kilo, unit: DistanceUnit.Meter)
+let q3 = Quantity(3.0, unit: DistanceUnit.Foot)
+let q4 = Quantity(1.0, DistanceUnit.Yard)
+
+// All the ways to make a regular LinearUnit
+let lu1 = DistanceUnit.Foot
+
+// All the ways to make a RateUnit
+let ru1 = RateUnit.Rate(pu1, pu3)
+let ru2 = RateUnit(unit: pu1, perUnit: pu3)
+let ru3 = RateUnit(DistanceUnit.Foot, per: TimeUnit.Second)
+
+// Shorcut for velocity
+let vu1 = VelocityUnit(.Mile, per: .Hour)
+```
+
 ## Atmospheric Calculations
 Quantity also has basic support for some atmospheric calculations, like Pressure and Density Altitudes.
 
@@ -145,4 +171,58 @@ For an ambient temperature of 75.2 F, a humidity of 62.0%, and station pressure 
 Field Elevation for barometric pressure of 30.12 inHg: 5148.09445387503 ft
   (30.1017821422665 inHg)
   (24.92 inHg)
+```
+
+## Support for compound units (Like Area, Volume, Speed, etc)
+```
+let squareFeet = Quantity(8.0, AreaUnit(unit: DistanceUnit.Yard))
+let squareYards = squareFeet --> AreaUnit(unit: DistanceUnit.Foot)
+print("\(squareFeet) = \(squareYards)")
+
+let ftmin = Quantity(10560, VelocityUnit(.Foot, per: .Minute))
+print("\(ftmin) = \(ftmin --> VelocityUnit(.Mile, per: .Hour))")
+
+let km = PrefixedUnit(prefix: .Kilo, baseUnit: DistanceUnit.Meter)
+let cm = PrefixedUnit(prefix: .Centi, baseUnit: DistanceUnit.Meter)
+
+let ft = PrefixedUnit(baseUnit: DistanceUnit.Foot)
+let hr = PrefixedUnit(baseUnit: TimeUnit.Hour)
+let kph = Quantity(60, VelocityUnit(km, per: hr))
+print(kph)
+
+let mph1 =  kph --> RateUnit.Rate(ft, PrefixedUnit(baseUnit: TimeUnit.Minute))
+print(mph1)
+
+let kph2 = Quantity(60, VelocityUnit(.Meter, per: .Second))
+let mph2 = kph2 --> VelocityUnit(.Foot, per: .Minute)
+let kmph = kph2 --> PrefixedUnit(prefix: .Kilo, baseUnit: RateUnit(DistanceUnit.Foot, per: TimeUnit.Minute))
+print(kph2)
+print(mph2)
+print(kmph)
+```
+```
+8.0 yd² = 72.0 ft²
+10560.0 ft/min = 120.0 mi/hour
+60.0 km/hour
+3280.83989501312 ft/min
+60.0 m/s
+11811.0236220472 ft/min
+11.8110236220472 kft/min
+```
+
+## Latitude/Longitude, UTM, GPS
+Support for geographic coordinates in both Latitude/Longitude (degrees) format, and UTM format.
+```
+let apple_latlon = CLLocationCoordinate2D(latitude: 37.331948, longitude: -122.029370)
+let apple_utm = UTMCoordinates(easting: 585987, northing: 4132139, locator: "10S")
+
+let converter = GeodeticUTMConverter()
+let latlonConverted = converter.convertToUTMCoordinates(apple_latlon)
+let utmConverted = converter.convertToLatitudeLongitude(utmCoordinates: apple_utm!)
+print(latlonConverted.formattedString())
+print(utmConverted)
+```
+```
+10S 585987.1m E 4132139.2m N
+CLLocationCoordinate2D(latitude: 37.331946317344212, longitude: -122.02937069495992)
 ```
