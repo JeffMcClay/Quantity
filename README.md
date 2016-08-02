@@ -15,7 +15,7 @@ Custom units are fully supported, and can be implemented easily.  (See FunkyUnit
 ## Examples
 
 ### Creating Quantities
-```
+```swift
 // Verbose creation
 let kilometers = PrefixedUnit(prefix: .Kilo, baseUnit: DistanceUnit.Meter)
 let twoKilometers = Quantity(value: 2.0, unit: kilometers)
@@ -26,7 +26,7 @@ let twoFeet = Quantity(2.0, DistanceUnit.Foot)
 ```
 
 ### Arithmetic
-```
+```swift
 // Between quantities and primitives
 let threeFeet = twoFeet + 1.0
 
@@ -46,14 +46,14 @@ let huh = fourFeet + temp59  // Causes compiler error
 ```
 
 ### Unit Conversion
-```
+```swift
 let oneYard = threeFeet.convert(to: DistanceUnit.Yard)
 let anotherYard = threeFeet --> .Yard
 let centimeters = anotherYard --> PrefixedUnit(prefix: .Centi, baseUnit: .Meter)
 ```
 
 ### More Arithmetic (Comparison, Negation, Subtraction)
-```
+```swift
 let equalYards = ( threeFeet == oneYard )
 let isATenKLongerThanAMarathon = ( tenKilometers > fullMarathon )
 
@@ -62,7 +62,7 @@ let runningTheWrongWay = -tenKilometers    // Negation
 ```
 
 ### Support for Custom Units!
-```
+```swift
 // Custom Units
 enum FunkyUnit : Double, LinearUnit {
     case Picture = 1
@@ -85,7 +85,7 @@ let words = aPicture --> .Word
 
 
 ### Example output
-```
+```swift
 print("twoKilometers = \(twoKilometers)")
 print("twoFeet = \(twoFeet) and threeFeet = \(threeFeet) and fiveFeet = \(fiveFeet)")
 print("oneYard = \(oneYard) and anotherYard = \(anotherYard) which equals \(centimeters)")
@@ -108,7 +108,7 @@ How much is my picture worth? 1.0 pics = 1000.0 wrds
 ```
 
 #### More examples:
-```
+```swift
 // All the ways to make a PrefixedUnit
 let pu1 = PrefixedUnit(prefix: .Kilo, baseUnit: DistanceUnit.Meter)
 let pu2 = PrefixedUnit(baseUnit: DistanceUnit.Foot)
@@ -136,7 +136,7 @@ let vu1 = VelocityUnit(.Mile, per: .Hour)
 ## Atmospheric Calculations
 Quantity also has basic support for some atmospheric calculations, like Pressure and Density Altitudes.
 
-```
+```swift
 let ambientTemperature = Quantity(75.2, TemperatureUnit.Fahrenheit)
 let ambientPressure = Quantity(24.92, PressureUnit.InchesOfHg)
 let humidity = 62.0
@@ -174,7 +174,7 @@ Field Elevation for barometric pressure of 30.12 inHg: 5148.09445387503 ft
 ```
 
 ## Support for compound units (Like Area, Volume, Speed, etc)
-```
+```swift
 let squareFeet = Quantity(8.0, AreaUnit(unit: DistanceUnit.Yard))
 let squareYards = squareFeet --> AreaUnit(unit: DistanceUnit.Foot)
 print("\(squareFeet) = \(squareYards)")
@@ -212,7 +212,7 @@ print(kmph)
 
 ## Latitude/Longitude, UTM, GPS
 Support for geographic coordinates in both Latitude/Longitude (degrees) format, and UTM format.
-```
+```swift
 let apple_latlon = CLLocationCoordinate2D(latitude: 37.331948, longitude: -122.029370)
 let apple_utm = UTMCoordinates(easting: 585987, northing: 4132139, locator: "10S")
 
