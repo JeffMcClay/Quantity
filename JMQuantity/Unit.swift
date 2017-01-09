@@ -16,7 +16,7 @@ public protocol Unit {
 }
 
 extension Unit {
-    public var name: String { return String(self) }
+    public var name: String { return String(describing: self) }
 }
 
 

@@ -12,6 +12,8 @@ import Foundation
 let kilometers = PrefixedUnit(prefix: .Kilo, baseUnit: DistanceUnit.Meter)
 let twoKilometers = Quantity(value: 2.0, unit: kilometers)
 
+let two = kilometers
+
 // Fast creation
 let tenKilometers = Quantity(10.0, prefix:.Kilo, unit:DistanceUnit.Meter)
 let twoFeet = Quantity(2.0, DistanceUnit.Foot)
@@ -169,3 +171,14 @@ let ru3 = RateUnit(DistanceUnit.Foot, per: TimeUnit.Second)
 
 // Shorcut for velocity
 let vu1 = VelocityUnit(.Mile, per: .Hour)
+
+
+import CoreLocation
+let apple_latlon = CLLocationCoordinate2D(latitude: 37.331948, longitude: -122.029370)
+let apple_utm = UTMCoordinates(easting: 585987, northing: 4132139, locator: "10S")
+
+let converter = GeodeticUTMConverter()
+let latlonConverted = converter.convertToUTMCoordinates(apple_latlon)
+let utmConverted = converter.convertToLatitudeLongitude(utmCoordinates: apple_utm!)
+print(latlonConverted.formattedString())
+print(utmConverted)
