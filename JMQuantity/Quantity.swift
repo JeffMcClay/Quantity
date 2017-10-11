@@ -33,10 +33,10 @@ public struct Quantity<U: Unit>: CustomStringConvertible {
         }
     }
     
-    public func roundedDescription(decimalPlaces: Int) -> String {
-        let f = NSNumberFormatter()
+    public func roundedDescription(_ decimalPlaces: Int) -> String {
+        let f = NumberFormatter()
         f.maximumFractionDigits = decimalPlaces
-        return f.stringFromNumber(value)! + " " + unit.symbol
+        return f.string(from: NSNumber(value: value))! + " " + unit.symbol
     }
     
     //MARK: - Initialization
@@ -74,7 +74,7 @@ public struct Quantity<U: Unit>: CustomStringConvertible {
 }
 
 //MARK: - Operators
-infix operator --> {associativity left}
+infix operator --> //{associativity left}
 func --><U: Unit>(lhs: Quantity<U>, rhs: PrefixedUnit<U>) -> Quantity<U> { return lhs.convert(to: rhs) }
 func --><U: Unit>(lhs: Quantity<U>, rhs: U) -> Quantity<U> { return lhs.convert(to: PrefixedUnit(baseUnit: rhs)) }
 

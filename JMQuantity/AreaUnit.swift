@@ -10,32 +10,32 @@ import Foundation
 
 enum AreaUnit<LU: LinearUnit>: Unit {
     
-    case SquareUnit(LU)
+    case squareUnit(LU)
     
     var symbol: String {
         switch self {
-        case .SquareUnit(let unit):
+        case .squareUnit(let unit):
             return unit.symbol + "²"
         }
     }
     var name: String {
         switch self {
-        case .SquareUnit(let unit):
+        case .squareUnit(let unit):
             return "square" + unit.name
         }
     }
     
     init(unit: LU) {
-        self = AreaUnit.SquareUnit(unit)
+        self = AreaUnit.squareUnit(unit)
     }
     
-    func convert(quantity: Quantity<AreaUnit>, toPrefixedUnit: PrefixedUnit<AreaUnit>) -> Quantity<AreaUnit> {
+    func convert(_ quantity: Quantity<AreaUnit>, toPrefixedUnit: PrefixedUnit<AreaUnit>) -> Quantity<AreaUnit> {
         if quantity.unit == toPrefixedUnit { return quantity }
 
         switch quantity.unit.baseUnit {
-        case .SquareUnit(let unitFrom):
+        case .squareUnit(let unitFrom):
             switch toPrefixedUnit.baseUnit {
-            case .SquareUnit(let unitTo):
+            case .squareUnit(let unitTo):
                 let baseValue = quantity._value / pow(unitFrom.unitValue, 2) // convert to "meters"
                 let newValue = baseValue * pow(unitTo.unitValue, 2) / toPrefixedUnit.prefix.rawValue
                 return Quantity(value: newValue, unit: toPrefixedUnit)

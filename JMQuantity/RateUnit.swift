@@ -10,38 +10,38 @@ import Foundation
 
 enum RateUnit<MainUnit: LinearUnit, ChangeUnit: LinearUnit>: Unit {
     
-    case Rate(PrefixedUnit<MainUnit>, PrefixedUnit<ChangeUnit>)
+    case rate(PrefixedUnit<MainUnit>, PrefixedUnit<ChangeUnit>)
     
     var symbol: String {
         switch self {
-        case .Rate(let dist, let time):
+        case .rate(let dist, let time):
             return dist.symbol + "/" + time.symbol
         }
     }
     var name: String {
         switch self {
-        case .Rate(let dist, let time):
+        case .rate(let dist, let time):
             return dist.symbol + " per " + time.symbol
         }
     }
     
     init(unit: PrefixedUnit<MainUnit>, perUnit changeUnit: PrefixedUnit<ChangeUnit>) {
-        self = RateUnit.Rate(unit, changeUnit)
+        self = RateUnit.rate(unit, changeUnit)
     }
     init(_ unit: PrefixedUnit<MainUnit>, per changeUnit: PrefixedUnit<ChangeUnit>) {
-        self = RateUnit.Rate(unit, changeUnit)
+        self = RateUnit.rate(unit, changeUnit)
     }
     init(_ unit: MainUnit, per changeUnit: ChangeUnit) {
-        self = RateUnit.Rate(PrefixedUnit(baseUnit: unit), PrefixedUnit(baseUnit: changeUnit))
+        self = RateUnit.rate(PrefixedUnit(baseUnit: unit), PrefixedUnit(baseUnit: changeUnit))
     }
 
-    func convert(quantity: Quantity<RateUnit>, toPrefixedUnit: PrefixedUnit<RateUnit>) -> Quantity<RateUnit> {
+    func convert(_ quantity: Quantity<RateUnit>, toPrefixedUnit: PrefixedUnit<RateUnit>) -> Quantity<RateUnit> {
         if quantity.unit == toPrefixedUnit { return quantity }
 
         switch quantity.unit.baseUnit {
-        case .Rate(let mainFrom, let changeFrom):
+        case .rate(let mainFrom, let changeFrom):
             switch toPrefixedUnit.baseUnit {
-            case .Rate(let mainTo, let changeTo):
+            case .rate(let mainTo, let changeTo):
                 
 //                let main = mainFrom.baseUnit
 //                if let main = main as? LinearUnit { print("all good") }

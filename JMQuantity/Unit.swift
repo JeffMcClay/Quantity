@@ -12,7 +12,7 @@ public protocol Unit {
     var symbol: String { get }
     var name: String { get }
     
-    func convert(quantity: Quantity<Self>, toPrefixedUnit: PrefixedUnit<Self>) -> Quantity<Self>
+    func convert(_ quantity: Quantity<Self>, toPrefixedUnit: PrefixedUnit<Self>) -> Quantity<Self>
 }
 
 extension Unit {
@@ -29,7 +29,7 @@ extension LinearUnit {
         return self.rawValue as! Double
     }
     
-    public func convert(quantity: Quantity<Self>, toPrefixedUnit: PrefixedUnit<Self>) -> Quantity<Self> {
+    public func convert(_ quantity: Quantity<Self>, toPrefixedUnit: PrefixedUnit<Self>) -> Quantity<Self> {
         let baseUnit = quantity.unit.baseUnit
         let toUnit = toPrefixedUnit.baseUnit
         

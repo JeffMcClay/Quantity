@@ -9,29 +9,29 @@
 import Foundation
 
 enum AngleUnit: Double, LinearUnit {
-    case Turn = 1.0
-    case Quandrant = 4.0
-    case Sextant = 6.0
-    case Hexacontade = 60.0
-    case Degree = 360.0
-    case Grad = 400.0
-    case MinuteOfAngle = 21600.0
-    case SecondAngle = 1296000.0
-    case Radian = 6.283185307179586476925286766559005768394338798750211641949       // 1 milliradian = 1 USMC mRad
-    case MilNATO = 6400     // ARMY Mils
+    case turn = 1.0
+    case quandrant = 4.0
+    case sextant = 6.0
+    case hexacontade = 60.0
+    case degree = 360.0
+    case grad = 400.0
+    case minuteOfAngle = 21600.0
+    case secondAngle = 1296000.0
+    case radian = 6.283185307179586476925286766559005768394338798750211641949       // 1 milliradian = 1 USMC mRad
+    case milNATO = 6400     // ARMY Mils
     
     var symbol: String {
         switch self {
-        case Turn: return "turn"
-        case Quandrant: return "quandrant"
-        case Sextant: return "sextant"
-        case Hexacontade: return "hexacontade"
-        case Degree: return "°"
-        case Grad: return "grad"
-        case MinuteOfAngle: return "MOA"
-        case SecondAngle: return "″"
-        case Radian: return "rad"
-        case MilNATO: return "mil"
+        case .turn: return "turn"
+        case .quandrant: return "quandrant"
+        case .sextant: return "sextant"
+        case .hexacontade: return "hexacontade"
+        case .degree: return "°"
+        case .grad: return "grad"
+        case .minuteOfAngle: return "MOA"
+        case .secondAngle: return "″"
+        case .radian: return "rad"
+        case .milNATO: return "mil"
         }
     }
 }

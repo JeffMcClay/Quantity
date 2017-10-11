@@ -12,6 +12,41 @@
 
 import Foundation
 import CoreLocation
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l > r
+  default:
+    return rhs < lhs
+  }
+}
+
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func <= <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l <= r
+  default:
+    return !(rhs < lhs)
+  }
+}
+
 
 extension UTMCoordinates {
     
@@ -26,7 +61,7 @@ extension UTMCoordinates {
     /// Creates a new UTMCoordinate given a locator string
     ///  - parameter locator: A string containing the grid zone and utm band for the coordinate
     init?(easting: UTMDouble, northing: UTMDouble, locator: String) {
-        let f = NSNumberFormatter()
+        let f = NumberFormatter()
         f.maximumFractionDigits = 0
         var _locator = locator
         
@@ -34,20 +69,20 @@ extension UTMCoordinates {
         var zone = ""
         for c in locator.characters {
             let tmp = zone + String(c)
-            if let _ = f.numberFromString(tmp) { zone = tmp }
+            if let _ = f.number(from: tmp) { zone = tmp }
             else { break }
         }
         
         // convert the zone string into a double
-        let zoneNum = f.numberFromString(zone)?.unsignedIntegerValue
+        let zoneNum = f.number(from: zone)?.uintValue
         
         // strip the zone from the locator
-        if let rng = _locator.rangeOfString(zone) { _locator.removeRange(rng) }
+        if let rng = _locator.range(of: zone) { _locator.removeSubrange(rng) }
         else { return nil }
         
         // there should only be a single char left in _locator so check it for memberhsip in UTMBands
         var band: Character? = nil
-        for c in _locator.uppercaseString.characters {
+        for c in _locator.uppercased().characters {
             if UTMBands.contains(c) {
                 band = c
                 break
@@ -56,9 +91,9 @@ extension UTMCoordinates {
         
         guard zoneNum != nil && band != nil else { return nil }
         
-        let idx = UTMBands.indexOf(band!)
-        if idx > 11 && idx < UTMBands.count { self.hemisphere = .Northern }
-        else if idx <= 11 { self.hemisphere = .Southern }
+        let idx = UTMBands.index(of: band!)
+        if idx > 11 && idx < UTMBands.count { self.hemisphere = .northern }
+        else if idx <= 11 { self.hemisphere = .southern }
         else { return nil }
         
         self.easting = easting
@@ -67,14 +102,14 @@ extension UTMCoordinates {
         self.band = band!        
     }
     
-    func hemisphereForBand(band: UTMBand) -> UTMHemisphere? {
-        let idx = UTMBands.indexOf(band)
-        if idx > 11 && idx < UTMBands.count { return .Northern }
-        else if idx <= 11 { return .Southern }
+    func hemisphereForBand(_ band: UTMBand) -> UTMHemisphere? {
+        let idx = UTMBands.index(of: band)
+        if idx > 11 && idx < UTMBands.count { return .northern }
+        else if idx <= 11 { return .southern }
         return nil
     }
     
-    func latitudeBand(latitude: UTMDouble) -> UTMBand {
+    func latitudeBand(_ latitude: UTMDouble) -> UTMBand {
         var latzone = 0.0;
         if (latitude > -80 && latitude < 72) { latzone = floor((latitude + 80)/8)+2 }
         if (latitude > 72 && latitude < 84) { latzone = 21 }
@@ -84,13 +119,13 @@ extension UTMCoordinates {
         return band
     }
     
-    func formattedString(digits: Int = 1) -> String {
-        let f = NSNumberFormatter()
+    func formattedString(_ digits: Int = 1) -> String {
+        let f = NumberFormatter()
         f.maximumFractionDigits = digits
         f.minimumFractionDigits = digits
         
-        let e = f.stringFromNumber(easting)!
-        let n = f.stringFromNumber(northing)!
+        let e = f.string(from: NSNumber(value: easting))!
+        let n = f.string(from: NSNumber(value: northing))!
         
         return "\(gridZone)\(band) \(e)m E \(n)m N"
     }

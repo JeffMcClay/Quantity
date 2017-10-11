@@ -31,7 +31,7 @@ public struct PrefixedUnit<U: Unit> {
         self.baseUnit = baseUnit
     }
     
-    func convert(quantity: Quantity<U>) -> Quantity<U> {
+    func convert(_ quantity: Quantity<U>) -> Quantity<U> {
         return baseUnit.convert(quantity, toPrefixedUnit: self)
     }
 }

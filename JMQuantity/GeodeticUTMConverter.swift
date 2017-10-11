@@ -25,8 +25,8 @@ typealias UTMDouble = Double
 typealias UTMGridZone = UInt
 
 enum UTMHemisphere {
-    case Northern
-    case Southern
+    case northern
+    case southern
 }
 
 struct UTMDatum {
@@ -46,7 +46,7 @@ struct UTMCoordinates {
 class GeodeticUTMConverter {
     
     var utmDatum: UTMDatum
-    private var utmScaleFactor: UTMDouble = 0.9996
+    fileprivate var utmScaleFactor: UTMDouble = 0.9996
     
     init () {
         let wgs84datum = UTMDatum(equitorialRadius: 6378137, polarRadius: 6356752.3142)
@@ -57,12 +57,12 @@ class GeodeticUTMConverter {
         self.utmDatum = datum
     }
     
-    static func convertLocationToUTMCoordinates(latitudeLongitude: CLLocationCoordinate2D) -> UTMCoordinates {
+    static func convertLocationToUTMCoordinates(_ latitudeLongitude: CLLocationCoordinate2D) -> UTMCoordinates {
         let converter = GeodeticUTMConverter()
         return converter.convertToUTMCoordinates(latitudeLongitude)
     }
     
-    static func convertUTMToLatLon(utmCoordinates: UTMCoordinates) -> CLLocationCoordinate2D {
+    static func convertUTMToLatLon(_ utmCoordinates: UTMCoordinates) -> CLLocationCoordinate2D {
         let converter = GeodeticUTMConverter()
         return converter.convertToLatitudeLongitude(utmCoordinates: utmCoordinates)
     }
@@ -70,14 +70,14 @@ class GeodeticUTMConverter {
 }
 
 extension GeodeticUTMConverter {
-    func convertToUTMCoordinates(latLonCoordinates: CLLocationCoordinate2D) -> UTMCoordinates {
+    func convertToUTMCoordinates(_ latLonCoordinates: CLLocationCoordinate2D) -> UTMCoordinates {
         //TODO: Check this
         let z = floor((latLonCoordinates.longitude + 180.0) / 6.0) + 1.0
         let zone = UTMGridZone(z)
         
         var hemisphere: UTMHemisphere
-        if (latLonCoordinates.latitude < 0) { hemisphere = .Southern }
-        else { hemisphere = .Northern }
+        if (latLonCoordinates.latitude < 0) { hemisphere = .southern }
+        else { hemisphere = .northern }
         
         let cmeridian = centralMeridian(gridZone: zone)
         
@@ -106,7 +106,7 @@ extension GeodeticUTMConverter {
         x /= utmScaleFactor;
         
         /* If in southern hemisphere, adjust y accordingly. */
-        if (hemisphere == .Southern) { y -= 10000000.0; }
+        if (hemisphere == .southern) { y -= 10000000.0; }
         
         y /= utmScaleFactor;
         
@@ -124,14 +124,14 @@ extension GeodeticUTMConverter {
 
 extension GeodeticUTMConverter {
     
-    private func degreesToRadians(degrees: Double) -> Double { return degrees / 180 * M_PI }
-    private func radiansToDegrees(radians: Double) -> Double { return radians * 180 / M_PI }
+    fileprivate func degreesToRadians(_ degrees: Double) -> Double { return degrees / 180 * .pi }
+    fileprivate func radiansToDegrees(_ radians: Double) -> Double { return radians * 180 / .pi }
     
-    private func centralMeridian(gridZone zone: UTMGridZone) -> UTMDouble {
+    fileprivate func centralMeridian(gridZone zone: UTMGridZone) -> UTMDouble {
         return degreesToRadians(-183.0 + (Double(zone) * 6.0))
     }
     
-    private func latitudeBand(latitude: UTMDouble) -> UTMBand {
+    fileprivate func latitudeBand(_ latitude: UTMDouble) -> UTMBand {
         var latz = 0.0;
         if (latitude > -80 && latitude < 72) { latz = floor((latitude + 80)/8)+2 }
         if (latitude > 72 && latitude < 84){latz = 21;}
@@ -141,7 +141,7 @@ extension GeodeticUTMConverter {
         return band
     }
     
-    private func arcLengthOfMeridian(latitudeInRadians: UTMDouble) -> UTMDouble {
+    fileprivate func arcLengthOfMeridian(_ latitudeInRadians: UTMDouble) -> UTMDouble {
         let equitorialRadus = utmDatum.equitorialRadius;
         let polarRadius = utmDatum.polarRadius;
         
@@ -174,7 +174,7 @@ extension GeodeticUTMConverter {
         return result;
     }
     
-    private func footpointLatitude(northingInMeters northing:UTMDouble) -> UTMDouble {
+    fileprivate func footpointLatitude(northingInMeters northing:UTMDouble) -> UTMDouble {
         let equitorialRadus = utmDatum.equitorialRadius;
         let polarRadius = utmDatum.polarRadius;
         
@@ -211,7 +211,7 @@ extension GeodeticUTMConverter {
         return footprintLatitudeInRadians;
     }
     
-    private func transverseMercatorCoordinates(latLonCoordinates: CLLocationCoordinate2D, centralMeridian lambda0: UTMDouble) -> TransverseMercatorCoordinates {
+    fileprivate func transverseMercatorCoordinates(_ latLonCoordinates: CLLocationCoordinate2D, centralMeridian lambda0: UTMDouble) -> TransverseMercatorCoordinates {
         var N, nu2, ep2, t, t2, l: UTMDouble
         var tmp: UTMDouble
         
@@ -268,7 +268,7 @@ extension GeodeticUTMConverter {
         return TransverseMercatorCoordinates(easting: easting, northing: northing)
     }
     
-    private func latitudeLongitude(transverseMercatorCoordinates TMCoordinates: TransverseMercatorCoordinates, centralMeridian lambda0: UTMDouble) -> CLLocationCoordinate2D {
+    fileprivate func latitudeLongitude(transverseMercatorCoordinates TMCoordinates: TransverseMercatorCoordinates, centralMeridian lambda0: UTMDouble) -> CLLocationCoordinate2D {
         let x = TMCoordinates.easting;
         let y = TMCoordinates.northing;
         let equitorialRadus = utmDatum.equitorialRadius;

@@ -9,13 +9,13 @@
 import Foundation
 
 public enum VolumeUnit: Double, LinearUnit {
-    case Liter = 1.0
-    case Gallon = 0.26417205235814841538
+    case liter = 1.0
+    case gallon = 0.26417205235814841538
     
     public var symbol : String {
         switch self {
-        case.Liter: return "L"
-        case.Gallon: return "gal"
+        case.liter: return "L"
+        case.gallon: return "gal"
         }
     }
 

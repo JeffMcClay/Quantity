@@ -10,22 +10,22 @@ import Foundation
 
 enum TimeUnit: Double, LinearUnit {
 
-    case Second =       604800.0
-    case Minute =       10080.0
-    case Hour =         168.0
-    case Day =          7.0
-    case Week =         1.0
-    case JulianYear =   52.17857142857142857142857142857142857142857142857142857142
-    case SiderealYear = 52.17948
+    case second =       604800.0
+    case minute =       10080.0
+    case hour =         168.0
+    case day =          7.0
+    case week =         1.0
+    case julianYear =   52.17857142857142857142857142857142857142857142857142857142
+    case siderealYear = 52.17948
     
     var symbol: String {
         switch self {
-        case .Second: return "s"
-        case .Minute: return "min"
-        case .Hour: return "hour"
-        case .Day: return "day"
-        case .Week: return "week"
-        case .JulianYear,.SiderealYear: return "yr"
+        case .second: return "s"
+        case .minute: return "min"
+        case .hour: return "hour"
+        case .day: return "day"
+        case .week: return "week"
+        case .julianYear,.siderealYear: return "yr"
         }
     }
 

@@ -10,24 +10,24 @@ import Foundation
 
 
 enum TemperatureUnit: Unit {
-    case Fahrenheit
-    case Celcius
+    case fahrenheit
+    case celcius
     
     var symbol : String {
         switch self {
-        case .Fahrenheit: return "F"
-        case .Celcius: return "C"
+        case .fahrenheit: return "F"
+        case .celcius: return "C"
         }
     }
     
-    func convert(quantity: Quantity<TemperatureUnit>, toPrefixedUnit: PrefixedUnit<TemperatureUnit>) -> Quantity<TemperatureUnit> {
+    func convert(_ quantity: Quantity<TemperatureUnit>, toPrefixedUnit: PrefixedUnit<TemperatureUnit>) -> Quantity<TemperatureUnit> {
         let from = quantity.unit.baseUnit
         if quantity.unit == toPrefixedUnit { return quantity }
         
-        if from == .Fahrenheit && toPrefixedUnit.baseUnit == .Celcius {
+        if from == .fahrenheit && toPrefixedUnit.baseUnit == .celcius {
             let c = (quantity.value - 32.0) * (5.0/9.0)
             return Quantity(value: c, unit: toPrefixedUnit)
-        } else if from == .Celcius && toPrefixedUnit.baseUnit == .Fahrenheit {
+        } else if from == .celcius && toPrefixedUnit.baseUnit == .fahrenheit {
             let f = (quantity.value * 1.8) + 32.0
             return Quantity(value: f, unit: toPrefixedUnit)
         }

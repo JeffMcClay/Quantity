@@ -9,57 +9,57 @@
 import Foundation
 
 // Verbose creation
-let kilometers = PrefixedUnit(prefix: .Kilo, baseUnit: DistanceUnit.Meter)
+let kilometers = PrefixedUnit(prefix: .kilo, baseUnit: DistanceUnit.meter)
 let twoKilometers = Quantity(value: 2.0, unit: kilometers)
 
 let two = kilometers
 
 // Fast creation
-let tenKilometers = Quantity(10.0, prefix:.Kilo, unit:DistanceUnit.Meter)
-let twoFeet = Quantity(2.0, DistanceUnit.Foot)
+let tenKilometers = Quantity(10.0, prefix:.kilo, unit:DistanceUnit.meter)
+let twoFeet = Quantity(2.0, DistanceUnit.foot)
 
 // Addition
 let threeFeet = twoFeet + 1.0
 let fiveFeet = twoFeet + threeFeet
 
 // Addition of different units
-let almostMarathon = Quantity(26, DistanceUnit.Mile)
-let thoseLastFewYards = Quantity(325, DistanceUnit.Yard)
+let almostMarathon = Quantity(26, DistanceUnit.mile)
+let thoseLastFewYards = Quantity(325, DistanceUnit.yard)
 let fullMarathon = almostMarathon + thoseLastFewYards
 
 // Unit conversion
-let oneYard = threeFeet.convert(to: DistanceUnit.Yard)
-let anotherYard = threeFeet --> .Yard
-let centimeters = anotherYard --> PrefixedUnit(prefix: .Centi, baseUnit: .Meter)
+let oneYard = threeFeet.convert(to: DistanceUnit.yard)
+let anotherYard = threeFeet --> .yard
+let centimeters = anotherYard --> PrefixedUnit(prefix: .centi, baseUnit: .meter)
 
 // Unit comparison
 let equalYards = ( threeFeet == oneYard )
 let isATenKLongerThanAMarathon = ( tenKilometers > fullMarathon )
 
 // Subtraction
-let difference = (fullMarathon - tenKilometers) --> .Foot
+let difference = (fullMarathon - tenKilometers) --> .foot
 
 // Negation
 let runningTheWrongWay = -tenKilometers
 
 // Custom Units
 enum funkyUnit : Double, LinearUnit {
-    case Picture = 1
-    case Word = 1000
+    case picture = 1
+    case word = 1000
     
     var unitValue: Double { return self.rawValue }
     
     var symbol : String {
         switch self {
-        case.Picture: return "pics"
-        case.Word: return "wrds"
+        case.picture: return "pics"
+        case.word: return "wrds"
         }
     }
     var name: String { return "FunkyUnit" }
 }
 
-let aPicture = Quantity(1.0, funkyUnit.Picture)
-let words = aPicture --> .Word
+let aPicture = Quantity(1.0, funkyUnit.picture)
+let words = aPicture --> .word
 
 print("twoKilometers = \(twoKilometers)")
 print("twoFeet = \(twoFeet) and threeFeet = \(threeFeet) and fiveFeet = \(fiveFeet)")
@@ -75,28 +75,28 @@ print("How much is my picture worth? \(aPicture) = \(words)")
 //let weird = aPicture --> DistanceUnit.Mile
 
 print("")
-let f59 = Quantity(59, TemperatureUnit.Fahrenheit)
-let c15 = f59 --> .Celcius
+let f59 = Quantity(59, TemperatureUnit.fahrenheit)
+let c15 = f59 --> .celcius
 print("I can convert nonlinear units too!  Like temperature: \(f59) = \(c15)")
 
-let oneATM = Quantity(1.0, PressureUnit.Atmosphere)
-let mbars = PrefixedUnit(prefix: .Milli, baseUnit: PressureUnit.Bar)
-let hpa = PrefixedUnit(prefix: .Hecto, baseUnit: PressureUnit.Pascal)
-print("1 Atmosphere = \(oneATM --> .InchesOfHg), or \(oneATM --> .PSI), or \(oneATM --> mbars), or \(oneATM --> hpa)")
+let oneATM = Quantity(1.0, PressureUnit.atmosphere)
+let mbars = PrefixedUnit(prefix: .milli, baseUnit: PressureUnit.bar)
+let hpa = PrefixedUnit(prefix: .hecto, baseUnit: PressureUnit.pascal)
+print("1 Atmosphere = \(oneATM --> .inchesOfHg), or \(oneATM --> .psi), or \(oneATM --> mbars), or \(oneATM --> hpa)")
 
 
 /** Atmospherics */
 print("")
 print("ATMOSPHERIC CALCULATIONS:")
 
-let ambientTemperature = Quantity(75.2, TemperatureUnit.Fahrenheit)
-let ambientPressure = Quantity(24.92, PressureUnit.InchesOfHg)
+let ambientTemperature = Quantity(75.2, TemperatureUnit.fahrenheit)
+let ambientPressure = Quantity(24.92, PressureUnit.inchesOfHg)
 let humidity = 62.0
 print("For an ambient temperature of \(ambientTemperature), a humidity of \(humidity)%, and station pressure of \(ambientPressure):")
 
 // Dewpoint
 let dewpoint_c = dewpoint(temperature: ambientTemperature, humidity: humidity)
-print("  Dewpoint:          \(dewpoint_c --> .Fahrenheit)")
+print("  Dewpoint:          \(dewpoint_c --> .fahrenheit)")
 
 // Pressure Altitude
 let pressureAlt = pressureAltitude(ambientPressure)
@@ -106,42 +106,42 @@ print("  Pressure Altitude: \(pressureAlt)")
 let densityAlt = densityAltitude(ambientPressure: ambientPressure, temperature: ambientTemperature, dewpoint: dewpoint_c)
 print("  Density Altitude:  \(densityAlt)")
 
-let baro = Quantity(30.12, PressureUnit.InchesOfHg)
+let baro = Quantity(30.12, PressureUnit.inchesOfHg)
 let elev = fieldElevation(ambientPressure: ambientPressure, barometricPressure: baro)
-print("Field Elevation for barometric pressure of \(baro): \(elev --> .Foot)")
+print("Field Elevation for barometric pressure of \(baro): \(elev --> .foot)")
 
 let baro_c = barometricPressure(ambientPressure: ambientPressure, fieldElevation: elev)
 let ambp_c = ambientPressure(barometricPressure: baro, fieldElevation: elev)
-print("  (\(baro_c --> .InchesOfHg))")
-print("  (\(ambp_c --> .InchesOfHg))")
+print("  (\(baro_c --> .inchesOfHg))")
+print("  (\(ambp_c --> .inchesOfHg))")
 
 
 print("-----")
 
 
 print("")
-let squareFeet = Quantity(8.0, AreaUnit(unit: DistanceUnit.Yard))
-let squareYards = squareFeet --> AreaUnit(unit: DistanceUnit.Foot)
+let squareFeet = Quantity(8.0, AreaUnit(unit: DistanceUnit.yard))
+let squareYards = squareFeet --> AreaUnit(unit: DistanceUnit.foot)
 print("\(squareFeet) = \(squareYards)")
 
-let ftmin = Quantity(10560, VelocityUnit(.Foot, per: .Minute))
-print("\(ftmin) = \(ftmin --> VelocityUnit(.Mile, per: .Hour))")
+let ftmin = Quantity(10560, VelocityUnit(.foot, per: .minute))
+print("\(ftmin) = \(ftmin --> VelocityUnit(.mile, per: .hour))")
 
 
-let km = PrefixedUnit(prefix: .Kilo, baseUnit: DistanceUnit.Meter)
-let cm = PrefixedUnit(prefix: .Centi, baseUnit: DistanceUnit.Meter)
+let km = PrefixedUnit(prefix: .kilo, baseUnit: DistanceUnit.meter)
+let cm = PrefixedUnit(prefix: .centi, baseUnit: DistanceUnit.meter)
 
-let ft = PrefixedUnit(baseUnit: DistanceUnit.Foot)
-let hr = PrefixedUnit(baseUnit: TimeUnit.Hour)
+let ft = PrefixedUnit(baseUnit: DistanceUnit.foot)
+let hr = PrefixedUnit(baseUnit: TimeUnit.hour)
 let kph = Quantity(60, VelocityUnit(km, per: hr))
 print(kph)
 
-let mph1 =  kph --> RateUnit.Rate(ft, PrefixedUnit(baseUnit: TimeUnit.Minute))
+let mph1 =  kph --> RateUnit.rate(ft, PrefixedUnit(baseUnit: TimeUnit.minute))
 print(mph1)
 
-let kph2 = Quantity(60, VelocityUnit(.Meter, per: .Second))
-let mph2 = kph2 --> VelocityUnit(.Foot, per: .Minute)
-let kmph = kph2 --> PrefixedUnit(prefix: .Kilo, baseUnit: RateUnit(DistanceUnit.Foot, per: TimeUnit.Minute))
+let kph2 = Quantity(60, VelocityUnit(.meter, per: .second))
+let mph2 = kph2 --> VelocityUnit(.foot, per: .minute)
+let kmph = kph2 --> PrefixedUnit(prefix: .kilo, baseUnit: RateUnit(DistanceUnit.foot, per: TimeUnit.minute))
 print(kph2)
 print(mph2)
 print(kmph)
@@ -150,27 +150,27 @@ print(kmph)
 
 
 // All the ways to make a PrefixedUnit
-let pu1 = PrefixedUnit(prefix: .Kilo, baseUnit: DistanceUnit.Meter)
-let pu2 = PrefixedUnit(baseUnit: DistanceUnit.Foot)
-let pu3 = PrefixedUnit(.Kilo, DistanceUnit.Meter)
-let pu4 = PrefixedUnit(DistanceUnit.Foot)
+let pu1 = PrefixedUnit(prefix: .kilo, baseUnit: DistanceUnit.meter)
+let pu2 = PrefixedUnit(baseUnit: DistanceUnit.foot)
+let pu3 = PrefixedUnit(.kilo, DistanceUnit.meter)
+let pu4 = PrefixedUnit(DistanceUnit.foot)
 
 // All the ways to make a Quantity
 let q1 = Quantity(value: 6.3, unit:pu1)
-let q2 = Quantity(6.3, prefix: .Kilo, unit: DistanceUnit.Meter)
-let q3 = Quantity(3.0, unit: DistanceUnit.Foot)
-let q4 = Quantity(1.0, DistanceUnit.Yard)
+let q2 = Quantity(6.3, prefix: .kilo, unit: DistanceUnit.meter)
+let q3 = Quantity(3.0, unit: DistanceUnit.foot)
+let q4 = Quantity(1.0, DistanceUnit.yard)
 
 // All the ways to make a regular LinearUnit
-let lu1 = DistanceUnit.Foot
+let lu1 = DistanceUnit.foot
 
 // All the ways to make a RateUnit
-let ru1 = RateUnit.Rate(pu1, pu3)
+let ru1 = RateUnit.rate(pu1, pu3)
 let ru2 = RateUnit(unit: pu1, perUnit: pu3)
-let ru3 = RateUnit(DistanceUnit.Foot, per: TimeUnit.Second)
+let ru3 = RateUnit(DistanceUnit.foot, per: TimeUnit.second)
 
 // Shorcut for velocity
-let vu1 = VelocityUnit(.Mile, per: .Hour)
+let vu1 = VelocityUnit(.mile, per: .hour)
 
 
 import CoreLocation
