@@ -8,7 +8,7 @@
 
 import Foundation
 
-typealias VelocityUnit = RateUnit<DistanceUnit, TimeUnit>
+public typealias VelocityUnit = RateUnit<DistanceUnit, TimeUnit>
 
 //enum VelocityUnit: Unit {
 //

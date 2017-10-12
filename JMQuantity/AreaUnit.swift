@@ -8,17 +8,17 @@
 
 import Foundation
 
-enum AreaUnit<LU: LinearUnit>: Unit {
+public enum AreaUnit<LU: LinearUnit>: Unit {
     
     case squareUnit(LU)
     
-    var symbol: String {
+    public var symbol: String {
         switch self {
         case .squareUnit(let unit):
             return unit.symbol + "²"
         }
     }
-    var name: String {
+    public var name: String {
         switch self {
         case .squareUnit(let unit):
             return "square" + unit.name
@@ -29,7 +29,7 @@ enum AreaUnit<LU: LinearUnit>: Unit {
         self = AreaUnit.squareUnit(unit)
     }
     
-    func convert(_ quantity: Quantity<AreaUnit>, toPrefixedUnit: PrefixedUnit<AreaUnit>) -> Quantity<AreaUnit> {
+    public func convert(_ quantity: Quantity<AreaUnit>, toPrefixedUnit: PrefixedUnit<AreaUnit>) -> Quantity<AreaUnit> {
         if quantity.unit == toPrefixedUnit { return quantity }
 
         switch quantity.unit.baseUnit {

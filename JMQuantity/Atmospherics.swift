@@ -22,7 +22,7 @@ public func pressureAltitude(_ ambientPressure: Pressure) -> Distance {
  - parameter dewpoint: The ambient dewpoint
  - returns: Density altitude, in feet
 */
-func densityAltitude(ambientPressure: Pressure, temperature: Temperature, dewpoint: Temperature) -> Distance {
+public func densityAltitude(ambientPressure: Pressure, temperature: Temperature, dewpoint: Temperature) -> Distance {
     let pressure_mb = ambientPressure --> PrefixedUnit(prefix: .milli, baseUnit: PressureUnit.bar)
     let temp_c = temperature --> TemperatureUnit.celcius
     let dewp_c = dewpoint --> TemperatureUnit.celcius
@@ -41,7 +41,7 @@ func densityAltitude(ambientPressure: Pressure, temperature: Temperature, dewpoi
  Calculates dewpoint, in celcius
  - parameter humidity: Humidity expressed as a percentage (ex: 50.0)
 */
-func dewpoint(temperature: Temperature, humidity: Double) -> Temperature {
+public func dewpoint(temperature: Temperature, humidity: Double) -> Temperature {
     let temp_c = temperature --> TemperatureUnit.celcius
 
     let T = temp_c.value
@@ -58,7 +58,7 @@ func dewpoint(temperature: Temperature, humidity: Double) -> Temperature {
  Calculates humidity as a percentage
  - parameter temperature: Ambient temperature
  */
-func humidity(temperature: Temperature, dewpoint: Temperature) -> Double {
+public func humidity(temperature: Temperature, dewpoint: Temperature) -> Double {
     let temp_c = temperature --> TemperatureUnit.celcius
     let dewp_c = dewpoint --> TemperatureUnit.celcius
     

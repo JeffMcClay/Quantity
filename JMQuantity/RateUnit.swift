@@ -8,17 +8,17 @@
 
 import Foundation
 
-enum RateUnit<MainUnit: LinearUnit, ChangeUnit: LinearUnit>: Unit {
+public enum RateUnit<MainUnit: LinearUnit, ChangeUnit: LinearUnit>: Unit {
     
     case rate(PrefixedUnit<MainUnit>, PrefixedUnit<ChangeUnit>)
     
-    var symbol: String {
+    public var symbol: String {
         switch self {
         case .rate(let dist, let time):
             return dist.symbol + "/" + time.symbol
         }
     }
-    var name: String {
+    public var name: String {
         switch self {
         case .rate(let dist, let time):
             return dist.symbol + " per " + time.symbol
@@ -35,7 +35,7 @@ enum RateUnit<MainUnit: LinearUnit, ChangeUnit: LinearUnit>: Unit {
         self = RateUnit.rate(PrefixedUnit(baseUnit: unit), PrefixedUnit(baseUnit: changeUnit))
     }
 
-    func convert(_ quantity: Quantity<RateUnit>, toPrefixedUnit: PrefixedUnit<RateUnit>) -> Quantity<RateUnit> {
+    public func convert(_ quantity: Quantity<RateUnit>, toPrefixedUnit: PrefixedUnit<RateUnit>) -> Quantity<RateUnit> {
         if quantity.unit == toPrefixedUnit { return quantity }
 
         switch quantity.unit.baseUnit {

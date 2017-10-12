@@ -22,6 +22,7 @@ public struct Quantity<U: Unit>: CustomStringConvertible {
     
     /// Stores Quantity's value converted to no prefix.
     ///  Example: For a 2 Kilometer quantity, _value = 2000
+    ///  Exmpale: For a 100 centimeter quantity, _value = 1
     internal let _value: Double
     
     public var description: String { get {
