@@ -48,4 +48,26 @@ public enum SIPrefix : Double, CustomStringConvertible {
         case .yotta: return "Y"
         }
     }
+    
+    public var longName : String {
+        switch self {
+        case .pico: return "pico"
+        case .nano: return "nano"
+        case .micro: return "micro"
+        case .milli: return "milli"
+        case .centi: return "centi"
+        case .deci: return "deci"
+        case .none: return ""
+        case .deca: return "deca"
+        case .hecto: return "hecto"
+        case .kilo: return "kilo"
+        case .mega: return "mega"
+        case .giga: return "giga"
+        case .tera: return "tera"
+        case .peta: return "peta"
+        case .exa: return "exa"
+        case .zetta: return "zetta"
+        case .yotta: return "yotta"
+        }
+    }
 }

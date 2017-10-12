@@ -12,8 +12,6 @@ import Foundation
 let kilometers = PrefixedUnit(prefix: .kilo, baseUnit: DistanceUnit.meter)
 let twoKilometers = Quantity(value: 2.0, unit: kilometers)
 
-let two = kilometers
-
 // Fast creation
 let tenKilometers = Quantity(10.0, prefix:.kilo, unit:DistanceUnit.meter)
 let twoFeet = Quantity(2.0, DistanceUnit.foot)
@@ -66,7 +64,7 @@ print("twoFeet = \(twoFeet) and threeFeet = \(threeFeet) and fiveFeet = \(fiveFe
 print("oneYard = \(oneYard) and anotherYard = \(anotherYard) which equals \(centimeters)")
 print("Does oneYard == threeFeet?  \(equalYards)")
 print("Is a 10K longer than a marathon? \(isATenKLongerThanAMarathon)")
-print("Ok, how much longer is a marathon? \(difference)")
+print("Ok, how much longer is a marathon? \(difference.roundedDescription())")
 print("How far will I go the other direction? \(runningTheWrongWay)")
 print("How much is my picture worth? \(aPicture) = \(words)")
 

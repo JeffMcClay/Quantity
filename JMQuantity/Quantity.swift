@@ -26,17 +26,24 @@ public struct Quantity<U: Unit>: CustomStringConvertible {
     
     /// Stores Quantity's value converted to no prefix.
     ///  Example: For a 2 Kilometer quantity, _value = 2000
-    let _value: Double
+    internal let _value: Double
     
     public var description: String { get {
         return value.description + " " + unit.symbol
         }
     }
     
-    public func roundedDescription(_ decimalPlaces: Int) -> String {
+    public func roundedDescription(decimalPlaces: Int = 2, minDigits: Int = 0, separators: Bool = true) -> String {
         let f = NumberFormatter()
         f.maximumFractionDigits = decimalPlaces
+        f.minimumFractionDigits = minDigits
+        if separators {f.numberStyle = .decimal}
+        f.localizesFormat = true
         return f.string(from: NSNumber(value: value))! + " " + unit.symbol
+    }
+    
+    public func roundedDescription(exactDigits d: Int) -> String {
+        return roundedDescription(decimalPlaces: d, minDigits: d)
     }
     
     //MARK: - Initialization
@@ -75,10 +82,10 @@ public struct Quantity<U: Unit>: CustomStringConvertible {
 
 //MARK: - Operators
 infix operator --> //{associativity left}
-func --><U: Unit>(lhs: Quantity<U>, rhs: PrefixedUnit<U>) -> Quantity<U> { return lhs.convert(to: rhs) }
-func --><U: Unit>(lhs: Quantity<U>, rhs: U) -> Quantity<U> { return lhs.convert(to: PrefixedUnit(baseUnit: rhs)) }
+func --> <U>(lhs: Quantity<U>, rhs: PrefixedUnit<U>) -> Quantity<U> { return lhs.convert(to: rhs) }
+func --> <U>(lhs: Quantity<U>, rhs: U) -> Quantity<U> { return lhs.convert(to: PrefixedUnit(baseUnit: rhs)) }
 
-func ==<U: Unit>(lhs: Quantity<U>, rhs: Quantity<U>) -> Bool {
+func == <U>(lhs: Quantity<U>, rhs: Quantity<U>) -> Bool {
     if (lhs.unit == rhs.unit) {
         return lhs._value == rhs._value
     } else {
@@ -87,7 +94,7 @@ func ==<U: Unit>(lhs: Quantity<U>, rhs: Quantity<U>) -> Bool {
     }
 }
 
-func <<U: Unit>(lhs: Quantity<U>, rhs: Quantity<U>) -> Bool {
+func < <U>(lhs: Quantity<U>, rhs: Quantity<U>) -> Bool {
     if (lhs.unit == rhs.unit) {
         return lhs._value < rhs._value
     } else {
@@ -96,7 +103,7 @@ func <<U: Unit>(lhs: Quantity<U>, rhs: Quantity<U>) -> Bool {
     }
 }
 
-func ><U: Unit>(lhs: Quantity<U>, rhs: Quantity<U>) -> Bool {
+func > <U>(lhs: Quantity<U>, rhs: Quantity<U>) -> Bool {
     if (lhs.unit == rhs.unit) {
         return lhs._value > rhs._value
     } else {
@@ -105,9 +112,9 @@ func ><U: Unit>(lhs: Quantity<U>, rhs: Quantity<U>) -> Bool {
     }
 }
 
-prefix func -<U: Unit>(q: Quantity<U>) -> Quantity<U> { return Quantity(value: -q.value, unit: q.unit) }
+prefix func -<U>(q: Quantity<U>) -> Quantity<U> { return Quantity(value: -q.value, unit: q.unit) }
 
-func -<U: Unit>(lhs: Quantity<U>, rhs: Quantity<U>) -> Quantity<U> {
+func -<U>(lhs: Quantity<U>, rhs: Quantity<U>) -> Quantity<U> {
     if (lhs.unit == rhs.unit) {
         return Quantity(value:lhs.value - rhs.value, unit: lhs.unit)
     } else {
@@ -116,7 +123,7 @@ func -<U: Unit>(lhs: Quantity<U>, rhs: Quantity<U>) -> Quantity<U> {
     }
 }
 
-func +<U: Unit>(lhs: Quantity<U>, rhs: Quantity<U>) -> Quantity<U> {
+func +<U>(lhs: Quantity<U>, rhs: Quantity<U>) -> Quantity<U> {
     if (lhs.unit == rhs.unit) {
         return Quantity(value:lhs.value + rhs.value, unit: lhs.unit)
     } else {
@@ -125,4 +132,4 @@ func +<U: Unit>(lhs: Quantity<U>, rhs: Quantity<U>) -> Quantity<U> {
     }
 }
 
-func +<U: Unit>(lhs: Quantity<U>, rhs: Double) -> Quantity<U> { return Quantity(value:lhs.value + rhs, unit: lhs.unit) }
+func +<U>(lhs: Quantity<U>, rhs: Double) -> Quantity<U> { return Quantity(value:lhs.value + rhs, unit: lhs.unit) }

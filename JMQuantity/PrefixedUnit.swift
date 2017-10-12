@@ -38,10 +38,12 @@ public struct PrefixedUnit<U: Unit> {
 
 extension PrefixedUnit: CustomStringConvertible {
     public var description:String {
-        return "YAY"
+        return "\(prefix.longName)\(baseUnit.name)"
     }
 }
 
-func ==<U: Unit>(lhs: PrefixedUnit<U>, rhs: PrefixedUnit<U>) -> Bool {
-    return (lhs.baseUnit == rhs.baseUnit) && (lhs.prefix == rhs.prefix)
+extension PrefixedUnit: Equatable {
+    static public func == <U>(lhs: PrefixedUnit<U>, rhs: PrefixedUnit<U>) -> Bool {
+        return (lhs.baseUnit == rhs.baseUnit) && (lhs.prefix == rhs.prefix)
+    }
 }

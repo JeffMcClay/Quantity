@@ -9,6 +9,19 @@
 /* Begin PBXBuildFile section */
 		1F0043B81D03586E00B636F9 /* MassUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0043B71D03586E00B636F9 /* MassUnit.swift */; };
 		1F0043BA1D035AA400B636F9 /* AngleUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0043B91D035AA400B636F9 /* AngleUnit.swift */; };
+		1F15D46B1F8EE28D00F28794 /* PrefixedUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAADF011D010E5400BA583C /* PrefixedUnit.swift */; };
+		1F15D46C1F8EE28D00F28794 /* Quantity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAADEFF1D0109C800BA583C /* Quantity.swift */; };
+		1F15D46D1F8EE28D00F28794 /* Atmospherics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAADF0B1D0150D500BA583C /* Atmospherics.swift */; };
+		1F15D46E1F8EE28D00F28794 /* GeodeticUTMConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD372E31D048CBF003F19EF /* GeodeticUTMConverter.swift */; };
+		1F15D46F1F8EE28D00F28794 /* UTMHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD372E61D048CF2003F19EF /* UTMHelpers.swift */; };
+		1F15D4701F8EE28D00F28794 /* Unit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAADEF81D0105EA00BA583C /* Unit.swift */; };
+		1F15D4711F8EE28D00F28794 /* SIPrefix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAADEF31D0103EE00BA583C /* SIPrefix.swift */; };
+		1F15D4721F8EE28D00F28794 /* TimeUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAADEFD1D0107D800BA583C /* TimeUnit.swift */; };
+		1F15D4731F8EE28D00F28794 /* DistanceUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAADF031D01132F00BA583C /* DistanceUnit.swift */; };
+		1F15D4741F8EE28D00F28794 /* PressureUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAADF091D014DBC00BA583C /* PressureUnit.swift */; };
+		1F15D4751F8EE28D00F28794 /* MassUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0043B71D03586E00B636F9 /* MassUnit.swift */; };
+		1F15D4761F8EE28D00F28794 /* AngleUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0043B91D035AA400B636F9 /* AngleUnit.swift */; };
+		1F15D4771F8EE28D00F28794 /* TemperatureUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAADF071D011AB900BA583C /* TemperatureUnit.swift */; };
 		1F4368FB1D01F005005F789D /* AreaUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4368FA1D01F005005F789D /* AreaUnit.swift */; };
 		1F4368FD1D0205C4005F789D /* RateUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4368FC1D0205C4005F789D /* RateUnit.swift */; };
 		1F68E0DA1CC4AFAD005F51C6 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F68E0D91CC4AFAD005F51C6 /* main.swift */; };
@@ -211,12 +224,12 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0830;
+				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = "Jeff McClay";
 				TargetAttributes = {
 					1F68E0D51CC4AFAD005F51C6 = {
 						CreatedOnToolsVersion = 7.1;
-						LastSwiftMigration = 0830;
+						LastSwiftMigration = 0900;
 					};
 					1FADEB6B1D0E4FF2005AE4C6 = {
 						CreatedOnToolsVersion = 7.3;
@@ -281,7 +294,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F15D46C1F8EE28D00F28794 /* Quantity.swift in Sources */,
+				1F15D46B1F8EE28D00F28794 /* PrefixedUnit.swift in Sources */,
+				1F15D46F1F8EE28D00F28794 /* UTMHelpers.swift in Sources */,
+				1F15D4741F8EE28D00F28794 /* PressureUnit.swift in Sources */,
+				1F15D4761F8EE28D00F28794 /* AngleUnit.swift in Sources */,
+				1F15D4711F8EE28D00F28794 /* SIPrefix.swift in Sources */,
+				1F15D4771F8EE28D00F28794 /* TemperatureUnit.swift in Sources */,
+				1F15D4731F8EE28D00F28794 /* DistanceUnit.swift in Sources */,
+				1F15D4701F8EE28D00F28794 /* Unit.swift in Sources */,
+				1F15D46E1F8EE28D00F28794 /* GeodeticUTMConverter.swift in Sources */,
+				1F15D4721F8EE28D00F28794 /* TimeUnit.swift in Sources */,
+				1F15D4751F8EE28D00F28794 /* MassUnit.swift in Sources */,
 				1FADEB6F1D0E4FF2005AE4C6 /* QuantityTests.swift in Sources */,
+				1F15D46D1F8EE28D00F28794 /* Atmospherics.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,14 +322,20 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -331,6 +363,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -342,14 +375,20 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -370,6 +409,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -377,7 +417,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -385,7 +426,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -399,6 +441,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jeffmcclay.QuantityTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -412,6 +455,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jeffmcclay.QuantityTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};

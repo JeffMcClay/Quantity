@@ -213,7 +213,7 @@ extension GeodeticUTMConverter {
     
     fileprivate func transverseMercatorCoordinates(_ latLonCoordinates: CLLocationCoordinate2D, centralMeridian lambda0: UTMDouble) -> TransverseMercatorCoordinates {
         var N, nu2, ep2, t, t2, l: UTMDouble
-        var tmp: UTMDouble
+//        var tmp: UTMDouble
         
         let phi = latLonCoordinates.latitude     //radians??
         let lambda = latLonCoordinates.longitude //radians??
@@ -233,7 +233,7 @@ extension GeodeticUTMConverter {
         /* Precalculate t */
         t = tan(phi);
         t2 = t * t;
-        tmp = (t2 * t2 * t2) - pow(t, 6.0);
+//        tmp = (t2 * t2 * t2) - pow(t, 6.0);
         
         /* Precalculate l */
         l = lambda - lambda0;
