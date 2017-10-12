@@ -8,19 +8,18 @@
 
 import Foundation
 
-
-enum TemperatureUnit: Unit {
+public enum TemperatureUnit: Unit {
     case fahrenheit
     case celcius
     
-    var symbol : String {
+    public var symbol : String {
         switch self {
         case .fahrenheit: return "F"
         case .celcius: return "C"
         }
     }
     
-    func convert(_ quantity: Quantity<TemperatureUnit>, toPrefixedUnit: PrefixedUnit<TemperatureUnit>) -> Quantity<TemperatureUnit> {
+    public func convert(_ quantity: Quantity<TemperatureUnit>, toPrefixedUnit: PrefixedUnit<TemperatureUnit>) -> Quantity<TemperatureUnit> {
         let from = quantity.unit.baseUnit
         if quantity.unit == toPrefixedUnit { return quantity }
         

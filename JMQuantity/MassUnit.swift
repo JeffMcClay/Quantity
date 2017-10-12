@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum MassUnit: Double, LinearUnit {
+public enum MassUnit: Double, LinearUnit {
     case gram = 1
     case metricTon = 1E-6
     case imperialShortTon = 1.1023113109243879036148690067251351692710351366800989E-6
@@ -19,7 +19,7 @@ enum MassUnit: Double, LinearUnit {
     case ounce = 0.035273961949580412915675808215204325416673124373763165372
     case troyOunce = 0.032150746568627980522100346029483109103738524819836218438
     
-    var symbol: String {
+    public var symbol: String {
         switch self {
         case .gram: return "gm"
         case .metricTon: return "t"

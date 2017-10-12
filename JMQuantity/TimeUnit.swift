@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum TimeUnit: Double, LinearUnit {
+public enum TimeUnit: Double, LinearUnit {
 
     case second =       604800.0
     case minute =       10080.0
@@ -18,7 +18,7 @@ enum TimeUnit: Double, LinearUnit {
     case julianYear =   52.17857142857142857142857142857142857142857142857142857142
     case siderealYear = 52.17948
     
-    var symbol: String {
+    public var symbol: String {
         switch self {
         case .second: return "s"
         case .minute: return "min"

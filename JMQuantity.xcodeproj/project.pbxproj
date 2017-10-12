@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1F0043B81D03586E00B636F9 /* MassUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0043B71D03586E00B636F9 /* MassUnit.swift */; };
-		1F0043BA1D035AA400B636F9 /* AngleUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0043B91D035AA400B636F9 /* AngleUnit.swift */; };
 		1F15D46B1F8EE28D00F28794 /* PrefixedUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAADF011D010E5400BA583C /* PrefixedUnit.swift */; };
 		1F15D46C1F8EE28D00F28794 /* Quantity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAADEFF1D0109C800BA583C /* Quantity.swift */; };
 		1F15D46D1F8EE28D00F28794 /* Atmospherics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAADF0B1D0150D500BA583C /* Atmospherics.swift */; };
@@ -22,27 +20,49 @@
 		1F15D4751F8EE28D00F28794 /* MassUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0043B71D03586E00B636F9 /* MassUnit.swift */; };
 		1F15D4761F8EE28D00F28794 /* AngleUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0043B91D035AA400B636F9 /* AngleUnit.swift */; };
 		1F15D4771F8EE28D00F28794 /* TemperatureUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAADF071D011AB900BA583C /* TemperatureUnit.swift */; };
-		1F4368FB1D01F005005F789D /* AreaUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4368FA1D01F005005F789D /* AreaUnit.swift */; };
-		1F4368FD1D0205C4005F789D /* RateUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4368FC1D0205C4005F789D /* RateUnit.swift */; };
-		1F68E0DA1CC4AFAD005F51C6 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F68E0D91CC4AFAD005F51C6 /* main.swift */; };
-		1FAADEF41D0103EE00BA583C /* SIPrefix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAADEF31D0103EE00BA583C /* SIPrefix.swift */; };
-		1FAADEF91D0105EA00BA583C /* Unit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAADEF81D0105EA00BA583C /* Unit.swift */; };
-		1FAADEFB1D01074800BA583C /* VelocityUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAADEFA1D01074800BA583C /* VelocityUnit.swift */; };
-		1FAADEFE1D0107D800BA583C /* TimeUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAADEFD1D0107D800BA583C /* TimeUnit.swift */; };
-		1FAADF001D0109C800BA583C /* Quantity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAADEFF1D0109C800BA583C /* Quantity.swift */; };
-		1FAADF021D010E5400BA583C /* PrefixedUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAADF011D010E5400BA583C /* PrefixedUnit.swift */; };
-		1FAADF041D01132F00BA583C /* DistanceUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAADF031D01132F00BA583C /* DistanceUnit.swift */; };
-		1FAADF061D01158D00BA583C /* VolumeUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAADF051D01158D00BA583C /* VolumeUnit.swift */; };
-		1FAADF081D011AB900BA583C /* TemperatureUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAADF071D011AB900BA583C /* TemperatureUnit.swift */; };
-		1FAADF0A1D014DBC00BA583C /* PressureUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAADF091D014DBC00BA583C /* PressureUnit.swift */; };
-		1FAADF0C1D0150D500BA583C /* Atmospherics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAADF0B1D0150D500BA583C /* Atmospherics.swift */; };
+		1FA093371F8F0E8C001BCBB2 /* libJMQuantity.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FA093351F8F0E8C001BCBB2 /* libJMQuantity.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1FA0933B1F8F0E99001BCBB2 /* PrefixedUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAADF011D010E5400BA583C /* PrefixedUnit.swift */; };
+		1FA0933C1F8F0E99001BCBB2 /* Quantity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAADEFF1D0109C800BA583C /* Quantity.swift */; };
+		1FA0933D1F8F0E99001BCBB2 /* Atmospherics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAADF0B1D0150D500BA583C /* Atmospherics.swift */; };
+		1FA0933E1F8F0E99001BCBB2 /* GeodeticUTMConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD372E31D048CBF003F19EF /* GeodeticUTMConverter.swift */; };
+		1FA0933F1F8F0E99001BCBB2 /* UTMHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD372E61D048CF2003F19EF /* UTMHelpers.swift */; };
+		1FA093401F8F0E99001BCBB2 /* Unit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAADEF81D0105EA00BA583C /* Unit.swift */; };
+		1FA093411F8F0E99001BCBB2 /* SIPrefix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAADEF31D0103EE00BA583C /* SIPrefix.swift */; };
+		1FA093421F8F0E99001BCBB2 /* TimeUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAADEFD1D0107D800BA583C /* TimeUnit.swift */; };
+		1FA093431F8F0E99001BCBB2 /* DistanceUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAADF031D01132F00BA583C /* DistanceUnit.swift */; };
+		1FA093441F8F0E99001BCBB2 /* PressureUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAADF091D014DBC00BA583C /* PressureUnit.swift */; };
+		1FA093451F8F0E99001BCBB2 /* MassUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0043B71D03586E00B636F9 /* MassUnit.swift */; };
+		1FA093461F8F0E99001BCBB2 /* AngleUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0043B91D035AA400B636F9 /* AngleUnit.swift */; };
+		1FA093471F8F0E99001BCBB2 /* TemperatureUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAADF071D011AB900BA583C /* TemperatureUnit.swift */; };
+		1FA0941A1F8F1957001BCBB2 /* Quantity+Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA094181F8F1955001BCBB2 /* Quantity+Operators.swift */; };
+		1FA0941B1F8F1957001BCBB2 /* Quantity+Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA094181F8F1955001BCBB2 /* Quantity+Operators.swift */; };
+		1FA0941E1F8F1AE3001BCBB2 /* Quantity+Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA0941C1F8F1AE3001BCBB2 /* Quantity+Types.swift */; };
+		1FA0941F1F8F1C18001BCBB2 /* Quantity+Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA0941C1F8F1AE3001BCBB2 /* Quantity+Types.swift */; };
+		1FA094221F8F1CB6001BCBB2 /* VolumeUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAADF051D01158D00BA583C /* VolumeUnit.swift */; };
+		1FA094231F8F1CB6001BCBB2 /* PrefixedUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAADF011D010E5400BA583C /* PrefixedUnit.swift */; };
+		1FA094241F8F1CB6001BCBB2 /* Quantity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAADEFF1D0109C800BA583C /* Quantity.swift */; };
+		1FA094251F8F1CB6001BCBB2 /* Atmospherics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAADF0B1D0150D500BA583C /* Atmospherics.swift */; };
+		1FA094261F8F1CB6001BCBB2 /* UTMHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD372E61D048CF2003F19EF /* UTMHelpers.swift */; };
+		1FA094271F8F1CB6001BCBB2 /* Quantity+Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA094181F8F1955001BCBB2 /* Quantity+Operators.swift */; };
+		1FA094281F8F1CB6001BCBB2 /* Unit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAADEF81D0105EA00BA583C /* Unit.swift */; };
+		1FA094291F8F1CB6001BCBB2 /* DistanceUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAADF031D01132F00BA583C /* DistanceUnit.swift */; };
+		1FA0942A1F8F1CB6001BCBB2 /* SIPrefix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAADEF31D0103EE00BA583C /* SIPrefix.swift */; };
+		1FA0942B1F8F1CB6001BCBB2 /* AreaUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4368FA1D01F005005F789D /* AreaUnit.swift */; };
+		1FA0942C1F8F1CB6001BCBB2 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F68E0D91CC4AFAD005F51C6 /* main.swift */; };
+		1FA0942D1F8F1CB6001BCBB2 /* AngleUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0043B91D035AA400B636F9 /* AngleUnit.swift */; };
+		1FA0942E1F8F1CB6001BCBB2 /* TimeUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAADEFD1D0107D800BA583C /* TimeUnit.swift */; };
+		1FA0942F1F8F1CB6001BCBB2 /* RateUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4368FC1D0205C4005F789D /* RateUnit.swift */; };
+		1FA094301F8F1CB6001BCBB2 /* Quantity+Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA0941C1F8F1AE3001BCBB2 /* Quantity+Types.swift */; };
+		1FA094311F8F1CB6001BCBB2 /* GeodeticUTMConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD372E31D048CBF003F19EF /* GeodeticUTMConverter.swift */; };
+		1FA094321F8F1CB6001BCBB2 /* VelocityUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAADEFA1D01074800BA583C /* VelocityUnit.swift */; };
+		1FA094331F8F1CB6001BCBB2 /* MassUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0043B71D03586E00B636F9 /* MassUnit.swift */; };
+		1FA094341F8F1CB6001BCBB2 /* PressureUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAADF091D014DBC00BA583C /* PressureUnit.swift */; };
+		1FA094351F8F1CB6001BCBB2 /* TemperatureUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAADF071D011AB900BA583C /* TemperatureUnit.swift */; };
 		1FADEB6F1D0E4FF2005AE4C6 /* QuantityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FADEB6E1D0E4FF2005AE4C6 /* QuantityTests.swift */; };
-		1FD372E41D048CBF003F19EF /* GeodeticUTMConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD372E31D048CBF003F19EF /* GeodeticUTMConverter.swift */; };
-		1FD372E71D048CF2003F19EF /* UTMHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD372E61D048CF2003F19EF /* UTMHelpers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		1F68E0D41CC4AFAD005F51C6 /* CopyFiles */ = {
+		1FA094371F8F1CB6001BCBB2 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = /usr/share/man/man1/;
@@ -58,8 +78,13 @@
 		1F0043B91D035AA400B636F9 /* AngleUnit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AngleUnit.swift; sourceTree = "<group>"; };
 		1F4368FA1D01F005005F789D /* AreaUnit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AreaUnit.swift; sourceTree = "<group>"; };
 		1F4368FC1D0205C4005F789D /* RateUnit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RateUnit.swift; sourceTree = "<group>"; };
-		1F68E0D61CC4AFAD005F51C6 /* JMQuantity */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = JMQuantity; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F68E0D91CC4AFAD005F51C6 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = main.swift; path = JMQuantity/main.swift; sourceTree = "<group>"; };
+		1FA093331F8F0E8C001BCBB2 /* JMQuantity.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JMQuantity.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1FA093351F8F0E8C001BCBB2 /* libJMQuantity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = libJMQuantity.h; sourceTree = "<group>"; };
+		1FA093361F8F0E8C001BCBB2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1FA094181F8F1955001BCBB2 /* Quantity+Operators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Quantity+Operators.swift"; sourceTree = "<group>"; };
+		1FA0941C1F8F1AE3001BCBB2 /* Quantity+Types.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Quantity+Types.swift"; sourceTree = "<group>"; };
+		1FA0943B1F8F1CB6001BCBB2 /* JMQuantityApp */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = JMQuantityApp; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FAADEF31D0103EE00BA583C /* SIPrefix.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SIPrefix.swift; sourceTree = "<group>"; };
 		1FAADEF81D0105EA00BA583C /* Unit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Unit.swift; sourceTree = "<group>"; };
 		1FAADEFA1D01074800BA583C /* VelocityUnit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VelocityUnit.swift; sourceTree = "<group>"; };
@@ -79,7 +104,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		1F68E0D31CC4AFAD005F51C6 /* Frameworks */ = {
+		1FA0932F1F8F0E8C001BCBB2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1FA094361F8F1CB6001BCBB2 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -113,6 +145,7 @@
 				1F68E0D81CC4AFAD005F51C6 /* JMQuantity */,
 				1F68E0D91CC4AFAD005F51C6 /* main.swift */,
 				1FADEB6D1D0E4FF2005AE4C6 /* QuantityTests */,
+				1FA093341F8F0E8C001BCBB2 /* libJMQuantity */,
 				1F68E0D71CC4AFAD005F51C6 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -120,8 +153,9 @@
 		1F68E0D71CC4AFAD005F51C6 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1F68E0D61CC4AFAD005F51C6 /* JMQuantity */,
 				1FADEB6C1D0E4FF2005AE4C6 /* QuantityTests.xctest */,
+				1FA093331F8F0E8C001BCBB2 /* JMQuantity.framework */,
+				1FA0943B1F8F1CB6001BCBB2 /* JMQuantityApp */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -131,6 +165,8 @@
 			children = (
 				1FAADF011D010E5400BA583C /* PrefixedUnit.swift */,
 				1FAADEFF1D0109C800BA583C /* Quantity.swift */,
+				1FA0941C1F8F1AE3001BCBB2 /* Quantity+Types.swift */,
+				1FA094181F8F1955001BCBB2 /* Quantity+Operators.swift */,
 				1FAADF0B1D0150D500BA583C /* Atmospherics.swift */,
 				1FD372E51D048CCC003F19EF /* UTM */,
 				1FAADEF71D0104F500BA583C /* Protocols */,
@@ -138,6 +174,15 @@
 				1F0043B61D0357F300B636F9 /* Compound Units */,
 			);
 			path = JMQuantity;
+			sourceTree = "<group>";
+		};
+		1FA093341F8F0E8C001BCBB2 /* libJMQuantity */ = {
+			isa = PBXGroup;
+			children = (
+				1FA093351F8F0E8C001BCBB2 /* libJMQuantity.h */,
+				1FA093361F8F0E8C001BCBB2 /* Info.plist */,
+			);
+			path = libJMQuantity;
 			sourceTree = "<group>";
 		};
 		1FAADEF71D0104F500BA583C /* Protocols */ = {
@@ -182,22 +227,51 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		1FA093301F8F0E8C001BCBB2 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1FA093371F8F0E8C001BCBB2 /* libJMQuantity.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
-		1F68E0D51CC4AFAD005F51C6 /* JMQuantity */ = {
+		1FA093321F8F0E8C001BCBB2 /* JMQuantity */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1F68E0DD1CC4AFAD005F51C6 /* Build configuration list for PBXNativeTarget "JMQuantity" */;
+			buildConfigurationList = 1FA0933A1F8F0E8C001BCBB2 /* Build configuration list for PBXNativeTarget "JMQuantity" */;
 			buildPhases = (
-				1F68E0D21CC4AFAD005F51C6 /* Sources */,
-				1F68E0D31CC4AFAD005F51C6 /* Frameworks */,
-				1F68E0D41CC4AFAD005F51C6 /* CopyFiles */,
+				1FA0932E1F8F0E8C001BCBB2 /* Sources */,
+				1FA0932F1F8F0E8C001BCBB2 /* Frameworks */,
+				1FA093301F8F0E8C001BCBB2 /* Headers */,
+				1FA093311F8F0E8C001BCBB2 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = JMQuantity;
+			productName = libJMQuantity;
+			productReference = 1FA093331F8F0E8C001BCBB2 /* JMQuantity.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		1FA094201F8F1CB6001BCBB2 /* JMQuantityApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1FA094381F8F1CB6001BCBB2 /* Build configuration list for PBXNativeTarget "JMQuantityApp" */;
+			buildPhases = (
+				1FA094211F8F1CB6001BCBB2 /* Sources */,
+				1FA094361F8F1CB6001BCBB2 /* Frameworks */,
+				1FA094371F8F1CB6001BCBB2 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = JMQuantityApp;
 			productName = JMQuantity;
-			productReference = 1F68E0D61CC4AFAD005F51C6 /* JMQuantity */;
+			productReference = 1FA0943B1F8F1CB6001BCBB2 /* JMQuantityApp */;
 			productType = "com.apple.product-type.tool";
 		};
 		1FADEB6B1D0E4FF2005AE4C6 /* QuantityTests */ = {
@@ -224,12 +298,12 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 0910;
 				ORGANIZATIONNAME = "Jeff McClay";
 				TargetAttributes = {
-					1F68E0D51CC4AFAD005F51C6 = {
-						CreatedOnToolsVersion = 7.1;
-						LastSwiftMigration = 0900;
+					1FA093321F8F0E8C001BCBB2 = {
+						CreatedOnToolsVersion = 9.0;
+						ProvisioningStyle = Automatic;
 					};
 					1FADEB6B1D0E4FF2005AE4C6 = {
 						CreatedOnToolsVersion = 7.3;
@@ -248,13 +322,21 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				1F68E0D51CC4AFAD005F51C6 /* JMQuantity */,
+				1FA093321F8F0E8C001BCBB2 /* JMQuantity */,
 				1FADEB6B1D0E4FF2005AE4C6 /* QuantityTests */,
+				1FA094201F8F1CB6001BCBB2 /* JMQuantityApp */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		1FA093311F8F0E8C001BCBB2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		1FADEB6A1D0E4FF2005AE4C6 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -265,28 +347,52 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		1F68E0D21CC4AFAD005F51C6 /* Sources */ = {
+		1FA0932E1F8F0E8C001BCBB2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1FAADF061D01158D00BA583C /* VolumeUnit.swift in Sources */,
-				1FAADF021D010E5400BA583C /* PrefixedUnit.swift in Sources */,
-				1FAADF001D0109C800BA583C /* Quantity.swift in Sources */,
-				1FAADF0C1D0150D500BA583C /* Atmospherics.swift in Sources */,
-				1FD372E71D048CF2003F19EF /* UTMHelpers.swift in Sources */,
-				1FAADEF91D0105EA00BA583C /* Unit.swift in Sources */,
-				1FAADF041D01132F00BA583C /* DistanceUnit.swift in Sources */,
-				1FAADEF41D0103EE00BA583C /* SIPrefix.swift in Sources */,
-				1F4368FB1D01F005005F789D /* AreaUnit.swift in Sources */,
-				1F68E0DA1CC4AFAD005F51C6 /* main.swift in Sources */,
-				1F0043BA1D035AA400B636F9 /* AngleUnit.swift in Sources */,
-				1FAADEFE1D0107D800BA583C /* TimeUnit.swift in Sources */,
-				1F4368FD1D0205C4005F789D /* RateUnit.swift in Sources */,
-				1FD372E41D048CBF003F19EF /* GeodeticUTMConverter.swift in Sources */,
-				1FAADEFB1D01074800BA583C /* VelocityUnit.swift in Sources */,
-				1F0043B81D03586E00B636F9 /* MassUnit.swift in Sources */,
-				1FAADF0A1D014DBC00BA583C /* PressureUnit.swift in Sources */,
-				1FAADF081D011AB900BA583C /* TemperatureUnit.swift in Sources */,
+				1FA093441F8F0E99001BCBB2 /* PressureUnit.swift in Sources */,
+				1FA093461F8F0E99001BCBB2 /* AngleUnit.swift in Sources */,
+				1FA093421F8F0E99001BCBB2 /* TimeUnit.swift in Sources */,
+				1FA093471F8F0E99001BCBB2 /* TemperatureUnit.swift in Sources */,
+				1FA0933D1F8F0E99001BCBB2 /* Atmospherics.swift in Sources */,
+				1FA093431F8F0E99001BCBB2 /* DistanceUnit.swift in Sources */,
+				1FA093451F8F0E99001BCBB2 /* MassUnit.swift in Sources */,
+				1FA0933C1F8F0E99001BCBB2 /* Quantity.swift in Sources */,
+				1FA0933B1F8F0E99001BCBB2 /* PrefixedUnit.swift in Sources */,
+				1FA093401F8F0E99001BCBB2 /* Unit.swift in Sources */,
+				1FA0933F1F8F0E99001BCBB2 /* UTMHelpers.swift in Sources */,
+				1FA0933E1F8F0E99001BCBB2 /* GeodeticUTMConverter.swift in Sources */,
+				1FA0941B1F8F1957001BCBB2 /* Quantity+Operators.swift in Sources */,
+				1FA093411F8F0E99001BCBB2 /* SIPrefix.swift in Sources */,
+				1FA0941E1F8F1AE3001BCBB2 /* Quantity+Types.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1FA094211F8F1CB6001BCBB2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1FA094221F8F1CB6001BCBB2 /* VolumeUnit.swift in Sources */,
+				1FA094231F8F1CB6001BCBB2 /* PrefixedUnit.swift in Sources */,
+				1FA094241F8F1CB6001BCBB2 /* Quantity.swift in Sources */,
+				1FA094251F8F1CB6001BCBB2 /* Atmospherics.swift in Sources */,
+				1FA094261F8F1CB6001BCBB2 /* UTMHelpers.swift in Sources */,
+				1FA094271F8F1CB6001BCBB2 /* Quantity+Operators.swift in Sources */,
+				1FA094281F8F1CB6001BCBB2 /* Unit.swift in Sources */,
+				1FA094291F8F1CB6001BCBB2 /* DistanceUnit.swift in Sources */,
+				1FA0942A1F8F1CB6001BCBB2 /* SIPrefix.swift in Sources */,
+				1FA0942B1F8F1CB6001BCBB2 /* AreaUnit.swift in Sources */,
+				1FA0942C1F8F1CB6001BCBB2 /* main.swift in Sources */,
+				1FA0942D1F8F1CB6001BCBB2 /* AngleUnit.swift in Sources */,
+				1FA0942E1F8F1CB6001BCBB2 /* TimeUnit.swift in Sources */,
+				1FA0942F1F8F1CB6001BCBB2 /* RateUnit.swift in Sources */,
+				1FA094301F8F1CB6001BCBB2 /* Quantity+Types.swift in Sources */,
+				1FA094311F8F1CB6001BCBB2 /* GeodeticUTMConverter.swift in Sources */,
+				1FA094321F8F1CB6001BCBB2 /* VelocityUnit.swift in Sources */,
+				1FA094331F8F1CB6001BCBB2 /* MassUnit.swift in Sources */,
+				1FA094341F8F1CB6001BCBB2 /* PressureUnit.swift in Sources */,
+				1FA094351F8F1CB6001BCBB2 /* TemperatureUnit.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,6 +403,7 @@
 				1F15D46C1F8EE28D00F28794 /* Quantity.swift in Sources */,
 				1F15D46B1F8EE28D00F28794 /* PrefixedUnit.swift in Sources */,
 				1F15D46F1F8EE28D00F28794 /* UTMHelpers.swift in Sources */,
+				1FA0941A1F8F1957001BCBB2 /* Quantity+Operators.swift in Sources */,
 				1F15D4741F8EE28D00F28794 /* PressureUnit.swift in Sources */,
 				1F15D4761F8EE28D00F28794 /* AngleUnit.swift in Sources */,
 				1F15D4711F8EE28D00F28794 /* SIPrefix.swift in Sources */,
@@ -307,6 +414,7 @@
 				1F15D4721F8EE28D00F28794 /* TimeUnit.swift in Sources */,
 				1F15D4751F8EE28D00F28794 /* MassUnit.swift in Sources */,
 				1FADEB6F1D0E4FF2005AE4C6 /* QuantityTests.swift in Sources */,
+				1FA0941F1F8F1C18001BCBB2 /* Quantity+Types.swift in Sources */,
 				1F15D46D1F8EE28D00F28794 /* Atmospherics.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -413,7 +521,73 @@
 			};
 			name = Release;
 		};
-		1F68E0DE1CC4AFAD005F51C6 /* Debug */ = {
+		1FA093381F8F0E8C001BCBB2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = libJMQuantity/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jeffmcclay.libJMQuantity;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		1FA093391F8F0E8C001BCBB2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = libJMQuantity/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jeffmcclay.libJMQuantity;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		1FA094391F8F1CB6001BCBB2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -422,7 +596,7 @@
 			};
 			name = Debug;
 		};
-		1F68E0DF1CC4AFAD005F51C6 /* Release */ = {
+		1FA0943A1F8F1CB6001BCBB2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -471,11 +645,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		1F68E0DD1CC4AFAD005F51C6 /* Build configuration list for PBXNativeTarget "JMQuantity" */ = {
+		1FA0933A1F8F0E8C001BCBB2 /* Build configuration list for PBXNativeTarget "JMQuantity" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				1F68E0DE1CC4AFAD005F51C6 /* Debug */,
-				1F68E0DF1CC4AFAD005F51C6 /* Release */,
+				1FA093381F8F0E8C001BCBB2 /* Debug */,
+				1FA093391F8F0E8C001BCBB2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1FA094381F8F1CB6001BCBB2 /* Build configuration list for PBXNativeTarget "JMQuantityApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1FA094391F8F1CB6001BCBB2 /* Debug */,
+				1FA0943A1F8F1CB6001BCBB2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -41,7 +41,7 @@ extension LinearUnit {
 }
 
 //TODO: Better implementation of "Equals"
-func ==<U: Unit>(lhs: U, rhs: U) -> Bool {
+public func == <U: Unit>(lhs: U, rhs: U) -> Bool {
     return (lhs.symbol == rhs.symbol) && (lhs.name == rhs.name)
 }
 //func ==(lhs: LinearUnit, rhs: LinearUnit) -> Bool {

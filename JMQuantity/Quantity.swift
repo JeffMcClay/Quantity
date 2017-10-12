@@ -8,10 +8,6 @@
 
 import Foundation
 
-public typealias Distance = Quantity<DistanceUnit>
-public typealias Pressure = Quantity<PressureUnit>
-typealias Temperature = Quantity<TemperatureUnit>
-typealias Angle = Quantity<AngleUnit>
 
 public struct Quantity<U: Unit>: CustomStringConvertible {
     //MARK: - Properties
@@ -38,7 +34,7 @@ public struct Quantity<U: Unit>: CustomStringConvertible {
         f.maximumFractionDigits = decimalPlaces
         f.minimumFractionDigits = minDigits
         if separators {f.numberStyle = .decimal}
-        f.localizesFormat = true
+        //f.localizesFormat = true
         return f.string(from: NSNumber(value: value))! + " " + unit.symbol
     }
     
@@ -48,88 +44,35 @@ public struct Quantity<U: Unit>: CustomStringConvertible {
     
     //MARK: - Initialization
     /// Init with a PrefixedUnit.
-    init(value: Double, unit:PrefixedUnit<U>) {
+    public init(value: Double, unit:PrefixedUnit<U>) {
         self.unit = unit
         self._value = value * Double(unit.prefix.rawValue)
     }
     
-    init(_ value: Double, unit:PrefixedUnit<U>) {
-        self.unit = unit
-        self._value = value * Double(unit.prefix.rawValue)
+    public init(_ value: Double, unit:PrefixedUnit<U>) {
+        self.init(value: value, unit: unit)
     }
     
     /// Init with a Unilinear unit, with no (none) prefix.
-    init(_ value: Double, _ unit:U) {
+    public init(_ value: Double, _ unit:U) {
         let pu = PrefixedUnit(prefix: .none, baseUnit: unit)
         self.init(value: value, unit:pu)
     }
     
     /// Init with a prefix and unit.
-    init(_ value: Double, prefix: SIPrefix = .none, unit: U) {
+    public init(_ value: Double, prefix: SIPrefix = .none, unit: U) {
         let pu = PrefixedUnit(prefix: prefix, baseUnit: unit)
         self.init(value: value, unit:pu)
     }
     
     //MARK: - Conversion
-    func convert(to toPrefixedUnit: PrefixedUnit<U>) -> Quantity {
+    public func convert(to toPrefixedUnit: PrefixedUnit<U>) -> Quantity {
         return toPrefixedUnit.convert(self)
     }
-    func convert(to toUnit: U) -> Quantity {
+    public func convert(to toUnit: U) -> Quantity {
         let pu = PrefixedUnit(baseUnit: toUnit)
         return pu.convert(self)
     }
 }
 
-//MARK: - Operators
-infix operator --> //{associativity left}
-func --> <U>(lhs: Quantity<U>, rhs: PrefixedUnit<U>) -> Quantity<U> { return lhs.convert(to: rhs) }
-func --> <U>(lhs: Quantity<U>, rhs: U) -> Quantity<U> { return lhs.convert(to: PrefixedUnit(baseUnit: rhs)) }
 
-func == <U>(lhs: Quantity<U>, rhs: Quantity<U>) -> Bool {
-    if (lhs.unit == rhs.unit) {
-        return lhs._value == rhs._value
-    } else {
-        let rhsConverted = rhs.convert(to: lhs.unit)
-        return lhs._value == rhsConverted._value
-    }
-}
-
-func < <U>(lhs: Quantity<U>, rhs: Quantity<U>) -> Bool {
-    if (lhs.unit == rhs.unit) {
-        return lhs._value < rhs._value
-    } else {
-        let rhsConverted = rhs.convert(to: lhs.unit)
-        return lhs._value < rhsConverted._value
-    }
-}
-
-func > <U>(lhs: Quantity<U>, rhs: Quantity<U>) -> Bool {
-    if (lhs.unit == rhs.unit) {
-        return lhs._value > rhs._value
-    } else {
-        let rhsConverted = rhs.convert(to: lhs.unit)
-        return lhs._value > rhsConverted._value
-    }
-}
-
-prefix func -<U>(q: Quantity<U>) -> Quantity<U> { return Quantity(value: -q.value, unit: q.unit) }
-
-func -<U>(lhs: Quantity<U>, rhs: Quantity<U>) -> Quantity<U> {
-    if (lhs.unit == rhs.unit) {
-        return Quantity(value:lhs.value - rhs.value, unit: lhs.unit)
-    } else {
-        let rhsConverted = rhs.convert(to: lhs.unit)
-        return Quantity(value: lhs.value - rhsConverted.value, unit: lhs.unit)
-    }
-}
-
-func +<U>(lhs: Quantity<U>, rhs: Quantity<U>) -> Quantity<U> {
-    if (lhs.unit == rhs.unit) {
-        return Quantity(value:lhs.value + rhs.value, unit: lhs.unit)
-    } else {
-        let rhsConverted = rhs.convert(to: lhs.unit)
-        return Quantity(value: lhs.value + rhsConverted.value, unit: lhs.unit)
-    }
-}
-
-func +<U>(lhs: Quantity<U>, rhs: Double) -> Quantity<U> { return Quantity(value:lhs.value + rhs, unit: lhs.unit) }

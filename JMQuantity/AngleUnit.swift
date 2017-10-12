@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum AngleUnit: Double, LinearUnit {
+public enum AngleUnit: Double, LinearUnit {
     case turn = 1.0
     case quandrant = 4.0
     case sextant = 6.0
@@ -20,7 +20,7 @@ enum AngleUnit: Double, LinearUnit {
     case radian = 6.283185307179586476925286766559005768394338798750211641949       // 1 milliradian = 1 USMC mRad
     case milNATO = 6400     // ARMY Mils
     
-    var symbol: String {
+    public var symbol: String {
         switch self {
         case .turn: return "turn"
         case .quandrant: return "quandrant"
