@@ -16,19 +16,17 @@ public struct PrefixedUnit<U: Unit> {
         return "\(prefix)\(baseUnit.symbol)"
     }
     
-    init(prefix: SIPrefix = .none, baseUnit: U) {
+    public init(prefix: SIPrefix = .none, baseUnit: U) {
         self.prefix = prefix
         self.baseUnit = baseUnit
     }
     
-    init(_ prefix: SIPrefix = .none, _ baseUnit: U) {
-        self.prefix = prefix
-        self.baseUnit = baseUnit
+    public init(_ prefix: SIPrefix = .none, _ baseUnit: U) {
+        self.init(prefix: prefix, baseUnit: baseUnit)
     }
     
-    init(_ baseUnit: U) {
-        self.prefix = .none
-        self.baseUnit = baseUnit
+    public init(_ baseUnit: U) {
+        self.init(prefix: .none, baseUnit: baseUnit)
     }
     
     func convert(_ quantity: Quantity<U>) -> Quantity<U> {

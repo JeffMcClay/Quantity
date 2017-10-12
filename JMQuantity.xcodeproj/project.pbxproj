@@ -20,6 +20,9 @@
 		1F15D4751F8EE28D00F28794 /* MassUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0043B71D03586E00B636F9 /* MassUnit.swift */; };
 		1F15D4761F8EE28D00F28794 /* AngleUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0043B91D035AA400B636F9 /* AngleUnit.swift */; };
 		1F15D4771F8EE28D00F28794 /* TemperatureUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAADF071D011AB900BA583C /* TemperatureUnit.swift */; };
+		1F5C82F01F8F38CD0003F3A5 /* FuelEfficiencyUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5C82EF1F8F38CD0003F3A5 /* FuelEfficiencyUnit.swift */; };
+		1F5C82F11F8F38CD0003F3A5 /* FuelEfficiencyUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5C82EF1F8F38CD0003F3A5 /* FuelEfficiencyUnit.swift */; };
+		1F5C82F21F8F38CD0003F3A5 /* FuelEfficiencyUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5C82EF1F8F38CD0003F3A5 /* FuelEfficiencyUnit.swift */; };
 		1FA093371F8F0E8C001BCBB2 /* libJMQuantity.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FA093351F8F0E8C001BCBB2 /* libJMQuantity.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1FA0933B1F8F0E99001BCBB2 /* PrefixedUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAADF011D010E5400BA583C /* PrefixedUnit.swift */; };
 		1FA0933C1F8F0E99001BCBB2 /* Quantity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAADEFF1D0109C800BA583C /* Quantity.swift */; };
@@ -78,6 +81,7 @@
 		1F0043B91D035AA400B636F9 /* AngleUnit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AngleUnit.swift; sourceTree = "<group>"; };
 		1F4368FA1D01F005005F789D /* AreaUnit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AreaUnit.swift; sourceTree = "<group>"; };
 		1F4368FC1D0205C4005F789D /* RateUnit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RateUnit.swift; sourceTree = "<group>"; };
+		1F5C82EF1F8F38CD0003F3A5 /* FuelEfficiencyUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuelEfficiencyUnit.swift; sourceTree = "<group>"; };
 		1F68E0D91CC4AFAD005F51C6 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = main.swift; path = JMQuantity/main.swift; sourceTree = "<group>"; };
 		1FA093331F8F0E8C001BCBB2 /* JMQuantity.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JMQuantity.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FA093351F8F0E8C001BCBB2 /* libJMQuantity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = libJMQuantity.h; sourceTree = "<group>"; };
@@ -135,6 +139,7 @@
 				1FAADF051D01158D00BA583C /* VolumeUnit.swift */,
 				1F4368FC1D0205C4005F789D /* RateUnit.swift */,
 				1FAADEFA1D01074800BA583C /* VelocityUnit.swift */,
+				1F5C82EF1F8F38CD0003F3A5 /* FuelEfficiencyUnit.swift */,
 			);
 			name = "Compound Units";
 			sourceTree = "<group>";
@@ -353,6 +358,7 @@
 			files = (
 				1FA093441F8F0E99001BCBB2 /* PressureUnit.swift in Sources */,
 				1FA093461F8F0E99001BCBB2 /* AngleUnit.swift in Sources */,
+				1F5C82F01F8F38CD0003F3A5 /* FuelEfficiencyUnit.swift in Sources */,
 				1FA093421F8F0E99001BCBB2 /* TimeUnit.swift in Sources */,
 				1FA093471F8F0E99001BCBB2 /* TemperatureUnit.swift in Sources */,
 				1FA0933D1F8F0E99001BCBB2 /* Atmospherics.swift in Sources */,
@@ -383,6 +389,7 @@
 				1FA094291F8F1CB6001BCBB2 /* DistanceUnit.swift in Sources */,
 				1FA0942A1F8F1CB6001BCBB2 /* SIPrefix.swift in Sources */,
 				1FA0942B1F8F1CB6001BCBB2 /* AreaUnit.swift in Sources */,
+				1F5C82F21F8F38CD0003F3A5 /* FuelEfficiencyUnit.swift in Sources */,
 				1FA0942C1F8F1CB6001BCBB2 /* main.swift in Sources */,
 				1FA0942D1F8F1CB6001BCBB2 /* AngleUnit.swift in Sources */,
 				1FA0942E1F8F1CB6001BCBB2 /* TimeUnit.swift in Sources */,
@@ -415,6 +422,7 @@
 				1F15D4751F8EE28D00F28794 /* MassUnit.swift in Sources */,
 				1FADEB6F1D0E4FF2005AE4C6 /* QuantityTests.swift in Sources */,
 				1FA0941F1F8F1C18001BCBB2 /* Quantity+Types.swift in Sources */,
+				1F5C82F11F8F38CD0003F3A5 /* FuelEfficiencyUnit.swift in Sources */,
 				1F15D46D1F8EE28D00F28794 /* Atmospherics.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

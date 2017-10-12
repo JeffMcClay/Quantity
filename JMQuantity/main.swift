@@ -145,7 +145,48 @@ print(mph2)
 print(kmph)
 
 
+let fMile = PrefixedUnit(DistanceUnit.mile)
+let fGal = PrefixedUnit(VolumeUnit.gallon)
+let fKm = PrefixedUnit(.kilo, DistanceUnit.meter)
+let fL = PrefixedUnit(VolumeUnit.liter)
 
+let uMPG = FuelUnit(distance:fMile, perVolume: fGal)
+let uKPL = FuelUnit(distance:fKm, perVolume: fL)
+let uGPM0 = FuelUnit(volume:fGal, perDistance:fMile)
+let uGPM = FuelUnit(volume:fGal, per:100, fMile)
+let uLPK = FuelUnit(volume:fL, perDistance: fKm)
+
+
+let uLP1K = FuelUnit(volume:fL, per:100, fKm)
+
+let eff1 = Quantity(42, uMPG)
+let eff2 = Quantity(43, uKPL)
+let eff3 = Quantity(44, uGPM)
+let eff4 = Quantity(45, uLPK)
+
+print("\nFUEL EFF1: \(eff1 --> uMPG)")
+print("FUEL EFF1: \(eff1 --> uKPL)")
+print("FUEL EFF1: \(eff1 --> uGPM)")
+print("FUEL EFF1: \(eff1 --> uLPK)")
+print("FUEL EFF1: \(eff1 --> uLP1K)")
+
+print("\nFUEL EFF2: \(eff2 --> uMPG)")
+print("FUEL EFF2: \(eff2 --> uKPL)")
+print("FUEL EFF2: \(eff2 --> uGPM)")
+print("FUEL EFF2: \(eff2 --> uLPK)")
+print("FUEL EFF1: \(eff2 --> uLP1K)")
+
+print("\nFUEL EFF3: \(eff3 --> uMPG)")
+print("FUEL EFF3: \(eff3 --> uKPL)")
+print("FUEL EFF3: \(eff3 --> uGPM)")
+print("FUEL EFF3: \(eff3 --> uLPK)")
+print("FUEL EFF3: \(eff3 --> uLP1K)")
+
+print("\nFUEL EFF2: \(eff4 --> uMPG)")
+print("FUEL EFF2: \(eff4 --> uKPL)")
+print("FUEL EFF2: \(eff4 --> uGPM)")
+print("FUEL EFF2: \(eff4 --> uLPK)")
+print("FUEL EFF1: \(eff4 --> uLP1K)")
 
 // All the ways to make a PrefixedUnit
 let pu1 = PrefixedUnit(prefix: .kilo, baseUnit: DistanceUnit.meter)
