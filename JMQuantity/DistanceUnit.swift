@@ -19,6 +19,7 @@ public enum DistanceUnit: Double, LinearUnit {
     case rod = 320
     case chain = 80
     case furlong = 8
+    case fathom = 880
     
     public var symbol : String {
         switch self {
@@ -28,9 +29,10 @@ public enum DistanceUnit: Double, LinearUnit {
         case .yard: return "yd"
         case .mile: return "mi"
         case .nauticalMile: return "NM"
-        case .rod: return "rod"
-        case .chain: return "chain"
+        case .rod: return "rd"
+        case .chain: return "ch"
         case .furlong: return "fur"
+        case .fathom: return "fathom"
         }
     }
 }
