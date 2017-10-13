@@ -8,9 +8,12 @@
 
 import Foundation
 
-typealias ScalarType = Int
+public typealias ScalarType = Int
 
-enum FuelUnit<DistanceUnit: LinearUnit, VolumeUnit: LinearUnit>: Unit {
+public protocol EfficiencyUnitType {
+}
+
+public enum FuelUnit: Unit {
     
     case distPerVol(PrefixedUnit<DistanceUnit>, PrefixedUnit<VolumeUnit>, ScalarType)
     case volPerDist(PrefixedUnit<VolumeUnit>, PrefixedUnit<DistanceUnit>, ScalarType)
@@ -18,18 +21,33 @@ enum FuelUnit<DistanceUnit: LinearUnit, VolumeUnit: LinearUnit>: Unit {
     init(distance: PrefixedUnit<DistanceUnit>, per: ScalarType, _ vol: PrefixedUnit<VolumeUnit>) {
         self = FuelUnit.distPerVol(distance, vol, per)
     }
+    init(distance: PrefixedUnit<DistanceUnit>, perVolume vol: PrefixedUnit<VolumeUnit>) {
+        self.init(distance:distance, per:1, vol)
+    }
+    init(distance: DistanceUnit, perVol vol: VolumeUnit) {
+        self.init(distance:PrefixedUnit(distance), per:1, PrefixedUnit(vol))
+    }
+    
     init(volume: PrefixedUnit<VolumeUnit>, per: ScalarType, _ dist: PrefixedUnit<DistanceUnit>) {
         self = FuelUnit.volPerDist(volume, dist, per)
     }
-    
-    init(distance: PrefixedUnit<DistanceUnit>, perVolume vol: PrefixedUnit<VolumeUnit>) {
-        self.init(distance:distance, per:1, vol)
+    init(volume: VolumeUnit, per: ScalarType, _ dist: PrefixedUnit<DistanceUnit>) {
+        self.init(volume: PrefixedUnit(volume), per:per, dist)
     }
     init(volume: PrefixedUnit<VolumeUnit>, perDistance dist: PrefixedUnit<DistanceUnit>) {
         self.init(volume:volume, per:1, dist)
     }
+    init(volume: VolumeUnit, perDistance dist: PrefixedUnit<DistanceUnit>) {
+        self.init(volume:volume, per:1, dist)
+    }
+    init(volume: VolumeUnit, perDist dist: DistanceUnit) {
+        self.init(volume:PrefixedUnit(volume), per:1, PrefixedUnit(dist))
+    }
     
-    var symbol: String {
+    
+    
+    
+    public var symbol: String {
         switch self {
         case .distPerVol(let dist, let vol, let scalar):
             if scalar == 1 { return "\(dist.symbol)/\(vol.symbol)" }
@@ -39,17 +57,20 @@ enum FuelUnit<DistanceUnit: LinearUnit, VolumeUnit: LinearUnit>: Unit {
             else { return "\(vol.symbol)/\(scalar)\(dist.symbol)" }
         }
     }
-    var name: String {
+    public var name: String {
         switch self {
-        case .distPerVol(let dist, let vol, _):
-            return dist.symbol + " per " + vol.symbol
-        case .volPerDist(let vol, let dist, _):
-            return vol.symbol + " per " + dist.symbol
+        case .distPerVol(let dist, let vol, let scalar):
+            if scalar == 1 { return "\(dist.symbol) per \(vol.symbol)" }
+            else { return "\(dist.symbol) per \(scalar)\(vol.symbol)" }
+        case .volPerDist(let vol, let dist, let scalar):
+            if scalar == 1 { return "\(vol.symbol) per \(dist.symbol)" }
+            else { return "\(vol.symbol) per \(scalar)\(dist.symbol)" }
         }
     }
     
-    func convert(_ quantity: Quantity<FuelUnit>, toPrefixedUnit: PrefixedUnit<FuelUnit>) -> Quantity<FuelUnit> {
-        if quantity.unit == toPrefixedUnit { return quantity }
+    public func convert(_ quantity: Quantity<FuelUnit>, toPrefixedUnit: PrefixedUnit<FuelUnit>) -> Quantity<FuelUnit> {
+        //TODO: Fix this equality check
+//        if quantity.unit == toPrefixedUnit { return quantity }
         
         switch quantity.unit.baseUnit {
         case .distPerVol(let mainFrom, let changeFrom, let scalarFrom):
@@ -122,5 +143,16 @@ enum FuelUnit<DistanceUnit: LinearUnit, VolumeUnit: LinearUnit>: Unit {
             }
         }
     }
-    
+}
+
+public func / (lhs: Distance, rhs: Quantity<VolumeUnit>) -> FuelEfficiency {
+    let val = lhs.value/rhs.value
+    let rateUnit = FuelUnit(distance: lhs.unit, perVolume: rhs.unit)
+    return Quantity(val, rateUnit)
+}
+
+public func / (lhs: Quantity<VolumeUnit>, rhs: Distance) -> FuelEfficiency {
+    let val = lhs.value/rhs.value
+    let rateUnit = FuelUnit(volume: lhs.unit, perDistance: rhs.unit)
+    return Quantity(val, rateUnit)
 }

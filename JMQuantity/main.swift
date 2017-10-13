@@ -145,48 +145,10 @@ print(mph2)
 print(kmph)
 
 
-let fMile = PrefixedUnit(DistanceUnit.mile)
-let fGal = PrefixedUnit(VolumeUnit.gallon)
-let fKm = PrefixedUnit(.kilo, DistanceUnit.meter)
-let fL = PrefixedUnit(VolumeUnit.liter)
-
-let uMPG = FuelUnit(distance:fMile, perVolume: fGal)
-let uKPL = FuelUnit(distance:fKm, perVolume: fL)
-let uGPM0 = FuelUnit(volume:fGal, perDistance:fMile)
-let uGPM = FuelUnit(volume:fGal, per:100, fMile)
-let uLPK = FuelUnit(volume:fL, perDistance: fKm)
 
 
-let uLP1K = FuelUnit(volume:fL, per:100, fKm)
-
-let eff1 = Quantity(42, uMPG)
-let eff2 = Quantity(43, uKPL)
-let eff3 = Quantity(44, uGPM)
-let eff4 = Quantity(45, uLPK)
-
-print("\nFUEL EFF1: \(eff1 --> uMPG)")
-print("FUEL EFF1: \(eff1 --> uKPL)")
-print("FUEL EFF1: \(eff1 --> uGPM)")
-print("FUEL EFF1: \(eff1 --> uLPK)")
-print("FUEL EFF1: \(eff1 --> uLP1K)")
-
-print("\nFUEL EFF2: \(eff2 --> uMPG)")
-print("FUEL EFF2: \(eff2 --> uKPL)")
-print("FUEL EFF2: \(eff2 --> uGPM)")
-print("FUEL EFF2: \(eff2 --> uLPK)")
-print("FUEL EFF1: \(eff2 --> uLP1K)")
-
-print("\nFUEL EFF3: \(eff3 --> uMPG)")
-print("FUEL EFF3: \(eff3 --> uKPL)")
-print("FUEL EFF3: \(eff3 --> uGPM)")
-print("FUEL EFF3: \(eff3 --> uLPK)")
-print("FUEL EFF3: \(eff3 --> uLP1K)")
-
-print("\nFUEL EFF2: \(eff4 --> uMPG)")
-print("FUEL EFF2: \(eff4 --> uKPL)")
-print("FUEL EFF2: \(eff4 --> uGPM)")
-print("FUEL EFF2: \(eff4 --> uLPK)")
-print("FUEL EFF1: \(eff4 --> uLP1K)")
+// All the ways to make a regular LinearUnit
+let lu1 = DistanceUnit.foot
 
 // All the ways to make a PrefixedUnit
 let pu1 = PrefixedUnit(prefix: .kilo, baseUnit: DistanceUnit.meter)
@@ -200,8 +162,18 @@ let q2 = Quantity(6.3, prefix: .kilo, unit: DistanceUnit.meter)
 let q3 = Quantity(3.0, unit: DistanceUnit.foot)
 let q4 = Quantity(1.0, DistanceUnit.yard)
 
-// All the ways to make a regular LinearUnit
-let lu1 = DistanceUnit.foot
+// All the ways to make an AreaUnit
+let au0 = AreaUnit(.foot)
+let au1 = AreaUnit(.acre)
+let au2 = AreaUnit(PrefixedUnit(.kilo, DistanceUnit.meter))
+
+let au00 = AreaUnit(unit: .foot)
+let au11 = AreaUnit(areaUnit: .acre)
+let au22 = AreaUnit(prefixedUnit: PrefixedUnit(.kilo, DistanceUnit.meter))
+
+let au3 = AreaUnit.areaUnit(.acre)
+let au4 = AreaUnit.squareUnit(PrefixedUnit(.foot))
+let au5 = AreaUnit.squareUnit(PrefixedUnit(.kilo, DistanceUnit.meter))
 
 // All the ways to make a RateUnit
 let ru1 = RateUnit.rate(pu1, pu3)
@@ -221,3 +193,46 @@ let latlonConverted = converter.convertToUTMCoordinates(apple_latlon)
 let utmConverted = converter.convertToLatitudeLongitude(utmCoordinates: apple_utm!)
 print(latlonConverted.formattedString())
 print(utmConverted)
+
+
+
+
+
+
+let gals = Quantity(42, unit:PrefixedUnit(VolumeUnit.gallonUS))
+print(gals --> .gallonImperial)
+
+let fMile = PrefixedUnit(DistanceUnit.mile)
+let fGal = PrefixedUnit(VolumeUnit.gallonUS)
+let fGalUK = PrefixedUnit(VolumeUnit.gallonImperial)
+let fKm = PrefixedUnit(.kilo, DistanceUnit.meter)
+let fL = PrefixedUnit(VolumeUnit.liter)
+
+let uMPG = FuelUnit(distance:fMile, perVolume: fGal)
+let uMPU = FuelUnit(distance:fMile, perVolume: fGalUK)
+let uKPL = FuelUnit(distance:fKm, perVolume: fL)
+let uGPM0 = FuelUnit(volume:fGal, perDistance:fMile)
+let uGPM = FuelUnit(volume:fGal, per:100, fMile)
+let uLPK = FuelUnit(volume:fL, perDistance: fKm)
+let uLP1K = FuelUnit(volume:fL, per:100, fKm)
+
+let fuMPG = FuelUnit(distance: .mile, perVol: .gallonUS)
+let eff1 = FuelEfficiency(21.45, fuMPG)
+
+let fuLP100K = FuelUnit(volume: .liter, per: 100, PrefixedUnit(.kilo, DistanceUnit.meter))
+let eff2 = FuelEfficiency(14.45, fuLP100K)
+print(eff1)
+print(eff2)
+
+
+
+
+
+
+let a6 = Area(0.4046875, unit:PrefixedUnit(.hecto, AreaUnit(.are)))
+let a7 = Area(34.543, unit:PrefixedUnit(.mega, AreaUnit(.inch)))
+print(a6, a7)
+print(a7 --> PrefixedUnit(.giga, AreaUnit(.acre)))
+
+
+

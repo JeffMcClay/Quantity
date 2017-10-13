@@ -23,6 +23,12 @@
 		1F5C82F01F8F38CD0003F3A5 /* FuelEfficiencyUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5C82EF1F8F38CD0003F3A5 /* FuelEfficiencyUnit.swift */; };
 		1F5C82F11F8F38CD0003F3A5 /* FuelEfficiencyUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5C82EF1F8F38CD0003F3A5 /* FuelEfficiencyUnit.swift */; };
 		1F5C82F21F8F38CD0003F3A5 /* FuelEfficiencyUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5C82EF1F8F38CD0003F3A5 /* FuelEfficiencyUnit.swift */; };
+		1F65DC571F9071F300E5E56F /* AreaUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4368FA1D01F005005F789D /* AreaUnit.swift */; };
+		1F65DC581F9071F300E5E56F /* VolumeUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAADF051D01158D00BA583C /* VolumeUnit.swift */; };
+		1F65DC591F9071F300E5E56F /* RateUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4368FC1D0205C4005F789D /* RateUnit.swift */; };
+		1F65DC5A1F9071F400E5E56F /* AreaUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4368FA1D01F005005F789D /* AreaUnit.swift */; };
+		1F65DC5B1F9071F400E5E56F /* VolumeUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAADF051D01158D00BA583C /* VolumeUnit.swift */; };
+		1F65DC5C1F9071F400E5E56F /* RateUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4368FC1D0205C4005F789D /* RateUnit.swift */; };
 		1FA093371F8F0E8C001BCBB2 /* libJMQuantity.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FA093351F8F0E8C001BCBB2 /* libJMQuantity.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1FA0933B1F8F0E99001BCBB2 /* PrefixedUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAADF011D010E5400BA583C /* PrefixedUnit.swift */; };
 		1FA0933C1F8F0E99001BCBB2 /* Quantity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAADEFF1D0109C800BA583C /* Quantity.swift */; };
@@ -57,7 +63,6 @@
 		1FA0942F1F8F1CB6001BCBB2 /* RateUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4368FC1D0205C4005F789D /* RateUnit.swift */; };
 		1FA094301F8F1CB6001BCBB2 /* Quantity+Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA0941C1F8F1AE3001BCBB2 /* Quantity+Types.swift */; };
 		1FA094311F8F1CB6001BCBB2 /* GeodeticUTMConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD372E31D048CBF003F19EF /* GeodeticUTMConverter.swift */; };
-		1FA094321F8F1CB6001BCBB2 /* VelocityUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAADEFA1D01074800BA583C /* VelocityUnit.swift */; };
 		1FA094331F8F1CB6001BCBB2 /* MassUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0043B71D03586E00B636F9 /* MassUnit.swift */; };
 		1FA094341F8F1CB6001BCBB2 /* PressureUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAADF091D014DBC00BA583C /* PressureUnit.swift */; };
 		1FA094351F8F1CB6001BCBB2 /* TemperatureUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAADF071D011AB900BA583C /* TemperatureUnit.swift */; };
@@ -91,7 +96,6 @@
 		1FA0943B1F8F1CB6001BCBB2 /* JMQuantityApp */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = JMQuantityApp; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FAADEF31D0103EE00BA583C /* SIPrefix.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SIPrefix.swift; sourceTree = "<group>"; };
 		1FAADEF81D0105EA00BA583C /* Unit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Unit.swift; sourceTree = "<group>"; };
-		1FAADEFA1D01074800BA583C /* VelocityUnit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VelocityUnit.swift; sourceTree = "<group>"; };
 		1FAADEFD1D0107D800BA583C /* TimeUnit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeUnit.swift; sourceTree = "<group>"; };
 		1FAADEFF1D0109C800BA583C /* Quantity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Quantity.swift; sourceTree = "<group>"; };
 		1FAADF011D010E5400BA583C /* PrefixedUnit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrefixedUnit.swift; sourceTree = "<group>"; };
@@ -138,7 +142,6 @@
 				1F4368FA1D01F005005F789D /* AreaUnit.swift */,
 				1FAADF051D01158D00BA583C /* VolumeUnit.swift */,
 				1F4368FC1D0205C4005F789D /* RateUnit.swift */,
-				1FAADEFA1D01074800BA583C /* VelocityUnit.swift */,
 				1F5C82EF1F8F38CD0003F3A5 /* FuelEfficiencyUnit.swift */,
 			);
 			name = "Compound Units";
@@ -356,10 +359,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F65DC5C1F9071F400E5E56F /* RateUnit.swift in Sources */,
+				1F65DC5A1F9071F400E5E56F /* AreaUnit.swift in Sources */,
 				1FA093441F8F0E99001BCBB2 /* PressureUnit.swift in Sources */,
 				1FA093461F8F0E99001BCBB2 /* AngleUnit.swift in Sources */,
 				1F5C82F01F8F38CD0003F3A5 /* FuelEfficiencyUnit.swift in Sources */,
 				1FA093421F8F0E99001BCBB2 /* TimeUnit.swift in Sources */,
+				1F65DC5B1F9071F400E5E56F /* VolumeUnit.swift in Sources */,
 				1FA093471F8F0E99001BCBB2 /* TemperatureUnit.swift in Sources */,
 				1FA0933D1F8F0E99001BCBB2 /* Atmospherics.swift in Sources */,
 				1FA093431F8F0E99001BCBB2 /* DistanceUnit.swift in Sources */,
@@ -396,7 +402,6 @@
 				1FA0942F1F8F1CB6001BCBB2 /* RateUnit.swift in Sources */,
 				1FA094301F8F1CB6001BCBB2 /* Quantity+Types.swift in Sources */,
 				1FA094311F8F1CB6001BCBB2 /* GeodeticUTMConverter.swift in Sources */,
-				1FA094321F8F1CB6001BCBB2 /* VelocityUnit.swift in Sources */,
 				1FA094331F8F1CB6001BCBB2 /* MassUnit.swift in Sources */,
 				1FA094341F8F1CB6001BCBB2 /* PressureUnit.swift in Sources */,
 				1FA094351F8F1CB6001BCBB2 /* TemperatureUnit.swift in Sources */,
@@ -408,10 +413,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F15D46C1F8EE28D00F28794 /* Quantity.swift in Sources */,
+				1F65DC591F9071F300E5E56F /* RateUnit.swift in Sources */,
 				1F15D46B1F8EE28D00F28794 /* PrefixedUnit.swift in Sources */,
 				1F15D46F1F8EE28D00F28794 /* UTMHelpers.swift in Sources */,
 				1FA0941A1F8F1957001BCBB2 /* Quantity+Operators.swift in Sources */,
+				1F65DC571F9071F300E5E56F /* AreaUnit.swift in Sources */,
 				1F15D4741F8EE28D00F28794 /* PressureUnit.swift in Sources */,
+				1F65DC581F9071F300E5E56F /* VolumeUnit.swift in Sources */,
 				1F15D4761F8EE28D00F28794 /* AngleUnit.swift in Sources */,
 				1F15D4711F8EE28D00F28794 /* SIPrefix.swift in Sources */,
 				1F15D4771F8EE28D00F28794 /* TemperatureUnit.swift in Sources */,
