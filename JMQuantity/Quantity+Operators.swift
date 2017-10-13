@@ -12,12 +12,13 @@ import Foundation
 extension Quantity: Comparable {
     
     public static func == <U>(lhs: Quantity<U>, rhs: Quantity<U>) -> Bool {
-        if (lhs.unit == rhs.unit) {
-            return lhs._value == rhs._value
-        } else {
-            let rhsConverted = rhs.convert(to: lhs.unit)
-            return lhs._value == rhsConverted._value
-        }
+        let rhsValue: Double
+        if (lhs.unit == rhs.unit) { rhsValue = rhs._value }
+        else { rhsValue = rhs.convert(to: lhs.unit)._value }
+        
+        let sigma = 1E-6
+        let diff = lhs._value - rhsValue
+        return (diff.magnitude < sigma)
     }
 
     public static func < <U>(lhs: Quantity<U>, rhs: Quantity<U>) -> Bool {
@@ -52,6 +53,7 @@ public prefix func - <U>(q: Quantity<U>) -> Quantity<U> {
     return Quantity(value: -q.value, unit: q.unit)
 }
 
+//MARK: - Quantity | Quantity
 public func - <U>(lhs: Quantity<U>, rhs: Quantity<U>) -> Quantity<U> {
     if (lhs.unit == rhs.unit) {
         return Quantity(value:lhs.value - rhs.value, unit: lhs.unit)
@@ -70,18 +72,30 @@ public func + <U>(lhs: Quantity<U>, rhs: Quantity<U>) -> Quantity<U> {
     }
 }
 
-public func + <U>(lhs: Quantity<U>, rhs: Double) -> Quantity<U> {
-    return Quantity(value:lhs.value + rhs, unit: lhs.unit)
-}
-
-public func * <U>(lhs: Quantity<U>, rhs: Double) -> Quantity<U> {
-    return Quantity(value:lhs.value * rhs, unit: lhs.unit)
-}
-
 public func / <S,T>(lhs: Quantity<S>, rhs: Quantity<T>) -> Quantity<RateUnit<S,T>> {
     let val = lhs.value/rhs.value
     let rateUnit = RateUnit(unit: lhs.unit, perUnit: rhs.unit)
     let q = Quantity(val, rateUnit)
     return q
 }
+
+//MARK: - Quantity | Scalar
+public func + <U>(lhs: Quantity<U>, rhs: Double) -> Quantity<U> {
+    return Quantity(value:lhs.value + rhs, unit: lhs.unit)
+}
+
+public func - <U>(lhs: Quantity<U>, rhs: Double) -> Quantity<U> {
+    return Quantity(value:lhs.value - rhs, unit: lhs.unit)
+}
+
+public func * <U>(lhs: Quantity<U>, rhs: Double) -> Quantity<U> {
+    return Quantity(value:lhs.value * rhs, unit: lhs.unit)
+}
+
+public func / <U>(lhs: Quantity<U>, rhs: Double) -> Quantity<U> {
+    return Quantity(value:lhs.value / rhs, unit: lhs.unit)
+}
+
+
+
 

@@ -196,6 +196,10 @@ print(utmConverted)
 
 
 
+let a6 = Area(0.4046875, unit:PrefixedUnit(.hecto, AreaUnit(.are)))
+let a7 = Area(34.543, unit:PrefixedUnit(.mega, AreaUnit(.inch)))
+print(a6, a7)
+print(a7 --> PrefixedUnit(.giga, AreaUnit(.acre)))
 
 
 
@@ -225,14 +229,9 @@ print(eff1)
 print(eff2)
 
 
-
-
-
-
-let a6 = Area(0.4046875, unit:PrefixedUnit(.hecto, AreaUnit(.are)))
-let a7 = Area(34.543, unit:PrefixedUnit(.mega, AreaUnit(.inch)))
-print(a6, a7)
-print(a7 --> PrefixedUnit(.giga, AreaUnit(.acre)))
-
+let tripDist = Distance(325, .mile)
+let fuelVol = Volume(15.543, .gallonUS)
+let feff = tripDist / fuelVol
+print (feff)
 
 

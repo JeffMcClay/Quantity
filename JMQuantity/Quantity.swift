@@ -32,6 +32,7 @@ public struct Quantity<U: Unit>: CustomStringConvertible {
     
     public func roundedDescription(decimalPlaces: Int = 2, minDigits: Int = 0, separators: Bool = true) -> String {
         let f = NumberFormatter()
+        f.minimumIntegerDigits = 1
         f.maximumFractionDigits = decimalPlaces
         f.minimumFractionDigits = minDigits
         if separators {f.numberStyle = .decimal}
