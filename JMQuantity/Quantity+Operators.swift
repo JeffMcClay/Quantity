@@ -73,3 +73,11 @@ public func + <U>(lhs: Quantity<U>, rhs: Quantity<U>) -> Quantity<U> {
 public func + <U>(lhs: Quantity<U>, rhs: Double) -> Quantity<U> {
     return Quantity(value:lhs.value + rhs, unit: lhs.unit)
 }
+
+public func / <S,T>(lhs: Quantity<S>, rhs: Quantity<T>) -> Quantity<RateUnit<S,T>> {
+    let val = lhs.value/rhs.value
+    let rateUnit = RateUnit(unit: lhs.unit, perUnit: rhs.unit)
+    let q = Quantity(val, rateUnit)
+    return q
+}
+

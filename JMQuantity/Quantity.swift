@@ -39,8 +39,8 @@ public struct Quantity<U: Unit>: CustomStringConvertible {
         return f.string(from: NSNumber(value: value))! + " " + unit.symbol
     }
     
-    public func roundedDescription(exactDigits d: Int) -> String {
-        return roundedDescription(decimalPlaces: d, minDigits: d)
+    public func roundedDescription(exactDigits d: Int, separators: Bool = true) -> String {
+        return roundedDescription(decimalPlaces: d, minDigits: d, separators: separators)
     }
     
     //MARK: - Initialization

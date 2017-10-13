@@ -9,9 +9,6 @@
 import Foundation
 
 public enum VolumeUnit: Double, LinearUnit {
-//    case liter = 1.0
-//    case gallonUS = 0.2641720523581484        //alpha sig figs
-//    case gallonImperial = 0.219969248299087788   //alpha sig figs
     
     case liter = 1.0
     case gallonUS = 0.264172052358148415379899921609162507959266182703889421822     // 1/3.785411784

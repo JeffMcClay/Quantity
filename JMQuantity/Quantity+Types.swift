@@ -12,3 +12,7 @@ public typealias Pressure = Quantity<PressureUnit>
 public typealias Mass = Quantity<MassUnit>
 public typealias Temperature = Quantity<TemperatureUnit>
 public typealias Angle = Quantity<AngleUnit>
+public typealias FuelEfficiency = Quantity<FuelUnit>
+
+public typealias VelocityUnit = RateUnit<DistanceUnit, TimeUnit>
+public typealias Velocity = Quantity<VelocityUnit>
