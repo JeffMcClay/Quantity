@@ -22,7 +22,7 @@ public enum TimeUnit: Double, LinearUnit {
         switch self {
         case .second: return "s"
         case .minute: return "min"
-        case .hour: return "hour"
+        case .hour: return "hr"
         case .day: return "day"
         case .week: return "week"
         case .julianYear,.siderealYear: return "yr"

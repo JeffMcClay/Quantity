@@ -43,10 +43,6 @@ public enum RateUnit<MainUnit: LinearUnit, ChangeUnit: LinearUnit>: Unit {
             switch toPrefixedUnit.baseUnit {
             case .rate(let mainTo, let changeTo):
                 
-//                let main = mainFrom.baseUnit
-//                if let main = main as? LinearUnit { print("all good") }
-//                if mainFrom.baseUnit is LinearUnit { "all good" }
-                
                 // Convert the numerator
                 let num_pu = PrefixedUnit(prefix: mainFrom.prefix, baseUnit: mainFrom.baseUnit)
                 let numerator = Quantity(value: quantity.value, unit: num_pu)
