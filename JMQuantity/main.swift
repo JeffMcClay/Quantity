@@ -232,6 +232,46 @@ print(eff2)
 let tripDist = Distance(325, .mile)
 let fuelVol = Volume(15.543, .gallonUS)
 let feff = tripDist / fuelVol
-print (feff)
+print("Before storing: \(feff)")
+//print(feff.unit.baseUnit.unitCompositionDictionary)
+//print(tripDist.propertyListRepresentation())
+//print(fuelVol.propertyListRepresentation())
+//print(feff.propertyListRepresentation())
+
+let fdata = feff.dataForCoreData()
+
+let flist = NSKeyedUnarchiver.unarchiveObject(with: fdata as Data) as! NSDictionary
+print("After storing: \(flist)")
+let effback = FuelEfficiency(plist: flist)
+print(effback!)
+
+//
+//public enum Prefix : Double, CustomStringConvertible {
+//    public var description: String {
+//        return "test"
+//    }
+//    case one = 1.0
+//    case two = 2.0
+//}
+//let pp = SIPrefix(rawValue: 10000.0)
+//
+//
+//let plist = tripDist.propertyListRepresentation()
+//let data = tripDist.dataForCoreData()
+//print("_value = \(plist["_value"])")
+//print(plist)
+//
+//let plist2 = Distance.plistFrom(data: data)
+//print("_value = \(plist2["_value"])")
+//print(plist2)
+//let y = Distance(plist: plist2 as NSDictionary)
+//print(y)
+//
+//
+//let dataf = feff.dataForCoreData()
+//print(feff.propertyListRepresentation())
+//
+//
+
 
 

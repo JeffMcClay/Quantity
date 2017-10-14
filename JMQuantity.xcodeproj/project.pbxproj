@@ -67,6 +67,15 @@
 		1FA094341F8F1CB6001BCBB2 /* PressureUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAADF091D014DBC00BA583C /* PressureUnit.swift */; };
 		1FA094351F8F1CB6001BCBB2 /* TemperatureUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAADF071D011AB900BA583C /* TemperatureUnit.swift */; };
 		1FADEB6F1D0E4FF2005AE4C6 /* QuantityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FADEB6E1D0E4FF2005AE4C6 /* QuantityTests.swift */; };
+		1FD778D91F91929500F4DAD3 /* PropertyListReadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD778D81F91929500F4DAD3 /* PropertyListReadable.swift */; };
+		1FD778DB1F9192E000F4DAD3 /* DistanceUnit+PropertyListReadble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD778DA1F9192E000F4DAD3 /* DistanceUnit+PropertyListReadble.swift */; };
+		1FD778DD1F91A86100F4DAD3 /* PropertyListReadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD778D81F91929500F4DAD3 /* PropertyListReadable.swift */; };
+		1FD778DE1F91A86100F4DAD3 /* DistanceUnit+PropertyListReadble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD778DA1F9192E000F4DAD3 /* DistanceUnit+PropertyListReadble.swift */; };
+		1FD778DF1F91A86100F4DAD3 /* PropertyListReadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD778D81F91929500F4DAD3 /* PropertyListReadable.swift */; };
+		1FD778E01F91A86100F4DAD3 /* DistanceUnit+PropertyListReadble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD778DA1F9192E000F4DAD3 /* DistanceUnit+PropertyListReadble.swift */; };
+		1FD778E21F91C0AA00F4DAD3 /* Quantity+PropertyListReadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD778E11F91C0AA00F4DAD3 /* Quantity+PropertyListReadable.swift */; };
+		1FD778E31F91C0AA00F4DAD3 /* Quantity+PropertyListReadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD778E11F91C0AA00F4DAD3 /* Quantity+PropertyListReadable.swift */; };
+		1FD778E41F91C0AA00F4DAD3 /* Quantity+PropertyListReadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD778E11F91C0AA00F4DAD3 /* Quantity+PropertyListReadable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -109,6 +118,9 @@
 		1FADEB701D0E4FF2005AE4C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1FD372E31D048CBF003F19EF /* GeodeticUTMConverter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeodeticUTMConverter.swift; sourceTree = "<group>"; };
 		1FD372E61D048CF2003F19EF /* UTMHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UTMHelpers.swift; sourceTree = "<group>"; };
+		1FD778D81F91929500F4DAD3 /* PropertyListReadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyListReadable.swift; sourceTree = "<group>"; };
+		1FD778DA1F9192E000F4DAD3 /* DistanceUnit+PropertyListReadble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DistanceUnit+PropertyListReadble.swift"; sourceTree = "<group>"; };
+		1FD778E11F91C0AA00F4DAD3 /* Quantity+PropertyListReadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Quantity+PropertyListReadable.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,6 +183,7 @@
 		1F68E0D81CC4AFAD005F51C6 /* JMQuantity */ = {
 			isa = PBXGroup;
 			children = (
+				1FD778D71F91926E00F4DAD3 /* Storage */,
 				1FAADF011D010E5400BA583C /* PrefixedUnit.swift */,
 				1FAADEFF1D0109C800BA583C /* Quantity.swift */,
 				1FA0941C1F8F1AE3001BCBB2 /* Quantity+Types.swift */,
@@ -231,6 +244,16 @@
 				1FD372E61D048CF2003F19EF /* UTMHelpers.swift */,
 			);
 			name = UTM;
+			sourceTree = "<group>";
+		};
+		1FD778D71F91926E00F4DAD3 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				1FD778D81F91929500F4DAD3 /* PropertyListReadable.swift */,
+				1FD778DA1F9192E000F4DAD3 /* DistanceUnit+PropertyListReadble.swift */,
+				1FD778E11F91C0AA00F4DAD3 /* Quantity+PropertyListReadable.swift */,
+			);
+			path = Storage;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -365,11 +388,14 @@
 				1FA093461F8F0E99001BCBB2 /* AngleUnit.swift in Sources */,
 				1F5C82F01F8F38CD0003F3A5 /* FuelEfficiencyUnit.swift in Sources */,
 				1FA093421F8F0E99001BCBB2 /* TimeUnit.swift in Sources */,
+				1FD778D91F91929500F4DAD3 /* PropertyListReadable.swift in Sources */,
 				1F65DC5B1F9071F400E5E56F /* VolumeUnit.swift in Sources */,
+				1FD778DB1F9192E000F4DAD3 /* DistanceUnit+PropertyListReadble.swift in Sources */,
 				1FA093471F8F0E99001BCBB2 /* TemperatureUnit.swift in Sources */,
 				1FA0933D1F8F0E99001BCBB2 /* Atmospherics.swift in Sources */,
 				1FA093431F8F0E99001BCBB2 /* DistanceUnit.swift in Sources */,
 				1FA093451F8F0E99001BCBB2 /* MassUnit.swift in Sources */,
+				1FD778E21F91C0AA00F4DAD3 /* Quantity+PropertyListReadable.swift in Sources */,
 				1FA0933C1F8F0E99001BCBB2 /* Quantity.swift in Sources */,
 				1FA0933B1F8F0E99001BCBB2 /* PrefixedUnit.swift in Sources */,
 				1FA093401F8F0E99001BCBB2 /* Unit.swift in Sources */,
@@ -392,9 +418,12 @@
 				1FA094261F8F1CB6001BCBB2 /* UTMHelpers.swift in Sources */,
 				1FA094271F8F1CB6001BCBB2 /* Quantity+Operators.swift in Sources */,
 				1FA094281F8F1CB6001BCBB2 /* Unit.swift in Sources */,
+				1FD778DF1F91A86100F4DAD3 /* PropertyListReadable.swift in Sources */,
 				1FA094291F8F1CB6001BCBB2 /* DistanceUnit.swift in Sources */,
 				1FA0942A1F8F1CB6001BCBB2 /* SIPrefix.swift in Sources */,
 				1FA0942B1F8F1CB6001BCBB2 /* AreaUnit.swift in Sources */,
+				1FD778E01F91A86100F4DAD3 /* DistanceUnit+PropertyListReadble.swift in Sources */,
+				1FD778E41F91C0AA00F4DAD3 /* Quantity+PropertyListReadable.swift in Sources */,
 				1F5C82F21F8F38CD0003F3A5 /* FuelEfficiencyUnit.swift in Sources */,
 				1FA0942C1F8F1CB6001BCBB2 /* main.swift in Sources */,
 				1FA0942D1F8F1CB6001BCBB2 /* AngleUnit.swift in Sources */,
@@ -419,9 +448,12 @@
 				1FA0941A1F8F1957001BCBB2 /* Quantity+Operators.swift in Sources */,
 				1F65DC571F9071F300E5E56F /* AreaUnit.swift in Sources */,
 				1F15D4741F8EE28D00F28794 /* PressureUnit.swift in Sources */,
+				1FD778DD1F91A86100F4DAD3 /* PropertyListReadable.swift in Sources */,
 				1F65DC581F9071F300E5E56F /* VolumeUnit.swift in Sources */,
 				1F15D4761F8EE28D00F28794 /* AngleUnit.swift in Sources */,
 				1F15D4711F8EE28D00F28794 /* SIPrefix.swift in Sources */,
+				1FD778DE1F91A86100F4DAD3 /* DistanceUnit+PropertyListReadble.swift in Sources */,
+				1FD778E31F91C0AA00F4DAD3 /* Quantity+PropertyListReadable.swift in Sources */,
 				1F15D4771F8EE28D00F28794 /* TemperatureUnit.swift in Sources */,
 				1F15D4731F8EE28D00F28794 /* DistanceUnit.swift in Sources */,
 				1F15D4701F8EE28D00F28794 /* Unit.swift in Sources */,

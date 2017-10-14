@@ -13,10 +13,21 @@ public protocol Unit {
     var name: String { get }
     
     func convert(_ quantity: Quantity<Self>, toPrefixedUnit: PrefixedUnit<Self>) -> Quantity<Self>
+    
+    // Used by PropertyListReadble protocol.  A default implementation is given below.
+    func propertyListDescription() -> NSDictionary
 }
 
 extension Unit {
     public var name: String { return String(describing: self) }
+}
+
+extension Unit {
+    public func propertyListDescription() -> NSDictionary {
+        var dict = [String : Any]()
+        dict["name"] = self.name
+        return dict as NSDictionary
+    }
 }
 
 
