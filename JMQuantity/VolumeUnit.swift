@@ -23,3 +23,27 @@ public enum VolumeUnit: Double, LinearUnit {
     }
 
 }
+
+
+//public enum VolumeUnitDecimalBased: String {
+//    case liter = "1.0"
+//    case gallon = "3.785411784"
+//    case gallonImperial = "4.54609"
+//    
+//    var decimalValue: Decimal {
+//        let s = self.rawValue
+//        let d = Decimal(string: s)
+//        return Decimal(1) / d!
+//    }
+//    
+//    var formattedString: String {
+////        let d = decimalValue
+//        let f = NumberFormatter()
+//        f.numberStyle = .decimal
+//        f.minimumSignificantDigits = 80
+//        f.generatesDecimalNumbers = true
+//        let dn = decimalValue as! NSDecimalNumber
+//        return f.string(from: dn)!
+//    }
+//}
+

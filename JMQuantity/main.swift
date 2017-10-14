@@ -238,12 +238,13 @@ print("Before storing: \(feff)")
 //print(fuelVol.propertyListRepresentation())
 //print(feff.propertyListRepresentation())
 
-let fdata = feff.dataForCoreData()
+let fdata = feff.propertyListData()
 
-let flist = NSKeyedUnarchiver.unarchiveObject(with: fdata as Data) as! NSDictionary
-print("After storing: \(flist)")
-let effback = FuelEfficiency(plist: flist)
+//let flist = FuelEfficiency.plistFrom(data: fdata)
+let effback = FuelEfficiency(plist: fdata.quantityPropertyList())
 print(effback!)
+
+
 
 //
 //public enum Prefix : Double, CustomStringConvertible {

@@ -11,17 +11,19 @@ import Foundation
 public protocol PropertyListReadable {
     func propertyListRepresentation() -> NSDictionary
     init?(plist: NSDictionary?)
+//    init?(plistData: NSData?)
 }
 
 public extension PropertyListReadable {
-    public func dataForCoreData() -> NSData {
+    public func propertyListData() -> NSData {
         let plist = self.propertyListRepresentation()
         let data = NSKeyedArchiver.archivedData(withRootObject: plist)
         return data as NSData
     }
-    
-    public static func plistFrom(data: NSData) -> [String : Any] {
-        let plist = NSKeyedUnarchiver.unarchiveObject(with: data as Data) as! NSDictionary
-        return plist as! [String : Any]
+}
+
+public extension NSData {
+    func quantityPropertyList() -> NSDictionary {
+        return NSKeyedUnarchiver.unarchiveObject(with: self as Data) as! NSDictionary
     }
 }

@@ -20,6 +20,28 @@ class QuantityTests: XCTestCase {
         super.tearDown()
     }
     
+    func testSerialization() {
+        let tenKilometers = Quantity(10.0, prefix:.kilo, unit:DistanceUnit.meter)
+        let data1 = tenKilometers.propertyListData()
+        
+        let tenKiloOut = Distance(plist: data1.quantityPropertyList())
+        XCTAssertEqual(tenKiloOut?.roundedDescription(exactDigits: 2), "10.00 km")
+        XCTAssertEqual(tenKilometers, tenKiloOut)
+        XCTAssertEqual(tenKiloOut, tenKilometers)
+        
+        
+        
+        let tripDist = Distance(325, .mile)
+        let fuelVol = Volume(15.543, .gallonUS)
+        let feff = tripDist / fuelVol
+        let fdata = feff.propertyListData()
+        
+        let effback = FuelEfficiency(plist: fdata.quantityPropertyList())
+        XCTAssertEqual(effback?.roundedDescription(exactDigits: 4), "20.9097 mi/gal")
+        XCTAssertEqual(feff, effback)
+        XCTAssertEqual(effback, feff)
+    }
+    
     func testCreation() {
         let tenKilometers = Quantity(10.0, prefix:.kilo, unit:DistanceUnit.meter)
         XCTAssertNotNil(tenKilometers)
