@@ -39,11 +39,142 @@ class QuantityTests: XCTestCase {
         XCTAssertEqual(tenKmToMiles.roundedDescription(decimalPlaces: 3, minDigits: 2), "6.214 mi")
     }
     
-    func testMath() {
-        //Scalar addition
+    func testDistanceConversions() {
+        // test all conversion factors
+        let meter1 = Distance(100.0, .meter)
+        XCTAssertEqual((meter1.convert(to: .inch).roundedDescription(exactDigits: 5, separators: false)), "3937.00787 in")
+        XCTAssertEqual((meter1.convert(to: .foot).roundedDescription(exactDigits: 5, separators: false)), "328.08399 ft")
+        XCTAssertEqual((meter1.convert(to: .yard).roundedDescription(exactDigits: 5, separators: false)), "109.36133 yd")
+        XCTAssertEqual((meter1.convert(to: .mile).roundedDescription(exactDigits: 9, separators: false)), "0.062137119 mi")
+        XCTAssertEqual((meter1.convert(to: .nauticalMile).roundedDescription(exactDigits: 9, separators: false)), "0.053995680 NM")
+        XCTAssertEqual((meter1.convert(to: .rod).roundedDescription(exactDigits: 5, separators: false)), "19.88388 rd")
+        XCTAssertEqual((meter1.convert(to: .chain).roundedDescription(exactDigits: 5, separators: false)), "4.97097 ch")
+        XCTAssertEqual((meter1.convert(to: .furlong).roundedDescription(exactDigits: 6, separators: false)), "0.497097 fur")
+        XCTAssertEqual((meter1.convert(to: .fathom).roundedDescription(exactDigits: 5, separators: false)), "54.68066 fathom")
         
-        //Quantity addition
+        let inches = Distance(10000, .inch)
+        XCTAssertEqual((inches.convert(to: .meter).roundedDescription(exactDigits: 5)), "254.00000 m")
+        XCTAssertEqual((inches.convert(to: .foot).roundedDescription(exactDigits: 5)), "833.33333 ft")
+        XCTAssertEqual((inches.convert(to: .yard).roundedDescription(exactDigits: 5)), "277.77778 yd")
+        XCTAssertEqual((inches.convert(to: .mile).roundedDescription(exactDigits: 7)), "0.1578283 mi")
+        XCTAssertEqual((inches.convert(to: .nauticalMile).roundedDescription(exactDigits: 6)), "0.137149 NM")
+        XCTAssertEqual((inches.convert(to: .rod).roundedDescription(exactDigits: 5)), "50.50505 rd")
+        XCTAssertEqual((inches.convert(to: .chain).roundedDescription(exactDigits: 6)), "12.626263 ch")
+        XCTAssertEqual((inches.convert(to: .furlong).roundedDescription(exactDigits: 6)), "1.262626 fur")
+        XCTAssertEqual((inches.convert(to: .fathom).roundedDescription(exactDigits: 5)), "138.88889 fathom")
+    }
+    
+    func testScalarMath() {
         
+        let dkm1 = Distance(12.4, unit:PrefixedUnit(.kilo, .meter))
+        let d1 = Distance(8.34, .inch)
+        let d2 = Distance(14.34, .inch)
+        
+        // Scalar subtraction
+        let d3 = Distance(6.22, .inch)
+        let d1_3 = d2 - 8.12
+        XCTAssertEqual(d1_3.roundedDescription(exactDigits: 2), "6.22 in")
+        XCTAssertEqual(d3, d1_3)
+        XCTAssertEqual(d1_3, d3)
+        
+        // Scalar Multiplication
+        let d4 = d1 * 2
+        let d1_double = Distance(16.68, .inch)
+        XCTAssertEqual(d4.roundedDescription(exactDigits: 2), "16.68 in")
+        XCTAssertEqual(d4, d1_double)
+        XCTAssertEqual(d1_double, d4)
+        
+        let dkm1mult = dkm1 * 3
+        let dkm3 = Distance(37.2, unit: PrefixedUnit(.kilo, .meter))
+        XCTAssertEqual(dkm1mult.roundedDescription(exactDigits: 2), "37.20 km")
+        XCTAssertEqual(dkm1mult, dkm3)
+        XCTAssertEqual(dkm3, dkm1mult)
+        
+        // Scalar Division
+        let d5 = d2 / 4
+        let d5_4 = Distance(3.585, .inch)
+        XCTAssertEqual(d5.roundedDescription(exactDigits: 4), "3.5850 in")
+        XCTAssertEqual(d5, d5_4)
+        XCTAssertEqual(d5_4, d5)
+        
+        let d6 = d2 / 7
+        let d6_7 = Distance(2.0485714286, .inch)
+        XCTAssertEqual(d6.roundedDescription(exactDigits: 4), "2.0486 in")
+        XCTAssertEqual(d6, d6_7)
+        XCTAssertEqual(d6_7, d6)
+        
+        let dkm1div = dkm1 / 5
+        let dkm4 = Distance(2.48, unit: PrefixedUnit(.kilo, .meter))
+        XCTAssertEqual(dkm1div.roundedDescription(exactDigits: 2), "2.48 km")
+        XCTAssertEqual(dkm1div, dkm4)
+        XCTAssertEqual(dkm4, dkm1div)
+        
+    }
+    
+    func testScalarAddition() {
+        // Distance non prefixed
+        let din1 = Distance(8.34, .inch)
+        let din2 = Distance(14.34, .inch)
+        let d1_2 = din1 + 6
+        XCTAssertEqual(d1_2.roundedDescription(exactDigits: 2), "14.34 in")
+        XCTAssertEqual(d1_2, din2)
+        XCTAssertEqual(din2, d1_2)
+        
+        // Same prefixed units
+        let dkm1 = Distance(12.4, unit:PrefixedUnit(.kilo, .meter))
+        let dkm2 = Distance(18, unit:PrefixedUnit(.kilo, .meter))
+        let dkm1plus = dkm1 + 5.6
+        XCTAssertEqual(dkm1plus.roundedDescription(exactDigits: 2), "18.00 km")
+        XCTAssertEqual(dkm1plus, dkm2)
+        XCTAssertEqual(dkm2, dkm1plus)
+    }
+    
+    func testQuantityAddition() {
+        // Same non-prefixed units
+        let din1 = Distance(8.34, .inch)
+        let din2 = Distance(14.34, .inch)
+        let din1_din2 = din1 + din2
+        XCTAssertEqual(din1_din2.roundedDescription(exactDigits: 2), "22.68 in")
+        XCTAssertEqual(din1_din2, Distance(22.68, .inch))
+        
+        // Different non-prefixed units
+        let dft1 = Distance(2.5, .foot)
+        let din3 = din1 + dft1
+        let dft2 = dft1 + din1
+        XCTAssertEqual(din3.roundedDescription(exactDigits: 4), "38.3400 in")
+        XCTAssertEqual(dft2.roundedDescription(exactDigits: 4), "3.1950 ft")
+        XCTAssertEqual(din3, dft2)
+        XCTAssertEqual(dft2, din3)
+        
+        // Same prefixed units
+        let dkm1 = Distance(12.4, unit:PrefixedUnit(.kilo, .meter))
+        let dkm2 = Distance(18, unit:PrefixedUnit(.kilo, .meter))
+        let dkm3 = Distance(30.4, unit:PrefixedUnit(.kilo, .meter))
+        let dkm1_dkm2 = dkm1 + dkm2
+        XCTAssertEqual(dkm1_dkm2.roundedDescription(exactDigits: 2), "30.40 km")
+        XCTAssertEqual(dkm1_dkm2, Distance(30.4, unit:PrefixedUnit(.kilo, .meter)))
+        XCTAssertEqual(dkm1_dkm2, dkm3)
+        XCTAssertEqual(dkm3, dkm1_dkm2)
+        
+        // Different prefixed units
+        let pum = PrefixedUnit(.milli, DistanceUnit.mile)
+        let dmmi = Distance(543.0, unit:pum)
+        let dx = dmmi + dkm1
+        let dy = dkm1 + dmmi
+        XCTAssertEqual(dx.roundedDescription(exactDigits: 4, separators:false), "8248.0028 mmi")
+        XCTAssertEqual(dy.roundedDescription(exactDigits: 4), "13.2739 km")
+        XCTAssertEqual(dx, dy)
+        XCTAssertEqual(dy, dx)
+        
+        let pukmi = PrefixedUnit(.kilo, DistanceUnit.mile)
+        let dkmi = Distance(543.0, unit:pukmi)
+        let dxx = dkmi + dkm1
+        let dyy = dkm1 + dkmi
+        XCTAssertEqual(dxx, dyy)
+        XCTAssertEqual(dyy, dxx)        //fails with a difference ~1E-7
+    }
+    
+    func testQuantityMath() {
         
     }
     
@@ -70,7 +201,7 @@ class QuantityTests: XCTestCase {
         // Different Area Units
         let a4 = Distance(1.0, .chain) * Distance(1.0, .furlong)
         let a5 = Area(1.0, .areaUnit(.acre))
-        XCTAssertEqual(a4.roundedDescription(exactDigits: 5), "10.00000 chain²")
+        XCTAssertEqual(a4.roundedDescription(exactDigits: 5), "10.00000 ch²")
         XCTAssertEqual(a5.roundedDescription(exactDigits: 5), "1.00000 ac")
         XCTAssertEqual(a4, a5)
         XCTAssertEqual(a5, a4)
@@ -167,11 +298,12 @@ class QuantityTests: XCTestCase {
         
     }
     
-//    func testPerformanceExample() {
-//        // This is an example of a performance test case.
-//        self.measure {
-//            // Put the code you want to measure the time of here.
-//        }
-//    }
+    //    func testPerformanceExample() {
+    //        // This is an example of a performance test case.
+    //        self.measure {
+    //            // Put the code you want to measure the time of here.
+    //        }
+    //    }
     
 }
+

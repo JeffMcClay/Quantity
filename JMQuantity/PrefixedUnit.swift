@@ -12,8 +12,12 @@ public struct PrefixedUnit<U: Unit> {
     let prefix: SIPrefix
     let baseUnit: U
     
-    var symbol: String {
+    public var symbol: String {
         return "\(prefix)\(baseUnit.symbol)"
+    }
+    
+    public var longName: String {
+        return "\(prefix.longName)\(baseUnit.name)"
     }
     
     public init(prefix: SIPrefix = .none, baseUnit: U) {
@@ -45,3 +49,4 @@ extension PrefixedUnit: Equatable {
         return (lhs.baseUnit == rhs.baseUnit) && (lhs.prefix == rhs.prefix)
     }
 }
+

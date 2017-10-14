@@ -18,34 +18,31 @@ public enum FuelUnit: Unit {
     case distPerVol(PrefixedUnit<DistanceUnit>, PrefixedUnit<VolumeUnit>, ScalarType)
     case volPerDist(PrefixedUnit<VolumeUnit>, PrefixedUnit<DistanceUnit>, ScalarType)
     
-    init(distance: PrefixedUnit<DistanceUnit>, per: ScalarType, _ vol: PrefixedUnit<VolumeUnit>) {
+    public init(distance: PrefixedUnit<DistanceUnit>, per: ScalarType, _ vol: PrefixedUnit<VolumeUnit>) {
         self = FuelUnit.distPerVol(distance, vol, per)
     }
-    init(distance: PrefixedUnit<DistanceUnit>, perVolume vol: PrefixedUnit<VolumeUnit>) {
+    public init(distance: PrefixedUnit<DistanceUnit>, perVolume vol: PrefixedUnit<VolumeUnit>) {
         self.init(distance:distance, per:1, vol)
     }
-    init(distance: DistanceUnit, perVol vol: VolumeUnit) {
+    public init(distance: DistanceUnit, perVol vol: VolumeUnit) {
         self.init(distance:PrefixedUnit(distance), per:1, PrefixedUnit(vol))
     }
     
-    init(volume: PrefixedUnit<VolumeUnit>, per: ScalarType, _ dist: PrefixedUnit<DistanceUnit>) {
+    public init(volume: PrefixedUnit<VolumeUnit>, per: ScalarType, _ dist: PrefixedUnit<DistanceUnit>) {
         self = FuelUnit.volPerDist(volume, dist, per)
     }
-    init(volume: VolumeUnit, per: ScalarType, _ dist: PrefixedUnit<DistanceUnit>) {
+    public init(volume: VolumeUnit, per: ScalarType, _ dist: PrefixedUnit<DistanceUnit>) {
         self.init(volume: PrefixedUnit(volume), per:per, dist)
     }
-    init(volume: PrefixedUnit<VolumeUnit>, perDistance dist: PrefixedUnit<DistanceUnit>) {
+    public init(volume: PrefixedUnit<VolumeUnit>, perDistance dist: PrefixedUnit<DistanceUnit>) {
         self.init(volume:volume, per:1, dist)
     }
-    init(volume: VolumeUnit, perDistance dist: PrefixedUnit<DistanceUnit>) {
+    public init(volume: VolumeUnit, perDistance dist: PrefixedUnit<DistanceUnit>) {
         self.init(volume:volume, per:1, dist)
     }
-    init(volume: VolumeUnit, perDist dist: DistanceUnit) {
+    public init(volume: VolumeUnit, perDist dist: DistanceUnit) {
         self.init(volume:PrefixedUnit(volume), per:1, PrefixedUnit(dist))
     }
-    
-    
-    
     
     public var symbol: String {
         switch self {
@@ -60,11 +57,11 @@ public enum FuelUnit: Unit {
     public var name: String {
         switch self {
         case .distPerVol(let dist, let vol, let scalar):
-            if scalar == 1 { return "\(dist.symbol) per \(vol.symbol)" }
-            else { return "\(dist.symbol) per \(scalar)\(vol.symbol)" }
+            if scalar == 1 { return "\(dist.longName) per \(vol.longName)" }
+            else { return "\(dist.longName) per \(scalar)\(vol.longName)" }
         case .volPerDist(let vol, let dist, let scalar):
-            if scalar == 1 { return "\(vol.symbol) per \(dist.symbol)" }
-            else { return "\(vol.symbol) per \(scalar)\(dist.symbol)" }
+            if scalar == 1 { return "\(vol.longName) per \(dist.longName)" }
+            else { return "\(vol.longName) per \(scalar)\(dist.longName)" }
         }
     }
     

@@ -13,11 +13,15 @@ public struct Quantity<U: Unit>: CustomStringConvertible {
     //MARK: - Properties
     
     /// A PrefixedUnit struct containing an SIPrefix and a Unilinear unit enum.
-    let unit: PrefixedUnit<U>
+    public let unit: PrefixedUnit<U>
     
     /// Returns the value of the quantity, expressed in the quantity's PrefixedUnit.
-    var value : Double {
+    public var value : Double {
         get { return _value / Double(unit.prefix.rawValue) }
+    }
+    
+    public var intValue: Int {
+        get { return Int(_value) / Int(unit.prefix.rawValue) }
     }
     
     /// Stores Quantity's value converted to no prefix.
@@ -53,6 +57,10 @@ public struct Quantity<U: Unit>: CustomStringConvertible {
     
     public init(_ value: Double, unit:PrefixedUnit<U>) {
         self.init(value: value, unit: unit)
+    }
+    
+    public init(_ value: Int, unit:PrefixedUnit<U>) {
+        self.init(value: Double(value), unit: unit)
     }
     
     /// Init with a Unilinear unit, with no (none) prefix.
