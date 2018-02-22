@@ -17,12 +17,12 @@ Custom units are fully supported, and can be implemented easily.  (See FunkyUnit
 ### Creating Quantities
 ```swift
 // Verbose creation
-let kilometers = PrefixedUnit(prefix: .Kilo, baseUnit: DistanceUnit.Meter)
+let kilometers = PrefixedUnit(prefix: .kilo, baseUnit: DistanceUnit.meter)
 let twoKilometers = Quantity(value: 2.0, unit: kilometers)
 
 // Fast creation
-let tenKilometers = Quantity(10.0, prefix:.Kilo, unit:DistanceUnit.Meter)
-let twoFeet = Quantity(2.0, DistanceUnit.Foot)
+let tenKilometers = Quantity(10.0, prefix:.kilo, baseUnit:DistanceUnit.meter)
+let twoFeet = Quantity(2.0, DistanceUnit.foot)
 ```
 
 ### Arithmetic
@@ -109,28 +109,40 @@ How much is my picture worth? 1.0 pics = 1000.0 wrds
 
 #### More examples:
 ```swift
+// All the ways to make a regular LinearUnit
+let lu1 = DistanceUnit.foot
+
 // All the ways to make a PrefixedUnit
-let pu1 = PrefixedUnit(prefix: .Kilo, baseUnit: DistanceUnit.Meter)
-let pu2 = PrefixedUnit(baseUnit: DistanceUnit.Foot)
-let pu3 = PrefixedUnit(.Kilo, DistanceUnit.Meter)
-let pu4 = PrefixedUnit(DistanceUnit.Foot)
+let pu1 = PrefixedUnit(prefix: .kilo, baseUnit: DistanceUnit.meter)
+let pu2 = PrefixedUnit(baseUnit: DistanceUnit.foot)
 
 // All the ways to make a Quantity
 let q1 = Quantity(value: 6.3, unit:pu1)
-let q2 = Quantity(6.3, prefix: .Kilo, unit: DistanceUnit.Meter)
-let q3 = Quantity(3.0, unit: DistanceUnit.Foot)
-let q4 = Quantity(1.0, DistanceUnit.Yard)
+let q2 = Quantity(6.3, prefix: .kilo, baseUnit: DistanceUnit.meter)
+let q3 = Quantity(3.0, baseUnit: DistanceUnit.foot)
+let q4 = Quantity(1.0, DistanceUnit.yard)
+let q5 = Distance(2.0, .mile)
 
-// All the ways to make a regular LinearUnit
-let lu1 = DistanceUnit.Foot
+// All the ways to make an AreaUnit
+let au0 = AreaUnit(.foot)
+let au1 = AreaUnit(.acre)
+let au2 = AreaUnit(PrefixedUnit(prefix: .kilo, baseUnit: DistanceUnit.meter))
+
+let au00 = AreaUnit(unit: .foot)
+let au11 = AreaUnit(areaUnit: .acre)
+let au22 = AreaUnit(prefixedUnit: PrefixedUnit(prefix: .kilo, baseUnit: DistanceUnit.meter))
+
+let au3 = AreaUnit.areaUnit(.acre)
+let au4 = AreaUnit.squareUnit(PrefixedUnit(baseUnit: .foot))
+let au5 = AreaUnit.squareUnit(PrefixedUnit(prefix: .kilo, baseUnit: DistanceUnit.meter))
 
 // All the ways to make a RateUnit
-let ru1 = RateUnit.Rate(pu1, pu3)
-let ru2 = RateUnit(unit: pu1, perUnit: pu3)
-let ru3 = RateUnit(DistanceUnit.Foot, per: TimeUnit.Second)
+let ru1 = RateUnit.rate(pu1, pu2)
+let ru2 = RateUnit(unit: pu1, perUnit: pu2)
+let ru3 = RateUnit(DistanceUnit.foot, per: TimeUnit.second)
 
 // Shorcut for velocity
-let vu1 = VelocityUnit(.Mile, per: .Hour)
+let vu1 = VelocityUnit(.mile, per: .hour)
 ```
 
 ## Atmospheric Calculations
