@@ -72,8 +72,8 @@ extension FuelUnit {
         let volPrefix = SIPrefix(rawValue: dict[kJMQuantityFuelUnitVolUnitPrefix] as! Double)
         let scalar = dict[kJMQuantityFuelUnitScalarValue] as! ScalarType
         
-        let puDist = PrefixedUnit(distPrefix!, distUnit)
-        let puVol = PrefixedUnit(volPrefix!, volUnit)
+        let puDist = PrefixedUnit(prefix: distPrefix!, baseUnit: distUnit)
+        let puVol = PrefixedUnit(prefix: volPrefix!, baseUnit: volUnit)
         
         if (type == "distPerVol") {
             self.init(distance: puDist, per: scalar, puVol)

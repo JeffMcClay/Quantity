@@ -13,7 +13,7 @@ let kilometers = PrefixedUnit(prefix: .kilo, baseUnit: DistanceUnit.meter)
 let twoKilometers = Quantity(value: 2.0, unit: kilometers)
 
 // Fast creation
-let tenKilometers = Quantity(10.0, prefix:.kilo, unit:DistanceUnit.meter)
+let tenKilometers = Quantity(10.0, prefix:.kilo, baseUnit:DistanceUnit.meter)
 let twoFeet = Quantity(2.0, DistanceUnit.foot)
 
 // Addition
@@ -153,31 +153,30 @@ let lu1 = DistanceUnit.foot
 // All the ways to make a PrefixedUnit
 let pu1 = PrefixedUnit(prefix: .kilo, baseUnit: DistanceUnit.meter)
 let pu2 = PrefixedUnit(baseUnit: DistanceUnit.foot)
-let pu3 = PrefixedUnit(.kilo, DistanceUnit.meter)
-let pu4 = PrefixedUnit(DistanceUnit.foot)
 
 // All the ways to make a Quantity
 let q1 = Quantity(value: 6.3, unit:pu1)
-let q2 = Quantity(6.3, prefix: .kilo, unit: DistanceUnit.meter)
-let q3 = Quantity(3.0, unit: DistanceUnit.foot)
+let q2 = Quantity(6.3, prefix: .kilo, baseUnit: DistanceUnit.meter)
+let q3 = Quantity(3.0, baseUnit: DistanceUnit.foot)
 let q4 = Quantity(1.0, DistanceUnit.yard)
+let q5 = Distance(2.0, .mile)
 
 // All the ways to make an AreaUnit
 let au0 = AreaUnit(.foot)
 let au1 = AreaUnit(.acre)
-let au2 = AreaUnit(PrefixedUnit(.kilo, DistanceUnit.meter))
+let au2 = AreaUnit(PrefixedUnit(prefix: .kilo, baseUnit: DistanceUnit.meter))
 
 let au00 = AreaUnit(unit: .foot)
 let au11 = AreaUnit(areaUnit: .acre)
-let au22 = AreaUnit(prefixedUnit: PrefixedUnit(.kilo, DistanceUnit.meter))
+let au22 = AreaUnit(prefixedUnit: PrefixedUnit(prefix: .kilo, baseUnit: DistanceUnit.meter))
 
 let au3 = AreaUnit.areaUnit(.acre)
-let au4 = AreaUnit.squareUnit(PrefixedUnit(.foot))
-let au5 = AreaUnit.squareUnit(PrefixedUnit(.kilo, DistanceUnit.meter))
+let au4 = AreaUnit.squareUnit(PrefixedUnit(baseUnit: .foot))
+let au5 = AreaUnit.squareUnit(PrefixedUnit(prefix: .kilo, baseUnit: DistanceUnit.meter))
 
 // All the ways to make a RateUnit
-let ru1 = RateUnit.rate(pu1, pu3)
-let ru2 = RateUnit(unit: pu1, perUnit: pu3)
+let ru1 = RateUnit.rate(pu1, pu2)
+let ru2 = RateUnit(unit: pu1, perUnit: pu2)
 let ru3 = RateUnit(DistanceUnit.foot, per: TimeUnit.second)
 
 // Shorcut for velocity
@@ -196,21 +195,21 @@ print(utmConverted)
 
 
 
-let a6 = Area(0.4046875, unit:PrefixedUnit(.hecto, AreaUnit(.are)))
-let a7 = Area(34.543, unit:PrefixedUnit(.mega, AreaUnit(.inch)))
+let a6 = Area(value: 0.4046875, unit:PrefixedUnit(prefix: .hecto, baseUnit: AreaUnit(.are)))
+let a7 = Area(value: 34.543, unit:PrefixedUnit(prefix: .mega, baseUnit: AreaUnit(.inch)))
 print(a6, a7)
-print(a7 --> PrefixedUnit(.giga, AreaUnit(.acre)))
+print(a7 --> PrefixedUnit(prefix: .giga, baseUnit: AreaUnit(.acre)))
 
 
 
-let gals = Quantity(42, unit:PrefixedUnit(VolumeUnit.gallonUS))
+let gals = Quantity(value: 42, unit:PrefixedUnit(baseUnit: VolumeUnit.gallonUS))
 print(gals --> .gallonImperial)
 
-let fMile = PrefixedUnit(DistanceUnit.mile)
-let fGal = PrefixedUnit(VolumeUnit.gallonUS)
-let fGalUK = PrefixedUnit(VolumeUnit.gallonImperial)
-let fKm = PrefixedUnit(.kilo, DistanceUnit.meter)
-let fL = PrefixedUnit(VolumeUnit.liter)
+let fMile = PrefixedUnit(baseUnit: DistanceUnit.mile)
+let fGal = PrefixedUnit(baseUnit: VolumeUnit.gallonUS)
+let fGalUK = PrefixedUnit(baseUnit: VolumeUnit.gallonImperial)
+let fKm = PrefixedUnit(prefix: .kilo, baseUnit: DistanceUnit.meter)
+let fL = PrefixedUnit(baseUnit: VolumeUnit.liter)
 
 let uMPG = FuelUnit(distance:fMile, perVolume: fGal)
 let uMPU = FuelUnit(distance:fMile, perVolume: fGalUK)
@@ -223,10 +222,11 @@ let uLP1K = FuelUnit(volume:fL, per:100, fKm)
 let fuMPG = FuelUnit(distance: .mile, perVol: .gallonUS)
 let eff1 = FuelEfficiency(21.45, fuMPG)
 
-let fuLP100K = FuelUnit(volume: .liter, per: 100, PrefixedUnit(.kilo, DistanceUnit.meter))
+let fuLP100K = FuelUnit(volume: .liter, per: 100, PrefixedUnit(prefix: .kilo, baseUnit: DistanceUnit.meter))
 let eff2 = FuelEfficiency(14.45, fuLP100K)
 print(eff1)
 print(eff2)
+
 
 
 let tripDist = Distance(325, .mile)
@@ -238,11 +238,10 @@ print("Before storing: \(feff)")
 //print(fuelVol.propertyListRepresentation())
 //print(feff.propertyListRepresentation())
 
-let fdata = feff.propertyListData()
 
-//let flist = FuelEfficiency.plistFrom(data: fdata)
-let effback = FuelEfficiency(plist: fdata.quantityPropertyList())
-print(effback!)
+let feff_as_data = feff.dataPropertyListRepresentation()
+let feff_converted_from_data = FuelEfficiency(plist: feff_as_data.quantityPropertyList())
+print(feff_converted_from_data!)
 
 
 

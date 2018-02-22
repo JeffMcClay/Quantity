@@ -25,14 +25,14 @@ public enum FuelUnit: Unit {
         self.init(distance:distance, per:1, vol)
     }
     public init(distance: DistanceUnit, perVol vol: VolumeUnit) {
-        self.init(distance:PrefixedUnit(distance), per:1, PrefixedUnit(vol))
+        self.init(distance:PrefixedUnit(baseUnit: distance), per:1, PrefixedUnit(baseUnit: vol))
     }
     
     public init(volume: PrefixedUnit<VolumeUnit>, per: ScalarType, _ dist: PrefixedUnit<DistanceUnit>) {
         self = FuelUnit.volPerDist(volume, dist, per)
     }
     public init(volume: VolumeUnit, per: ScalarType, _ dist: PrefixedUnit<DistanceUnit>) {
-        self.init(volume: PrefixedUnit(volume), per:per, dist)
+        self.init(volume: PrefixedUnit(baseUnit: volume), per:per, dist)
     }
     public init(volume: PrefixedUnit<VolumeUnit>, perDistance dist: PrefixedUnit<DistanceUnit>) {
         self.init(volume:volume, per:1, dist)
@@ -41,7 +41,7 @@ public enum FuelUnit: Unit {
         self.init(volume:volume, per:1, dist)
     }
     public init(volume: VolumeUnit, perDist dist: DistanceUnit) {
-        self.init(volume:PrefixedUnit(volume), per:1, PrefixedUnit(dist))
+        self.init(volume:PrefixedUnit(baseUnit: volume), per:1, PrefixedUnit(baseUnit: dist))
     }
     
     public var symbol: String {

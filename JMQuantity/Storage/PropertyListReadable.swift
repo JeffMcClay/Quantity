@@ -15,7 +15,7 @@ public protocol PropertyListReadable {
 }
 
 public extension PropertyListReadable {
-    public func propertyListData() -> NSData {
+    public func dataPropertyListRepresentation() -> NSData {
         let plist = self.propertyListRepresentation()
         let data = NSKeyedArchiver.archivedData(withRootObject: plist)
         return data as NSData

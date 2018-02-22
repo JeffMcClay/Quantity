@@ -51,10 +51,10 @@ public enum AreaUnit: Unit {
     
     // Init with DistanceUnit
     init(unit: DistanceUnit) {
-        self.init(PrefixedUnit(unit))
+        self.init(PrefixedUnit(baseUnit: unit))
     }
     init(_ unit: DistanceUnit) {
-        self.init(PrefixedUnit(unit))
+        self.init(PrefixedUnit(baseUnit: unit))
     }
     
     // Init with special area units
@@ -99,7 +99,7 @@ public enum AreaUnit: Unit {
 public func * (lhs: Distance, rhs: Distance) -> Quantity<AreaUnit> {
     let r = rhs.convert(to: lhs.unit)
     let val = lhs.value * r.value
-    let q = Quantity(val, unit: AreaUnit.squareUnit(lhs.unit))
+    let q = Quantity(val, baseUnit: AreaUnit.squareUnit(lhs.unit))
     return q
 }
 

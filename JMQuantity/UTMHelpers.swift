@@ -67,7 +67,7 @@ extension UTMCoordinates {
         
         // Find the 1 or 2 digit zone number
         var zone = ""
-        for c in locator.characters {
+        for c in locator {
             let tmp = zone + String(c)
             if let _ = f.number(from: tmp) { zone = tmp }
             else { break }
@@ -82,7 +82,7 @@ extension UTMCoordinates {
         
         // there should only be a single char left in _locator so check it for memberhsip in UTMBands
         var band: Character? = nil
-        for c in _locator.uppercased().characters {
+        for c in _locator.uppercased() {
             if UTMBands.contains(c) {
                 band = c
                 break

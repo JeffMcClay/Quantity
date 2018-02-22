@@ -99,7 +99,7 @@ public func barometricPressure(ambientPressure: Pressure, fieldElevation: Distan
     let t2 = pow(1013.25,0.190284)*0.0065/288;
     let t3 = h / pow(p - 0.3, 0.190284);
     let alts = t1 * pow(1 + (t2 * t3), 1/0.190284 );
-    return Quantity(alts, prefix: .milli, unit: PressureUnit.bar)
+    return Quantity(alts, prefix: .milli, baseUnit: PressureUnit.bar)
     
 }
 

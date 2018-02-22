@@ -21,9 +21,8 @@ class QuantityTests: XCTestCase {
     }
     
     func testSerialization() {
-        let tenKilometers = Quantity(10.0, prefix:.kilo, unit:DistanceUnit.meter)
-        let data1 = tenKilometers.propertyListData()
-        
+        let tenKilometers = Quantity(10.0, prefix:.kilo, baseUnit:DistanceUnit.meter)
+        let data1 = tenKilometers.dataPropertyListRepresentation()
         let tenKiloOut = Distance(plist: data1.quantityPropertyList())
         XCTAssertEqual(tenKiloOut?.roundedDescription(exactDigits: 2), "10.00 km")
         XCTAssertEqual(tenKilometers, tenKiloOut)
@@ -34,8 +33,7 @@ class QuantityTests: XCTestCase {
         let tripDist = Distance(325, .mile)
         let fuelVol = Volume(15.543, .gallonUS)
         let feff = tripDist / fuelVol
-        let fdata = feff.propertyListData()
-        
+        let fdata = feff.dataPropertyListRepresentation()
         let effback = FuelEfficiency(plist: fdata.quantityPropertyList())
         XCTAssertEqual(effback?.roundedDescription(exactDigits: 4), "20.9097 mi/gal")
         XCTAssertEqual(feff, effback)
@@ -43,7 +41,7 @@ class QuantityTests: XCTestCase {
     }
     
     func testCreation() {
-        let tenKilometers = Quantity(10.0, prefix:.kilo, unit:DistanceUnit.meter)
+        let tenKilometers = Quantity(10.0, prefix:.kilo, baseUnit:DistanceUnit.meter)
         XCTAssertNotNil(tenKilometers)
         XCTAssert(tenKilometers.value == 10)
         XCTAssertEqual(tenKilometers.roundedDescription(exactDigits: 3), "10.000 km")
@@ -88,7 +86,7 @@ class QuantityTests: XCTestCase {
     
     func testScalarMath() {
         
-        let dkm1 = Distance(12.4, unit:PrefixedUnit(.kilo, .meter))
+        let dkm1 = Distance(value: 12.4, unit:PrefixedUnit(prefix: .kilo, baseUnit: .meter))
         let d1 = Distance(8.34, .inch)
         let d2 = Distance(14.34, .inch)
         
@@ -107,7 +105,7 @@ class QuantityTests: XCTestCase {
         XCTAssertEqual(d1_double, d4)
         
         let dkm1mult = dkm1 * 3
-        let dkm3 = Distance(37.2, unit: PrefixedUnit(.kilo, .meter))
+        let dkm3 = Distance(value: 37.2, unit: PrefixedUnit(prefix: .kilo, baseUnit: .meter))
         XCTAssertEqual(dkm1mult.roundedDescription(exactDigits: 2), "37.20 km")
         XCTAssertEqual(dkm1mult, dkm3)
         XCTAssertEqual(dkm3, dkm1mult)
@@ -126,7 +124,7 @@ class QuantityTests: XCTestCase {
         XCTAssertEqual(d6_7, d6)
         
         let dkm1div = dkm1 / 5
-        let dkm4 = Distance(2.48, unit: PrefixedUnit(.kilo, .meter))
+        let dkm4 = Distance(value: 2.48, unit: PrefixedUnit(prefix: .kilo, baseUnit: .meter))
         XCTAssertEqual(dkm1div.roundedDescription(exactDigits: 2), "2.48 km")
         XCTAssertEqual(dkm1div, dkm4)
         XCTAssertEqual(dkm4, dkm1div)
@@ -143,8 +141,8 @@ class QuantityTests: XCTestCase {
         XCTAssertEqual(din2, d1_2)
         
         // Same prefixed units
-        let dkm1 = Distance(12.4, unit:PrefixedUnit(.kilo, .meter))
-        let dkm2 = Distance(18, unit:PrefixedUnit(.kilo, .meter))
+        let dkm1 = Distance(value: 12.4, unit:PrefixedUnit(prefix: .kilo, baseUnit: .meter))
+        let dkm2 = Distance(value: 18, unit:PrefixedUnit(prefix: .kilo, baseUnit: .meter))
         let dkm1plus = dkm1 + 5.6
         XCTAssertEqual(dkm1plus.roundedDescription(exactDigits: 2), "18.00 km")
         XCTAssertEqual(dkm1plus, dkm2)
@@ -169,18 +167,18 @@ class QuantityTests: XCTestCase {
         XCTAssertEqual(dft2, din3)
         
         // Same prefixed units
-        let dkm1 = Distance(12.4, unit:PrefixedUnit(.kilo, .meter))
-        let dkm2 = Distance(18, unit:PrefixedUnit(.kilo, .meter))
-        let dkm3 = Distance(30.4, unit:PrefixedUnit(.kilo, .meter))
+        let dkm1 = Distance(value: 12.4, unit:PrefixedUnit(prefix: .kilo, baseUnit: .meter))
+        let dkm2 = Distance(value: 18, unit:PrefixedUnit(prefix: .kilo, baseUnit: .meter))
+        let dkm3 = Distance(value: 30.4, unit:PrefixedUnit(prefix: .kilo, baseUnit: .meter))
         let dkm1_dkm2 = dkm1 + dkm2
         XCTAssertEqual(dkm1_dkm2.roundedDescription(exactDigits: 2), "30.40 km")
-        XCTAssertEqual(dkm1_dkm2, Distance(30.4, unit:PrefixedUnit(.kilo, .meter)))
+        XCTAssertEqual(dkm1_dkm2, Distance(value: 30.4, unit:PrefixedUnit(prefix: .kilo, baseUnit: .meter)))
         XCTAssertEqual(dkm1_dkm2, dkm3)
         XCTAssertEqual(dkm3, dkm1_dkm2)
         
         // Different prefixed units
-        let pum = PrefixedUnit(.milli, DistanceUnit.mile)
-        let dmmi = Distance(543.0, unit:pum)
+        let pum = PrefixedUnit(prefix: .milli, baseUnit: DistanceUnit.mile)
+        let dmmi = Distance(value: 543.0, unit:pum)
         let dx = dmmi + dkm1
         let dy = dkm1 + dmmi
         XCTAssertEqual(dx.roundedDescription(exactDigits: 4, separators:false), "8248.0028 mmi")
@@ -188,8 +186,8 @@ class QuantityTests: XCTestCase {
         XCTAssertEqual(dx, dy)
         XCTAssertEqual(dy, dx)
         
-        let pukmi = PrefixedUnit(.kilo, DistanceUnit.mile)
-        let dkmi = Distance(543.0, unit:pukmi)
+        let pukmi = PrefixedUnit(prefix: .kilo, baseUnit: DistanceUnit.mile)
+        let dkmi = Distance(value: 543.0, unit:pukmi)
         let dxx = dkmi + dkm1
         let dyy = dkm1 + dkmi
         XCTAssertEqual(dxx, dyy)
@@ -229,7 +227,7 @@ class QuantityTests: XCTestCase {
         XCTAssertEqual(a5, a4)
         
         // Both areaUnit
-        let a6 = Area(0.4046875, unit:PrefixedUnit(.hecto, AreaUnit(.are)))
+        let a6 = Area(value: 0.4046875, unit:PrefixedUnit(prefix: .hecto, baseUnit: AreaUnit(.are)))
         XCTAssertEqual(a6.roundedDescription(exactDigits: 8), "0.40468750 ha")
         XCTAssertEqual(a6, a5)
         XCTAssertEqual(a5, a6)
@@ -299,16 +297,16 @@ class QuantityTests: XCTestCase {
         XCTAssertEqual(eff1.roundedDescription(exactDigits: 2), "21.45 mi/gal")
         
         // Test Conversions
-        let eff1_km = eff1 --> FuelUnit(distance: PrefixedUnit(.kilo, DistanceUnit.meter), perVolume:PrefixedUnit(VolumeUnit.liter))
+        let eff1_km = eff1 --> FuelUnit(distance: PrefixedUnit(prefix: .kilo, baseUnit: DistanceUnit.meter), perVolume:PrefixedUnit(baseUnit: VolumeUnit.liter))
         XCTAssertEqual(eff1_km.roundedDescription(exactDigits: 5), "9.11933 km/L")
         
         let eff1_muk = eff1 --> FuelUnit(distance: .mile, perVol: .gallonImperial)
         XCTAssertEqual(eff1_muk.roundedDescription(exactDigits: 5), "25.76038 mi/gal")
         
-        let eff1_lp100k = eff1 --> FuelUnit(volume: .liter, per: 100, PrefixedUnit(.kilo, DistanceUnit.meter))
+        let eff1_lp100k = eff1 --> FuelUnit(volume: .liter, per: 100, PrefixedUnit(prefix: .kilo, baseUnit: DistanceUnit.meter))
         XCTAssertEqual(eff1_lp100k.roundedDescription(exactDigits: 5), "10.96571 L/100km")
         
-        let eff1_lpk = eff1 --> FuelUnit(volume: .liter, perDistance: PrefixedUnit(.kilo, DistanceUnit.meter))
+        let eff1_lpk = eff1 --> FuelUnit(volume: .liter, perDistance: PrefixedUnit(prefix: .kilo, baseUnit: DistanceUnit.meter))
         XCTAssertEqual(eff1_lpk.roundedDescription(exactDigits: 7), "0.1096571 L/km")
         
         // Test Division Operator

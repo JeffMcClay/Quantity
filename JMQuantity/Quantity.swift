@@ -9,8 +9,13 @@
 import Foundation
 
 
-public struct Quantity<U: Unit>: CustomStringConvertible {
+public struct Quantity<U: Unit> {
     //MARK: - Properties
+    
+    /// Stores Quantity's value converted to no prefix.
+    ///  Example: For a 2 Kilometer quantity, _value = 2000
+    ///  Exmpale: For a 100 centimeter quantity, _value = 1
+    internal let _value: Double
     
     /// A PrefixedUnit struct containing an SIPrefix and a Unilinear unit enum.
     public let unit: PrefixedUnit<U>
@@ -23,12 +28,38 @@ public struct Quantity<U: Unit>: CustomStringConvertible {
     public var intValue: Int {
         get { return Int(_value) / Int(unit.prefix.rawValue) }
     }
+
     
-    /// Stores Quantity's value converted to no prefix.
-    ///  Example: For a 2 Kilometer quantity, _value = 2000
-    ///  Exmpale: For a 100 centimeter quantity, _value = 1
-    internal let _value: Double
+    //MARK: - Initialization
+    /// Init with a PrefixedUnit.
+    public init(value: Double, unit:PrefixedUnit<U>) {
+        self.unit = unit
+        self._value = value * Double(unit.prefix.rawValue)
+    }
     
+    /// Init with a Unilinear unit, with no (none) prefix.
+    public init(_ value: Double, _ unit:U) {
+        let pu = PrefixedUnit(prefix: .none, baseUnit: unit)
+        self.init(value: value, unit:pu)
+    }
+    
+    /// Init with a prefix and unit.
+    public init(_ value: Double, prefix: SIPrefix = .none, baseUnit: U) {
+        let pu = PrefixedUnit(prefix: prefix, baseUnit: baseUnit)
+        self.init(value: value, unit:pu)
+    }
+    
+    //MARK: - Conversion
+    public func convert(to toPrefixedUnit: PrefixedUnit<U>) -> Quantity {
+        return toPrefixedUnit.convert(self)
+    }
+    public func convert(to toUnit: U) -> Quantity {
+        let pu = PrefixedUnit(baseUnit: toUnit)
+        return pu.convert(self)
+    }
+}
+
+extension Quantity: CustomStringConvertible {
     public var description: String { get {
         return value.description + " " + unit.symbol
         }
@@ -47,42 +78,4 @@ public struct Quantity<U: Unit>: CustomStringConvertible {
     public func roundedDescription(exactDigits d: Int, separators: Bool = true) -> String {
         return roundedDescription(decimalPlaces: d, minDigits: d, separators: separators)
     }
-    
-    //MARK: - Initialization
-    /// Init with a PrefixedUnit.
-    public init(value: Double, unit:PrefixedUnit<U>) {
-        self.unit = unit
-        self._value = value * Double(unit.prefix.rawValue)
-    }
-    
-    public init(_ value: Double, unit:PrefixedUnit<U>) {
-        self.init(value: value, unit: unit)
-    }
-    
-    public init(_ value: Int, unit:PrefixedUnit<U>) {
-        self.init(value: Double(value), unit: unit)
-    }
-    
-    /// Init with a Unilinear unit, with no (none) prefix.
-    public init(_ value: Double, _ unit:U) {
-        let pu = PrefixedUnit(prefix: .none, baseUnit: unit)
-        self.init(value: value, unit:pu)
-    }
-    
-    /// Init with a prefix and unit.
-    public init(_ value: Double, prefix: SIPrefix = .none, unit: U) {
-        let pu = PrefixedUnit(prefix: prefix, baseUnit: unit)
-        self.init(value: value, unit:pu)
-    }
-    
-    //MARK: - Conversion
-    public func convert(to toPrefixedUnit: PrefixedUnit<U>) -> Quantity {
-        return toPrefixedUnit.convert(self)
-    }
-    public func convert(to toUnit: U) -> Quantity {
-        let pu = PrefixedUnit(baseUnit: toUnit)
-        return pu.convert(self)
-    }
 }
-
-

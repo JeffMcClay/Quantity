@@ -25,14 +25,6 @@ public struct PrefixedUnit<U: Unit> {
         self.baseUnit = baseUnit
     }
     
-    public init(_ prefix: SIPrefix = .none, _ baseUnit: U) {
-        self.init(prefix: prefix, baseUnit: baseUnit)
-    }
-    
-    public init(_ baseUnit: U) {
-        self.init(prefix: .none, baseUnit: baseUnit)
-    }
-    
     func convert(_ quantity: Quantity<U>) -> Quantity<U> {
         return baseUnit.convert(quantity, toPrefixedUnit: self)
     }

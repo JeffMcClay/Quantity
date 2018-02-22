@@ -15,7 +15,8 @@
 //
 //          Code converted from Javascript as written by Chuck Taylor
 //          http://home.hiwaay.net/~taylorc/toolbox/geography/geoutm.html
-//          Reference: Hoffmann-Wellenhof, B., Lichtenegger, H., and Collins, J., GPS: Theory and Practice, 3rd ed.  New York: Springer-Verlag Wien, 1994.
+//          Reference: Hoffmann-Wellenhof, B., Lichtenegger, H., and Collins, J., GPS: Theory and Practice, 3rd ed.
+//          New York: Springer-Verlag Wien, 1994.
 //
 
 import Foundation
