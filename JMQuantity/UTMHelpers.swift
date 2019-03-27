@@ -48,7 +48,7 @@ fileprivate func <= <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
 }
 
 
-extension UTMCoordinates {
+public extension UTMCoordinates {
     
     init(easting: UTMDouble, northing: UTMDouble, gridZone: UTMGridZone, band: UTMBand, hemisphere: UTMHemisphere) {
         self.easting = easting
@@ -91,7 +91,7 @@ extension UTMCoordinates {
         
         guard zoneNum != nil && band != nil else { return nil }
         
-        let idx = UTMBands.index(of: band!)
+        let idx = UTMBands.firstIndex(of: band!)
         if idx > 11 && idx < UTMBands.count { self.hemisphere = .northern }
         else if idx <= 11 { self.hemisphere = .southern }
         else { return nil }
@@ -103,7 +103,7 @@ extension UTMCoordinates {
     }
     
     func hemisphereForBand(_ band: UTMBand) -> UTMHemisphere? {
-        let idx = UTMBands.index(of: band)
+        let idx = UTMBands.firstIndex(of: band)
         if idx > 11 && idx < UTMBands.count { return .northern }
         else if idx <= 11 { return .southern }
         return nil
@@ -140,6 +140,6 @@ struct TransverseMercatorCoordinates {
     let northing: UTMDouble
 }
 
-typealias UTMBand = Character
+public typealias UTMBand = Character
 let UTMBands: [Character] = ["A","B","C","D","E","F","G","H","J","K","L","M","N","P","Q","R","S","T","U","V","W","X","Y","Z"]
 

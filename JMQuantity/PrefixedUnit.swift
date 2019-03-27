@@ -31,7 +31,7 @@ public struct PrefixedUnit<U: Unit> {
 }
 
 extension PrefixedUnit: CustomStringConvertible {
-    public var description:String {
+    public var description: String {
         return "\(prefix.longName)\(baseUnit.name)"
     }
 }

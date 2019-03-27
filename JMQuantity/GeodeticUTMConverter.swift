@@ -22,55 +22,55 @@
 import Foundation
 import CoreLocation
 
-typealias UTMDouble = Double
-typealias UTMGridZone = UInt
+public typealias UTMDouble = Double
+public typealias UTMGridZone = UInt
 
-enum UTMHemisphere {
+public enum UTMHemisphere {
     case northern
     case southern
 }
 
-struct UTMDatum {
+public struct UTMDatum {
     let equitorialRadius: UTMDouble
     let polarRadius: UTMDouble
 }
 
-struct UTMCoordinates {
-    let easting: UTMDouble
-    let northing: UTMDouble
-    let gridZone: UTMGridZone
-    let hemisphere: UTMHemisphere
-    let band: UTMBand
+public struct UTMCoordinates {
+    public let easting: UTMDouble
+    public let northing: UTMDouble
+    public let gridZone: UTMGridZone
+    public let hemisphere: UTMHemisphere
+    public let band: UTMBand
 }
 
 
-class GeodeticUTMConverter {
+public class GeodeticUTMConverter {
     
     var utmDatum: UTMDatum
     fileprivate var utmScaleFactor: UTMDouble = 0.9996
     
-    init () {
+    public init () {
         let wgs84datum = UTMDatum(equitorialRadius: 6378137, polarRadius: 6356752.3142)
         self.utmDatum = wgs84datum
     }
     
-    init (datum: UTMDatum) {
+    public init (datum: UTMDatum) {
         self.utmDatum = datum
     }
     
-    static func convertLocationToUTMCoordinates(_ latitudeLongitude: CLLocationCoordinate2D) -> UTMCoordinates {
+    public static func convertLocationToUTMCoordinates(_ latitudeLongitude: CLLocationCoordinate2D) -> UTMCoordinates {
         let converter = GeodeticUTMConverter()
         return converter.convertToUTMCoordinates(latitudeLongitude)
     }
     
-    static func convertUTMToLatLon(_ utmCoordinates: UTMCoordinates) -> CLLocationCoordinate2D {
+    public static func convertUTMToLatLon(_ utmCoordinates: UTMCoordinates) -> CLLocationCoordinate2D {
         let converter = GeodeticUTMConverter()
         return converter.convertToLatitudeLongitude(utmCoordinates: utmCoordinates)
     }
     
 }
 
-extension GeodeticUTMConverter {
+public extension GeodeticUTMConverter {
     func convertToUTMCoordinates(_ latLonCoordinates: CLLocationCoordinate2D) -> UTMCoordinates {
         //TODO: Check this
         let z = floor((latLonCoordinates.longitude + 180.0) / 6.0) + 1.0

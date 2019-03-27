@@ -15,10 +15,15 @@ public protocol PropertyListReadable {
 }
 
 public extension PropertyListReadable {
-    public func dataPropertyListRepresentation() -> NSData {
+     func dataPropertyListRepresentation() -> NSData {
         let plist = self.propertyListRepresentation()
-        let data = NSKeyedArchiver.archivedData(withRootObject: plist)
-        return data as NSData
+        if #available(OSX 10.11, *) {
+            let data = NSKeyedArchiver.archivedData(withRootObject: plist)
+            return data as NSData
+        } else {
+            return NSData()
+        }
+
     }
 }
 
