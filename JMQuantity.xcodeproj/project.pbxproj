@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F0CE26B224CA85D00D9E3A9 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 1F0CE26A224CA85D00D9E3A9 /* README.md */; };
 		1F15D46B1F8EE28D00F28794 /* PrefixedUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAADF011D010E5400BA583C /* PrefixedUnit.swift */; };
 		1F15D46C1F8EE28D00F28794 /* Quantity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAADEFF1D0109C800BA583C /* Quantity.swift */; };
 		1F15D46D1F8EE28D00F28794 /* Atmospherics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAADF0B1D0150D500BA583C /* Atmospherics.swift */; };
@@ -93,6 +94,7 @@
 /* Begin PBXFileReference section */
 		1F0043B71D03586E00B636F9 /* MassUnit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MassUnit.swift; sourceTree = "<group>"; };
 		1F0043B91D035AA400B636F9 /* AngleUnit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AngleUnit.swift; sourceTree = "<group>"; };
+		1F0CE26A224CA85D00D9E3A9 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		1F4368FA1D01F005005F789D /* AreaUnit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AreaUnit.swift; sourceTree = "<group>"; };
 		1F4368FC1D0205C4005F789D /* RateUnit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RateUnit.swift; sourceTree = "<group>"; };
 		1F5C82EF1F8F38CD0003F3A5 /* FuelEfficiencyUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuelEfficiencyUnit.swift; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 		1F68E0CD1CC4AFAD005F51C6 = {
 			isa = PBXGroup;
 			children = (
+				1F0CE26A224CA85D00D9E3A9 /* README.md */,
 				1F68E0D81CC4AFAD005F51C6 /* JMQuantity */,
 				1F68E0D91CC4AFAD005F51C6 /* main.swift */,
 				1FADEB6D1D0E4FF2005AE4C6 /* QuantityTests */,
@@ -369,6 +372,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F0CE26B224CA85D00D9E3A9 /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
