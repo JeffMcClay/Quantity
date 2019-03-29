@@ -68,6 +68,7 @@
 		1FA094341F8F1CB6001BCBB2 /* PressureUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAADF091D014DBC00BA583C /* PressureUnit.swift */; };
 		1FA094351F8F1CB6001BCBB2 /* TemperatureUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAADF071D011AB900BA583C /* TemperatureUnit.swift */; };
 		1FADEB6F1D0E4FF2005AE4C6 /* QuantityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FADEB6E1D0E4FF2005AE4C6 /* QuantityTests.swift */; };
+		1FD1E77F224D4D3E004F364A /* GeodeticUTMConverterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD1E77E224D4D3E004F364A /* GeodeticUTMConverterTests.swift */; };
 		1FD778D91F91929500F4DAD3 /* PropertyListReadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD778D81F91929500F4DAD3 /* PropertyListReadable.swift */; };
 		1FD778DB1F9192E000F4DAD3 /* DistanceUnit+PropertyListReadble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD778DA1F9192E000F4DAD3 /* DistanceUnit+PropertyListReadble.swift */; };
 		1FD778DD1F91A86100F4DAD3 /* PropertyListReadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD778D81F91929500F4DAD3 /* PropertyListReadable.swift */; };
@@ -118,6 +119,7 @@
 		1FADEB6C1D0E4FF2005AE4C6 /* QuantityTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QuantityTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FADEB6E1D0E4FF2005AE4C6 /* QuantityTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuantityTests.swift; sourceTree = "<group>"; };
 		1FADEB701D0E4FF2005AE4C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1FD1E77E224D4D3E004F364A /* GeodeticUTMConverterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeodeticUTMConverterTests.swift; sourceTree = "<group>"; };
 		1FD372E31D048CBF003F19EF /* GeodeticUTMConverter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeodeticUTMConverter.swift; sourceTree = "<group>"; };
 		1FD372E61D048CF2003F19EF /* UTMHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UTMHelpers.swift; sourceTree = "<group>"; };
 		1FD778D81F91929500F4DAD3 /* PropertyListReadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyListReadable.swift; sourceTree = "<group>"; };
@@ -235,6 +237,7 @@
 			isa = PBXGroup;
 			children = (
 				1FADEB6E1D0E4FF2005AE4C6 /* QuantityTests.swift */,
+				1FD1E77E224D4D3E004F364A /* GeodeticUTMConverterTests.swift */,
 				1FADEB701D0E4FF2005AE4C6 /* Info.plist */,
 			);
 			path = QuantityTests;
@@ -464,6 +467,7 @@
 				1FD778E31F91C0AA00F4DAD3 /* Quantity+PropertyListReadable.swift in Sources */,
 				1F15D4771F8EE28D00F28794 /* TemperatureUnit.swift in Sources */,
 				1F15D4731F8EE28D00F28794 /* DistanceUnit.swift in Sources */,
+				1FD1E77F224D4D3E004F364A /* GeodeticUTMConverterTests.swift in Sources */,
 				1F15D4701F8EE28D00F28794 /* Unit.swift in Sources */,
 				1F15D46E1F8EE28D00F28794 /* GeodeticUTMConverter.swift in Sources */,
 				1F15D4721F8EE28D00F28794 /* TimeUnit.swift in Sources */,

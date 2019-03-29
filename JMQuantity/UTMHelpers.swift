@@ -6,46 +6,49 @@
 //  Copyright © 2016 Jeff McClay. All rights reserved.
 //
 
-//  Some of this code was ported from GeodeticUTMConverter by Created by Cameron Lowell Palmer & Mariia Ruchko.
-//  https://github.com/palmerc/GeodeticUTMConverter
-//  It was originally an Objective-C port of Chuck Taylor's javascript
+/**
+  Some of this code was ported from GeodeticUTMConverter by Created by Cameron Lowell Palmer & Mariia Ruchko.
+  https://github.com/palmerc/GeodeticUTMConverter
+  It was originally an Objective-C port of Chuck Taylor's javascript
+*/
 
 import Foundation
 import CoreLocation
-// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
-// Consider refactoring the code to use the non-optional operators.
-fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
-  switch (lhs, rhs) {
-  case let (l?, r?):
-    return l < r
-  case (nil, _?):
-    return true
-  default:
-    return false
-  }
-}
 
-// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
-// Consider refactoring the code to use the non-optional operators.
-fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
-  switch (lhs, rhs) {
-  case let (l?, r?):
-    return l > r
-  default:
-    return rhs < lhs
-  }
-}
-
-// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
-// Consider refactoring the code to use the non-optional operators.
-fileprivate func <= <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
-  switch (lhs, rhs) {
-  case let (l?, r?):
-    return l <= r
-  default:
-    return !(rhs < lhs)
-  }
-}
+//// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+//// Consider refactoring the code to use the non-optional operators.
+//fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+//  switch (lhs, rhs) {
+//  case let (l?, r?):
+//    return l < r
+//  case (nil, _?):
+//    return true
+//  default:
+//    return false
+//  }
+//}
+//
+//// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+//// Consider refactoring the code to use the non-optional operators.
+//fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+//  switch (lhs, rhs) {
+//  case let (l?, r?):
+//    return l > r
+//  default:
+//    return rhs < lhs
+//  }
+//}
+//
+//// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+//// Consider refactoring the code to use the non-optional operators.
+//fileprivate func <= <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+//  switch (lhs, rhs) {
+//  case let (l?, r?):
+//    return l <= r
+//  default:
+//    return !(rhs < lhs)
+//  }
+//}
 
 
 public extension UTMCoordinates {
@@ -74,13 +77,13 @@ public extension UTMCoordinates {
         }
         
         // convert the zone string into a double
-        let zoneNum = f.number(from: zone)?.uintValue
+        guard let zoneNum = f.number(from: zone)?.uintValue else { return nil }
         
         // strip the zone from the locator
         if let rng = _locator.range(of: zone) { _locator.removeSubrange(rng) }
         else { return nil }
         
-        // there should only be a single char left in _locator so check it for memberhsip in UTMBands
+        // there should only be a single char left in _locator so check it for membership in UTMBands
         var band: Character? = nil
         for c in _locator.uppercased() {
             if UTMBands.contains(c) {
@@ -89,21 +92,19 @@ public extension UTMCoordinates {
             }
         }
         
-        guard zoneNum != nil && band != nil else { return nil }
-        
-        let idx = UTMBands.firstIndex(of: band!)
-        if idx > 11 && idx < UTMBands.count { self.hemisphere = .northern }
-        else if idx <= 11 { self.hemisphere = .southern }
-        else { return nil }
+        guard band != nil else { return nil }
+
+        guard let hemi = UTMCoordinates.hemisphereForBand(band!) else { return nil }
         
         self.easting = easting
         self.northing = northing
-        self.gridZone = zoneNum!
-        self.band = band!        
+        self.gridZone = zoneNum
+        self.band = band!
+        self.hemisphere = hemi
     }
     
-    func hemisphereForBand(_ band: UTMBand) -> UTMHemisphere? {
-        let idx = UTMBands.firstIndex(of: band)
+    static func hemisphereForBand(_ band: UTMBand) -> UTMHemisphere? {
+        guard let idx = UTMBands.firstIndex(of: band) else { return nil }
         if idx > 11 && idx < UTMBands.count { return .northern }
         else if idx <= 11 { return .southern }
         return nil
@@ -141,5 +142,6 @@ struct TransverseMercatorCoordinates {
 }
 
 public typealias UTMBand = Character
-let UTMBands: [Character] = ["A","B","C","D","E","F","G","H","J","K","L","M","N","P","Q","R","S","T","U","V","W","X","Y","Z"]
+let UTMBands: [Character] =
+    ["A","B","C","D","E","F","G","H","J","K","L","M","N","P","Q","R","S","T","U","V","W","X","Y","Z"]
 
